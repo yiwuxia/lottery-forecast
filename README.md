@@ -4,10 +4,6 @@
 
 `lzhpo-shiro`是一款非常漂亮、美观的权限管理系统，功能实用齐全，代码无过度封装，简洁易懂，开发利器，非常非常非常容易上手，甚至连`Redis`都没有使用，只要安装了`JDK`、有`MySQL`数据库，有开发工具`idea`或者`eclipse`就能运行，让想搭建后台的开发者上手即可使用，可以自己随意开发。
 
-## 项目下载地址
-
-[https://github.com/liuzhaopo/lzhpo-shiro](https://github.com/liuzhaopo/lzhpo-shiro)
-
 ## 图片预览
 
 ### 登录界面
