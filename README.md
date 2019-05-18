@@ -13,7 +13,7 @@
 -   JDK1.8
 -   SpringBoot 2.0.3.RELEASE
 -   shiro 1.4.0
--   Mybatis-Plus
+-   Mybatis-Plus 3.0-RC1
 -   layui 2.4.5
 -   fastjson 1.2.41
 -   MySQL
