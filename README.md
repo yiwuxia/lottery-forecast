@@ -8,17 +8,6 @@
 
 [https://github.com/liuzhaopo/lzhpo-shiro](https://github.com/liuzhaopo/lzhpo-shiro)
 
-## 技术栈
-
--   JDK1.8
--   SpringBoot 2.0.3.RELEASE
--   shiro 1.4.0
--   Mybatis-Plus 3.0-RC1
--   layui 2.4.5
--   fastjson 1.2.41
--   MySQL
--   cuisongliu(验证码)
-
 ## 图片预览
 
 ### 登录界面
@@ -42,6 +31,17 @@
 ### 个人资料
 
 ![](http://cdn.liuzhaopo.top/lzhpo-shiro-%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99.png)
+
+## 技术栈
+
+-   JDK1.8
+-   SpringBoot 2.0.3.RELEASE
+-   shiro 1.4.0
+-   Mybatis-Plus 3.0-RC1
+-   layui 2.4.5
+-   fastjson 1.2.41
+-   MySQL
+-   cuisongliu(验证码)
 
 ## 使用说明
 
