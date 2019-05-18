@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-`lzhpo-shiro`是一款非常漂亮、美观的权限管理系统，功能实用齐全，代码无过度封装，简洁易懂，开发利器，非常非常非常容易上手，甚至连`Redis`都没有使用，只要安装了`JDK`、有`MySQL`数据库，有开发工具`idea`或者`eclipse`就能运行，让想搭建后台的开发者上手即可使用，可以自己随意开发。
+>   `lzhpo-shiro`是一款非常漂亮、美观的权限管理系统，功能实用齐全，代码无过度封装，简洁易懂，开发利器，非常非常非常容易上手，甚至连`Redis`都没有使用，只要安装了`JDK`、有`MySQL`数据库，有开发工具`idea`或者`eclipse`就能运行，让想搭建后台的开发者上手即可使用，可以自己随意开发。
 
 ## 图片预览
 
@@ -30,7 +30,7 @@
 
 ## 技术栈
 
--   JDK1.8
+-   JDK 1.8
 -   SpringBoot 2.0.3.RELEASE
 -   shiro 1.4.0
 -   Mybatis-Plus 3.0-RC1
@@ -76,4 +76,3 @@ git clone https://github.com/liuzhaopo/lzhpo-shiro.git
 ### 微信
 
 ![](http://cdn.liuzhaopo.top/%E5%BE%AE%E4%BF%A1.png)
-
