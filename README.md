@@ -64,6 +64,8 @@ git clone https://github.com/liuzhaopo/lzhpo-shiro.git
 ### 登录
 
 打开浏览器，访问[http://localhost:8080](http://localhost:8080)即可。
+登录账号：admin
+登录密码：123456
 
 ## 打赏作者
 
