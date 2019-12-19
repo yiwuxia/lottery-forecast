@@ -107,12 +107,12 @@ public class AuthRealm extends AuthorizingRealm {
     /**
      * 设定Password校验的Hash算法与迭代次数.
      */
-    @PostConstruct
+   /* @PostConstruct
     public void initCredentialsMatcher() {
         HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(Constants.HASH_ALGORITHM);
         matcher.setHashIterations(Constants.HASH_INTERATIONS);
         setCredentialsMatcher(matcher);
-    }
+    }*/
 
     /**
      * 自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.

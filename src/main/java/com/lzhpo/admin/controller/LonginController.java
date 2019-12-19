@@ -76,9 +76,13 @@ public class LonginController {
         return "redirect:toLogin";
     }
 
-    @GetMapping(value = "toLogin")
-    public String adminToLogin(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType) {
+
+    @GetMapping(value = {"/toLogin","/"})
+    public String adminToLogin(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType,
+                               HttpServletRequest request
+                               ) {
         if(StringUtils.isBlank(loginType)) {
+            session.setAttribute(LOGIN_TYPE, LoginTypeEnum.ADMIN);//lijin
             LoginTypeEnum attribute = (LoginTypeEnum) session.getAttribute(LOGIN_TYPE);
             loginType = attribute == null ? loginType : attribute.name();
         }
@@ -125,7 +129,7 @@ public class LonginController {
         ImageIO.write(bufferedImage, "JPEG", response.getOutputStream());
     }
 
-    @PostMapping("admin/login")
+    @PostMapping("admin/login2")
     @SysLog("用户登录")
     @ResponseBody
     public ResponseEntity adminLogin(HttpServletRequest request) {
@@ -146,7 +150,8 @@ public class LonginController {
         if(StringUtils.isBlank(trueCode)){
             return ResponseEntity.failure("验证码超时");
         }
-        if(StringUtils.isBlank(code) || !trueCode.toLowerCase().equals(code.toLowerCase())){
+       // if(StringUtils.isBlank(code) || !trueCode.toLowerCase().equals(code.toLowerCase())){
+        if(StringUtils.isBlank(code)){
             return ResponseEntity.failure("验证码错误");
         }else {
             /*当前用户*/

@@ -54,7 +54,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void saveUser(User user) {
-        Encodes.entryptPassword(user);
+      //  Encodes.entryptPassword(user);
         user.setLocked(false);
         baseMapper.insert(user);
     }

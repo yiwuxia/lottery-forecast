@@ -41,7 +41,7 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(securityManager(authRealm));
         bean.setSuccessUrl("/index");
-        bean.setLoginUrl("/admin/login");
+        bean.setLoginUrl("/admin/login2");
         Map<String,Filter> map = new HashMap();
         map.put("authc",new FormAuthenticationFilter());
         bean.setFilters(map);
@@ -51,7 +51,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/static/**","anon");
         filterChainDefinitionMap.put("/admin","anon");
         filterChainDefinitionMap.put("/admin/index","anon");
-        filterChainDefinitionMap.put("/admin/login","anon");
+        filterChainDefinitionMap.put("/admin/login2","anon");
         filterChainDefinitionMap.put("/toLogin","anon");
         filterChainDefinitionMap.put("/getCaptcha","anon");
         filterChainDefinitionMap.put("/anonCtrl/","anon");
