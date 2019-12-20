@@ -4,11 +4,14 @@ import com.lzhpo.core.domain.PrizeData;
 import com.lzhpo.core.service.PrizeDataService;
 import com.lzhpo.core.utils.DataGeneratorUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
+import java.util.UUID;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Version 1.0
  **/
 @Component
-public class MainWork{
+public class MainWork {
 
 
     @Value("${remote.simulation:0}")
@@ -28,16 +31,18 @@ public class MainWork{
     @Autowired
     private PrizeDataService prizeDataService;
 
-    private AtomicInteger  termNum=new AtomicInteger(1);
+    private AtomicInteger termNum = new AtomicInteger(1);
+
+    private static final FastDateFormat format = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
 
 
     ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
     //使用的无界队列注意溢出
-    ExecutorService handlerThreadPool = new ThreadPoolExecutor(5,5,
-            5,TimeUnit.MINUTES,new ArrayBlockingQueue<>(1000));
+    ExecutorService handlerThreadPool = new ThreadPoolExecutor(5, 5,
+            5, TimeUnit.MINUTES, new ArrayBlockingQueue<>(1000));
 
 
-    BlockingQueue<PrizeData> dataQueue=new ArrayBlockingQueue<>(1000);
+    BlockingQueue<PrizeData> dataQueue = new ArrayBlockingQueue<>(1000);
 
     @PostConstruct
     public void init() {
@@ -53,45 +58,47 @@ public class MainWork{
     /**
      * 取数据线程
      */
-    private class FetchRemoteData implements  Runnable{
+    private class FetchRemoteData implements Runnable {
 
         @Override
         public void run() {
             // itemNo;01,02,....10
-            String data="";
-            if (simulation==1){
-                 data=generateSimulationData();
-            }else {
+            String data = "";
+            if (simulation == 1) {
+                data = generateSimulationData();
+                if (StringUtils.isNotBlank(data)) {
+                    dataQueue.offer(DataGeneratorUtil.converStrToPrizeData(data));
+                }
+            } else {
 
-            }
-            if (StringUtils.isNotBlank(data)){
-                dataQueue.offer(DataGeneratorUtil.converStrToPrizeData(data));
             }
 
         }
 
-        private String generateSimulationData() {
 
-            StringBuffer buffer=new StringBuffer();
-            buffer.append(termNum.incrementAndGet());
-            buffer.append(";");
-            buffer.append(DataGeneratorUtil.generate());
-            return buffer.toString();
+    }
 
-        }
+    public String generateSimulationData() {
+
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(UUID.randomUUID().toString());
+        buffer.append(";");
+        buffer.append(DataGeneratorUtil.generate());
+        buffer.append(";").append(format.format(new Date()));
+        return buffer.toString();
     }
 
     /**
      * 处理数据线程
      */
-    private class HandlerRemoteData implements  Runnable{
+    private class HandlerRemoteData implements Runnable {
 
         @Override
         public void run() {
 
-            while (true){
+            while (true) {
                 try {
-                    PrizeData prizeData=dataQueue.take();
+                    PrizeData prizeData = dataQueue.take();
                     prizeDataService.handlerOriginDataTrend(prizeData);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

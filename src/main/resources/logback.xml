@@ -5,6 +5,7 @@
 
     <!--设置系统日志目录-->
     <property name="APP_DIR" value="xsblog" />
+    <property name="LOG_PATH" value="./lijin-log" />
 
     <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->

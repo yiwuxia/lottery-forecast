@@ -1,9 +1,11 @@
 package com.lzhpo.core.utils;
+import java.text.ParseException;
 import	java.util.Random;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.lzhpo.core.domain.PrizeData;
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.springframework.util.StringUtils;
 
 import javax.swing.plaf.TableUI;
@@ -22,6 +24,8 @@ public class DataGeneratorUtil {
 
 
     static  final String [] data={"01","02","03","04","05","06","07","08","09","10"};
+    private static  final FastDateFormat format=FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
+
 
     /**
      * 随机产生 01 ---10 的10个数
@@ -54,6 +58,11 @@ public class DataGeneratorUtil {
         String prizeNums=arr[1];
         String []  nums=StringUtils.commaDelimitedListToStringArray(prizeNums);
         prizeData.setPrizeNums(nums);
+        try {
+            prizeData.setOpenTIme(format.parse(arr[2]));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return prizeData;
     }
 }

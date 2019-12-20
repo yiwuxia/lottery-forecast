@@ -28,10 +28,7 @@ public class DbSourceConfig {
         return new JdbcTemplate(druidDataSource());
     }
 
-    @Bean
-    public MyDbHelper dbHelper(){
-        return new MyDbHelper(template());
-    }
+
 
 
 
