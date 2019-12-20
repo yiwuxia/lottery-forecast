@@ -50,7 +50,7 @@ public class DataGeneratorUtil {
     public static PrizeData converStrToPrizeData(String data) {
          String [] arr=data.split(";");
         PrizeData prizeData=new PrizeData();
-        prizeData.setItemNo(arr[0]);
+        prizeData.setTermNo(arr[0]);
         String prizeNums=arr[1];
         String []  nums=StringUtils.commaDelimitedListToStringArray(prizeNums);
         prizeData.setPrizeNums(nums);

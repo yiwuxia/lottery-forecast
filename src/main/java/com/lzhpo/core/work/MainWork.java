@@ -1,8 +1,10 @@
 package com.lzhpo.core.work;
 
 import com.lzhpo.core.domain.PrizeData;
+import com.lzhpo.core.service.PrizeDataService;
 import com.lzhpo.core.utils.DataGeneratorUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +25,17 @@ public class MainWork{
     @Value("${remote.simulation:0}")
     private Integer simulation;
 
+    @Autowired
+    private PrizeDataService prizeDataService;
+
     private AtomicInteger  termNum=new AtomicInteger(1);
 
 
-    ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(2);
+    ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
+    //使用的无界队列注意溢出
+    ExecutorService handlerThreadPool = new ThreadPoolExecutor(5,5,
+            5,TimeUnit.MINUTES,new ArrayBlockingQueue<>(1000));
+
 
     BlockingQueue<PrizeData> dataQueue=new ArrayBlockingQueue<>(1000);
 
@@ -37,6 +46,7 @@ public class MainWork{
          */
         scheduledThreadPool.scheduleWithFixedDelay(
                 new FetchRemoteData(), 0, 5, TimeUnit.MINUTES);
+        handlerThreadPool.execute(new HandlerRemoteData());
     }
 
 
@@ -69,6 +79,28 @@ public class MainWork{
             return buffer.toString();
 
         }
+    }
+
+    /**
+     * 处理数据线程
+     */
+    private class HandlerRemoteData implements  Runnable{
+
+        @Override
+        public void run() {
+
+            while (true){
+                try {
+                    PrizeData prizeData=dataQueue.take();
+                    prizeDataService.handlerOriginDataTrend(prizeData);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+
     }
 
 
