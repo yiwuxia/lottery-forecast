@@ -129,7 +129,7 @@ public class LonginController {
         ImageIO.write(bufferedImage, "JPEG", response.getOutputStream());
     }
 
-    @PostMapping("admin/login2")
+    @PostMapping("admin/login")
     @SysLog("用户登录")
     @ResponseBody
     public ResponseEntity adminLogin(HttpServletRequest request) {

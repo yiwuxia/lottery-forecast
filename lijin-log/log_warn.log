@@ -99,3 +99,60 @@
 2019-12-23 15:59:52.836 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
 2019-12-23 16:00:05.160 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
 2019-12-23 16:00:05.160 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 20:07:29.532 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-23 20:08:20.987 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/$%7Bsite.logo%7D] in DispatcherServlet with name 'dispatcherServlet'
+2019-12-23 20:29:00.793 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-23 20:47:36.971 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-23 21:06:21.382 [http-nio-8080-exec-7] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:06:21.383 [http-nio-8080-exec-7] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:06:31.302 [http-nio-8080-exec-7] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:06:31.303 [http-nio-8080-exec-7] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:06:32.346 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:06:32.347 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:06:54.554 [http-nio-8080-exec-5] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:06:54.554 [http-nio-8080-exec-5] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:07:03.047 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:07:03.048 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:07:28.739 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:07:28.740 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:07:49.868 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:07:49.869 [http-nio-8080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:08:18.981 [http-nio-8080-exec-6] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:08:18.982 [http-nio-8080-exec-6] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:08:58.355 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/$%7Bsite.logo%7D] in DispatcherServlet with name 'dispatcherServlet'
+2019-12-23 21:09:30.406 [http-nio-8080-exec-5] WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/$%7Bsite.logo%7D] in DispatcherServlet with name 'dispatcherServlet'
+2019-12-23 21:47:14.987 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-23 21:47:39.362 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:47:39.363 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:48:17.944 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:48:17.945 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:48:18.052 [http-nio-8080-exec-6] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:48:18.052 [http-nio-8080-exec-6] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:48:19.829 [http-nio-8080-exec-7] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:48:19.829 [http-nio-8080-exec-7] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:48:19.921 [http-nio-8080-exec-9] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:48:19.922 [http-nio-8080-exec-9] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:49:03.756 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:49:03.758 [http-nio-8080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:49:03.911 [http-nio-8080-exec-3] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:49:03.911 [http-nio-8080-exec-3] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:50:42.752 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-23 21:51:12.474 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:51:12.476 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:51:12.658 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:51:12.659 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:51:44.504 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:51:44.506 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:52:29.651 [http-nio-8080-exec-8] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:52:29.652 [http-nio-8080-exec-8] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:52:43.152 [http-nio-8080-exec-6] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:52:43.152 [http-nio-8080-exec-6] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:53:01.291 [http-nio-8080-exec-6] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:53:01.291 [http-nio-8080-exec-6] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:53:04.616 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:53:04.616 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 21:53:55.039 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 21:53:55.040 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-23 23:31:57.077 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-23 23:32:00.594 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-23 23:32:00.595 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
