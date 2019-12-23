@@ -19,7 +19,7 @@ layui.use(['form','element','layer','jquery'],function(){
             type: 2,
             title: '基本走势',
             skin: 'layui-layer-rim', //加上边框
-            area: ['1400px', '600px'], //宽高
+            area: ['1400px', '500px'], //宽高
             content: '/stat/trend'
         });
 

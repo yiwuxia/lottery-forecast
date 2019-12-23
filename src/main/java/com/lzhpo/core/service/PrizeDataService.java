@@ -404,12 +404,14 @@ public class PrizeDataService {
                     numRegion01No=0;
                 }
                 numRegion01Ok=numRegion01Ok+1;
+                numRegion01OkList.add(numRegion01Ok);
             }else{
                 if (numRegion01Ok>=0){
                     numRegion01OkList.add(numRegion01Ok);
                     numRegion01Ok=0;
                 }
                 numRegion01No=numRegion01No+1;
+                numRegion01NoList.add(numRegion01No);
             }
             if (       p.getNumRegion02().startsWith("ok")) {
                 if (occurTimes.getNumRegion02() == null) {
@@ -423,12 +425,14 @@ public class PrizeDataService {
                     numRegion02No=0;
                 }
                 numRegion02Ok=numRegion02Ok+1;
+                numRegion02OkList.add(numRegion02Ok);
             }else{
                 if (numRegion02Ok>=0){
                     numRegion02OkList.add(numRegion02Ok);
                     numRegion02Ok=0;
                 }
                 numRegion02No=numRegion02No+1;
+                numRegion02NoList.add(numRegion02No);
             }
             if (       p.getNumRegion03().startsWith("ok")) {
                 if (occurTimes.getNumRegion03() == null) {
@@ -442,12 +446,14 @@ public class PrizeDataService {
                     numRegion03No=0;
                 }
                 numRegion03Ok=numRegion03Ok+1;
+                numRegion03OkList.add(numRegion03Ok);
             }else{
                 if (numRegion03Ok>=0){
                     numRegion03OkList.add(numRegion03Ok);
                     numRegion03Ok=0;
                 }
                 numRegion03No=numRegion03No+1;
+                numRegion03NoList.add(numRegion03No);
             }
             if (       p.getNumRegion04().startsWith("ok")) {
                 if (occurTimes.getNumRegion04() == null) {
@@ -461,12 +467,14 @@ public class PrizeDataService {
                     numRegion04No=0;
                 }
                 numRegion04Ok=numRegion04Ok+1;
+                numRegion04OkList.add(numRegion04Ok);
             }else{
                 if (numRegion04Ok>=0){
                     numRegion04OkList.add(numRegion04Ok);
                     numRegion04Ok=0;
                 }
                 numRegion04No=numRegion04No+1;
+                numRegion04NoList.add(numRegion04No);
             }
             if (       p.getNumRegion05().startsWith("ok")) {
                 if (occurTimes.getNumRegion05() == null) {
@@ -480,12 +488,16 @@ public class PrizeDataService {
                     numRegion05No=0;
                 }
                 numRegion05Ok=numRegion05Ok+1;
+                numRegion05OkList.add(numRegion05Ok);
+
             }else{
                 if (numRegion05Ok>=0){
                     numRegion05OkList.add(numRegion05Ok);
                     numRegion05Ok=0;
                 }
                 numRegion05No=numRegion05No+1;
+                numRegion05NoList.add(numRegion05No);
+
             }
             if (       p.getNumRegion06().startsWith("ok")) {
                 if (occurTimes.getNumRegion06() == null) {
@@ -499,12 +511,16 @@ public class PrizeDataService {
                     numRegion06No=0;
                 }
                 numRegion06Ok=numRegion06Ok+1;
+                numRegion06OkList.add(numRegion06Ok);
+
             }else{
                 if (numRegion06Ok>=0){
                     numRegion06OkList.add(numRegion06Ok);
                     numRegion06Ok=0;
                 }
                 numRegion06No=numRegion06No+1;
+                numRegion06NoList.add(numRegion06No);
+
             }
             if (       p.getNumRegion07().startsWith("ok")) {
                 if (occurTimes.getNumRegion07() == null) {
@@ -518,12 +534,16 @@ public class PrizeDataService {
                     numRegion07No=0;
                 }
                 numRegion07Ok=numRegion07Ok+1;
+                numRegion07OkList.add(numRegion07Ok);
+
             }else{
                 if (numRegion07Ok>=0){
                     numRegion07OkList.add(numRegion07Ok);
                     numRegion07Ok=0;
                 }
                 numRegion07No=numRegion07No+1;
+                numRegion07NoList.add(numRegion07No);
+
             }
             if (       p.getNumRegion08().startsWith("ok")) {
                 if (occurTimes.getNumRegion08() == null) {
@@ -537,12 +557,16 @@ public class PrizeDataService {
                     numRegion08No=0;
                 }
                 numRegion08Ok=numRegion08Ok+1;
+                numRegion08OkList.add(numRegion08Ok);
+
             }else{
                 if (numRegion08Ok>=0){
                     numRegion08OkList.add(numRegion08Ok);
                     numRegion08Ok=0;
                 }
                 numRegion08No=numRegion08No+1;
+                numRegion08NoList.add(numRegion08No);
+
             }
             if (       p.getNumRegion09().startsWith("ok")) {
                 if (occurTimes.getNumRegion09() == null) {
@@ -556,12 +580,16 @@ public class PrizeDataService {
                     numRegion09No=0;
                 }
                 numRegion09Ok=numRegion09Ok+1;
+                numRegion09OkList.add(numRegion09Ok);
+
             }else{
                 if (numRegion09Ok>=0){
                     numRegion09OkList.add(numRegion09Ok);
                     numRegion09Ok=0;
                 }
                 numRegion09No=numRegion09No+1;
+                numRegion09NoList.add(numRegion09No);
+
             }
             if (       p.getNumRegion10().startsWith("ok")) {
                 if (occurTimes.getNumRegion10() == null) {
@@ -575,12 +603,16 @@ public class PrizeDataService {
                     numRegion10No=0;
                 }
                 numRegion10Ok=numRegion10Ok+1;
+                numRegion10OkList.add(numRegion10Ok);
+
             }else{
                 if (numRegion10Ok>=0){
                     numRegion10OkList.add(numRegion10Ok);
                     numRegion10Ok=0;
                 }
                 numRegion10No=numRegion10No+1;
+                numRegion10NoList.add(numRegion10No);
+
             }
             if (       p.getFirst01().startsWith("ok")) {
                 if (occurTimes.getFirst01() == null) {
@@ -594,12 +626,16 @@ public class PrizeDataService {
                     first01No=0;
                 }
                 first01Ok=first01Ok+1;
+                first01OkList.add(first01Ok);
+
             }else{
                 if (first01Ok>=0){
                     first01OkList.add(first01Ok);
                     first01Ok=0;
                 }
                 first01No=first01No+1;
+                first01NoList.add(first01No);
+
             }
             if (       p.getFirst02().startsWith("ok")) {
                 if (occurTimes.getFirst02() == null) {
@@ -613,12 +649,16 @@ public class PrizeDataService {
                     first02No=0;
                 }
                 first02Ok=first02Ok+1;
+                first02OkList.add(first02Ok);
+
             }else{
                 if (first02Ok>=0){
                     first02OkList.add(first02Ok);
                     first02Ok=0;
                 }
                 first02No=first02No+1;
+                first02NoList.add(first02No);
+
             }
             if (       p.getFirst03().startsWith("ok")) {
                 if (occurTimes.getFirst03() == null) {
@@ -632,12 +672,16 @@ public class PrizeDataService {
                     first03No=0;
                 }
                 first03Ok=first03Ok+1;
+                first03OkList.add(first03Ok);
+
             }else{
                 if (first03Ok>=0){
                     first03OkList.add(first03Ok);
                     first03Ok=0;
                 }
                 first03No=first03No+1;
+                first03NoList.add(first03No);
+
             }
             if (       p.getFirst04().startsWith("ok")) {
                 if (occurTimes.getFirst04() == null) {
@@ -651,12 +695,16 @@ public class PrizeDataService {
                     first04No=0;
                 }
                 first04Ok=first04Ok+1;
+                first04OkList.add(first04Ok);
+
             }else{
                 if (first04Ok>=0){
                     first04OkList.add(first04Ok);
                     first04Ok=0;
                 }
                 first04No=first04No+1;
+                first04NoList.add(first04No);
+
             }
             if (       p.getFirst05().startsWith("ok")) {
                 if (occurTimes.getFirst05() == null) {
@@ -670,12 +718,16 @@ public class PrizeDataService {
                     first05No=0;
                 }
                 first05Ok=first05Ok+1;
+                first05OkList.add(first05Ok);
+
             }else{
                 if (first05Ok>=0){
                     first05OkList.add(first05Ok);
                     first05Ok=0;
                 }
                 first05No=first05No+1;
+                first05NoList.add(first05No);
+
             }
             if (       p.getFirst06().startsWith("ok")) {
                 if (occurTimes.getFirst06() == null) {
@@ -689,12 +741,16 @@ public class PrizeDataService {
                     first06No=0;
                 }
                 first06Ok=first06Ok+1;
+                first06OkList.add(first06Ok);
+
             }else{
                 if (first06Ok>=0){
                     first06OkList.add(first06Ok);
                     first06Ok=0;
                 }
                 first06No=first06No+1;
+                first06NoList.add(first06No);
+
             }
             if (       p.getFirst07().startsWith("ok")) {
                 if (occurTimes.getFirst07() == null) {
@@ -708,12 +764,16 @@ public class PrizeDataService {
                     first07No=0;
                 }
                 first07Ok=first07Ok+1;
+                first07OkList.add(first07Ok);
+
             }else{
                 if (first07Ok>=0){
                     first07OkList.add(first07Ok);
                     first07Ok=0;
                 }
                 first07No=first07No+1;
+                first07NoList.add(first07No);
+
             }
             if (       p.getFirst08().startsWith("ok")) {
                 if (occurTimes.getFirst08() == null) {
@@ -727,12 +787,16 @@ public class PrizeDataService {
                     first08No=0;
                 }
                 first08Ok=first08Ok+1;
+                first08OkList.add(first08Ok);
+
             }else{
                 if (first08Ok>=0){
                     first08OkList.add(first08Ok);
                     first08Ok=0;
                 }
                 first08No=first08No+1;
+                first08NoList.add(first08No);
+
             }
             if (       p.getFirst09().startsWith("ok")) {
                 if (occurTimes.getFirst09() == null) {
@@ -746,12 +810,16 @@ public class PrizeDataService {
                     first09No=0;
                 }
                 first09Ok=first09Ok+1;
+                first09OkList.add(first09Ok);
+
             }else{
                 if (first09Ok>=0){
                     first09OkList.add(first09Ok);
                     first09Ok=0;
                 }
                 first09No=first09No+1;
+                first09NoList.add(first09No);
+
             }
             if (       p.getFirst10().startsWith("ok")) {
                 if (occurTimes.getFirst10() == null) {
@@ -765,12 +833,16 @@ public class PrizeDataService {
                     first10No=0;
                 }
                 first10Ok=first10Ok+1;
+                first10OkList.add(first10Ok);
+
             }else{
                 if (first10Ok>=0){
                     first10OkList.add(first10Ok);
                     first10Ok=0;
                 }
                 first10No=first10No+1;
+                first10NoList.add(first10No);
+
             }
             if (       p.getSecond01().startsWith("ok")) {
                 if (occurTimes.getSecond01() == null) {
@@ -784,12 +856,17 @@ public class PrizeDataService {
                     second01No=0;
                 }
                 second01Ok=second01Ok+1;
+                second01OkList.add(second01Ok);
+
+
             }else{
                 if (second01Ok>=0){
                     second01OkList.add(second01Ok);
                     second01Ok=0;
                 }
                 second01No=second01No+1;
+                second01NoList.add(second01No);
+
             }
             if (       p.getSecond02().startsWith("ok")) {
                 if (occurTimes.getSecond02() == null) {
@@ -803,12 +880,15 @@ public class PrizeDataService {
                     second02No=0;
                 }
                 second02Ok=second02Ok+1;
+                second02OkList.add(second02Ok);
+
             }else{
                 if (second02Ok>=0){
                     second02OkList.add(second02Ok);
                     second02Ok=0;
                 }
                 second02No=second02No+1;
+                second02NoList.add(second02No);
             }
             if (       p.getSecond03().startsWith("ok")) {
                 if (occurTimes.getSecond03() == null) {
@@ -822,12 +902,15 @@ public class PrizeDataService {
                     second03No=0;
                 }
                 second03Ok=second03Ok+1;
+                second03OkList.add(second03Ok);
+
             }else{
                 if (second03Ok>=0){
                     second03OkList.add(second03Ok);
                     second03Ok=0;
                 }
                 second03No=second03No+1;
+                second03NoList.add(second03No);
             }
             if (       p.getSecond04().startsWith("ok")) {
                 if (occurTimes.getSecond04() == null) {
@@ -841,12 +924,16 @@ public class PrizeDataService {
                     second04No=0;
                 }
                 second04Ok=second04Ok+1;
+                second04OkList.add(second04Ok);
+
             }else{
                 if (second04Ok>=0){
                     second04OkList.add(second04Ok);
                     second04Ok=0;
                 }
                 second04No=second04No+1;
+                second04NoList.add(second04No);
+
             }
             if (       p.getSecond05().startsWith("ok")) {
                 if (occurTimes.getSecond05() == null) {
@@ -860,12 +947,15 @@ public class PrizeDataService {
                     second05No=0;
                 }
                 second05Ok=second05Ok+1;
+                second05OkList.add(second05Ok);
+
             }else{
                 if (second05Ok>=0){
                     second05OkList.add(second05Ok);
                     second05Ok=0;
                 }
                 second05No=second05No+1;
+                second05NoList.add(second05No);
             }
             if (       p.getSecond06().startsWith("ok")) {
                 if (occurTimes.getSecond06() == null) {
@@ -879,12 +969,16 @@ public class PrizeDataService {
                     second06No=0;
                 }
                 second06Ok=second06Ok+1;
+                second06OkList.add(second06Ok);
+
             }else{
                 if (second06Ok>=0){
                     second06OkList.add(second06Ok);
                     second06Ok=0;
                 }
                 second06No=second06No+1;
+                second06NoList.add(second06No);
+
             }
             if (       p.getSecond07().startsWith("ok")) {
                 if (occurTimes.getSecond07() == null) {
@@ -898,12 +992,16 @@ public class PrizeDataService {
                     second07No=0;
                 }
                 second07Ok=second07Ok+1;
+                second07OkList.add(second07Ok);
+
             }else{
                 if (second07Ok>=0){
                     second07OkList.add(second07Ok);
                     second07Ok=0;
                 }
                 second07No=second07No+1;
+                second07NoList.add(second07No);
+
             }
             if (       p.getSecond08().startsWith("ok")) {
                 if (occurTimes.getSecond08() == null) {
@@ -917,12 +1015,16 @@ public class PrizeDataService {
                     second08No=0;
                 }
                 second08Ok=second08Ok+1;
+                second08OkList.add(second08Ok);
+
             }else{
                 if (second08Ok>=0){
                     second08OkList.add(second08Ok);
                     second08Ok=0;
                 }
                 second08No=second08No+1;
+                second08NoList.add(second08No);
+
             }
             if (       p.getSecond09().startsWith("ok")) {
                 if (occurTimes.getSecond09() == null) {
@@ -936,12 +1038,16 @@ public class PrizeDataService {
                     second09No=0;
                 }
                 second09Ok=second09Ok+1;
+                second09OkList.add(second09Ok);
+
             }else{
                 if (second09Ok>=0){
                     second09OkList.add(second09Ok);
                     second09Ok=0;
                 }
                 second09No=second09No+1;
+                second09NoList.add(second09No);
+
             }
             if (       p.getSecond10().startsWith("ok")) {
                 if (occurTimes.getSecond10() == null) {
@@ -955,12 +1061,16 @@ public class PrizeDataService {
                     second10No=0;
                 }
                 second10Ok=second10Ok+1;
+                second10OkList.add(second10Ok);
+
             }else{
                 if (second10Ok>=0){
                     second10OkList.add(second10Ok);
                     second10Ok=0;
                 }
                 second10No=second10No+1;
+                second10NoList.add(second10No);
+
             }
             if (       p.getThird01().startsWith("ok")) {
                 if (occurTimes.getThird01() == null) {
@@ -974,12 +1084,16 @@ public class PrizeDataService {
                     third01No=0;
                 }
                 third01Ok=third01Ok+1;
+                third01OkList.add(third01Ok);
+
             }else{
                 if (third01Ok>=0){
                     third01OkList.add(third01Ok);
                     third01Ok=0;
                 }
                 third01No=third01No+1;
+                third01NoList.add(third01No);
+
             }
             if (       p.getThird02().startsWith("ok")) {
                 if (occurTimes.getThird02() == null) {
@@ -993,12 +1107,15 @@ public class PrizeDataService {
                     third02No=0;
                 }
                 third02Ok=third02Ok+1;
+                third02OkList.add(third02Ok);
+
             }else{
                 if (third02Ok>=0){
                     third02OkList.add(third02Ok);
                     third02Ok=0;
                 }
                 third02No=third02No+1;
+                third02NoList.add(third02No);
             }
             if (       p.getThird03().startsWith("ok")) {
                 if (occurTimes.getThird03() == null) {
@@ -1012,12 +1129,14 @@ public class PrizeDataService {
                     third03No=0;
                 }
                 third03Ok=third03Ok+1;
+                third03OkList.add(third03Ok);
             }else{
                 if (third03Ok>=0){
                     third03OkList.add(third03Ok);
                     third03Ok=0;
                 }
                 third03No=third03No+1;
+                third03NoList.add(third03No);
             }
             if (       p.getThird04().startsWith("ok")) {
                 if (occurTimes.getThird04() == null) {
@@ -1031,12 +1150,14 @@ public class PrizeDataService {
                     third04No=0;
                 }
                 third04Ok=third04Ok+1;
+                third04OkList.add(third04Ok);
             }else{
                 if (third04Ok>=0){
                     third04OkList.add(third04Ok);
                     third04Ok=0;
                 }
                 third04No=third04No+1;
+                third04NoList.add(third04No);
             }
             if (       p.getThird05().startsWith("ok")) {
                 if (occurTimes.getThird05() == null) {
@@ -1050,12 +1171,14 @@ public class PrizeDataService {
                     third05No=0;
                 }
                 third05Ok=third05Ok+1;
+                third05OkList.add(third05Ok);
             }else{
                 if (third05Ok>=0){
                     third05OkList.add(third05Ok);
                     third05Ok=0;
                 }
                 third05No=third05No+1;
+                third05NoList.add(third05No);
             }
             if (       p.getThird06().startsWith("ok")) {
                 if (occurTimes.getThird06() == null) {
@@ -1069,12 +1192,14 @@ public class PrizeDataService {
                     third06No=0;
                 }
                 third06Ok=third06Ok+1;
+                third06OkList.add(third06Ok);
             }else{
                 if (third06Ok>=0){
                     third06OkList.add(third06Ok);
                     third06Ok=0;
                 }
                 third06No=third06No+1;
+                third06NoList.add(third06No);
             }
             if (       p.getThird07().startsWith("ok")) {
                 if (occurTimes.getThird07() == null) {
@@ -1088,12 +1213,14 @@ public class PrizeDataService {
                     third07No=0;
                 }
                 third07Ok=third07Ok+1;
+                third07OkList.add(third07Ok);
             }else{
                 if (third07Ok>=0){
                     third07OkList.add(third07Ok);
                     third07Ok=0;
                 }
                 third07No=third07No+1;
+                third07NoList.add(third07No);
             }
             if (       p.getThird08().startsWith("ok")) {
                 if (occurTimes.getThird08() == null) {
@@ -1107,12 +1234,16 @@ public class PrizeDataService {
                     third08No=0;
                 }
                 third08Ok=third08Ok+1;
+                third08OkList.add(third08Ok);
+
             }else{
                 if (third08Ok>=0){
                     third08OkList.add(third08Ok);
                     third08Ok=0;
                 }
                 third08No=third08No+1;
+                third08NoList.add(third08No);
+
             }
             if (       p.getThird09().startsWith("ok")) {
                 if (occurTimes.getThird09() == null) {
@@ -1126,12 +1257,16 @@ public class PrizeDataService {
                     third09No=0;
                 }
                 third09Ok=third09Ok+1;
+                third09OkList.add(third09Ok);
+
             }else{
                 if (third09Ok>=0){
                     third09OkList.add(third09Ok);
                     third09Ok=0;
                 }
                 third09No=third09No+1;
+                third09NoList.add(third09No);
+
             }
             if (       p.getThird10().startsWith("ok")) {
                 if (occurTimes.getThird10() == null) {
@@ -1145,12 +1280,16 @@ public class PrizeDataService {
                     third10No=0;
                 }
                 third10Ok=third10Ok+1;
+                third10OkList.add(third10Ok);
+
             }else{
                 if (third10Ok>=0){
                     third10OkList.add(third10Ok);
                     third10Ok=0;
                 }
                 third10No=third10No+1;
+                third10NoList.add(third10No);
+
             }
 
 
