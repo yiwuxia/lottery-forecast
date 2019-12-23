@@ -11,6 +11,7 @@ import com.lzhpo.common.realm.AuthRealm;
 import com.lzhpo.common.util.Constants;
 import com.lzhpo.common.util.ResponseEntity;
 import com.lzhpo.core.domain.PrizeDetailVo;
+import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
 import com.lzhpo.core.service.PrizeDataService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -75,7 +76,10 @@ public class StaticController {
         ModelAndView mv=new ModelAndView();
         //列表数据 暂时没有统计数据
         mv.addObject("result",prizeDetailVoList);
+        //出现次数，最大连出，最大遗漏
+        List<PrizeStaticVo> statics=prizeDataService.getButtomPrizeStatics(prizeDetailVoList);
         mv.setViewName("admin/stat/trend");
+        mv.addObject("statics",statics);
         return mv;
     }
 

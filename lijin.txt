@@ -1,46 +1,85 @@
-         <tr th:each="re:${result}">
-            <td th:text="${re.termNo}"></td>
-            <td>re.prizeNo01</td>
-            <td>re.prizeNo02</td>
-            <td>re.prizeNo03</td>
-            <td>re.numRegion01</td>
-            <td>re.numRegion02</td>
-            <td>re.numRegion03</td>
-            <td>re.numRegion04</td>
-            <td>re.numRegion05</td>
-            <td>re.numRegion06</td>
-            <td>re.numRegion07</td>
-            <td>re.numRegion08</td>
-            <td>re.numRegion09</td>
-            <td>re.numRegion10</td>
-            <td>re.first01</td>
-            <td>re.first02</td>
-            <td>re.first03</td>
-            <td>re.first04</td>
-            <td>re.first05</td>
-            <td>re.first06</td>
-            <td>re.first07</td>
-            <td>re.first08</td>
-            <td>re.first09</td>
-            <td>re.first10</td>
-            <td>re.second01</td>
-            <td>re.second02</td>
-            <td>re.second03</td>
-            <td>re.second04</td>
-            <td>re.second05</td>
-            <td>re.second06</td>
-            <td>re.second07</td>
-            <td>re.second08</td>
-            <td>re.second09</td>
-            <td>re.second10</td>
-            <td>re.third01</td>
-            <td>re.third02</td>
-            <td>re.third03</td>
-            <td>re.third04</td>
-            <td>re.third05</td>
-            <td>re.third06</td>
-            <td>re.third07</td>
-            <td>re.third08</td>
-            <td>re.third09</td>
-            <td>re.third10</td>
+                   <tr th:each="stat:${statics}">
+
+                      <td th:text="${stat.Numstatgion01></td>
+
+                      <td th:text="${stat.Numstatgion02></td>
+
+                      <td th:text="${stat.Numstatgion03></td>
+
+                      <td th:text="${stat.Numstatgion04></td>
+
+                      <td th:text="${stat.Numstatgion05></td>
+
+                      <td th:text="${stat.Numstatgion06></td>
+
+                      <td th:text="${stat.Numstatgion07></td>
+
+                      <td th:text="${stat.Numstatgion08></td>
+
+                      <td th:text="${stat.Numstatgion09></td>
+
+                      <td th:text="${stat.Numstatgion10></td>
+
+                      <td th:text="${stat.First01></td>
+
+                      <td th:text="${stat.First02></td>
+
+                      <td th:text="${stat.First03></td>
+
+                      <td th:text="${stat.First04></td>
+
+                      <td th:text="${stat.First05></td>
+
+                      <td th:text="${stat.First06></td>
+
+                      <td th:text="${stat.First07></td>
+
+                      <td th:text="${stat.First08></td>
+
+                      <td th:text="${stat.First09></td>
+
+                      <td th:text="${stat.First10></td>
+
+                      <td th:text="${stat.Second01></td>
+
+                      <td th:text="${stat.Second02></td>
+
+                      <td th:text="${stat.Second03></td>
+
+                      <td th:text="${stat.Second04></td>
+
+                      <td th:text="${stat.Second05></td>
+
+                      <td th:text="${stat.Second06></td>
+
+                      <td th:text="${stat.Second07></td>
+
+                      <td th:text="${stat.Second08></td>
+
+                      <td th:text="${stat.Second09></td>
+
+                      <td th:text="${stat.Second10></td>
+
+                      <td th:text="${stat.Third01></td>
+
+                      <td th:text="${stat.Third02></td>
+
+                      <td th:text="${stat.Third03></td>
+
+                      <td th:text="${stat.Third04></td>
+
+                      <td th:text="${stat.Third05></td>
+
+                      <td th:text="${stat.Third06></td>
+
+                      <td th:text="${stat.Third07></td>
+
+                      <td th:text="${stat.Third08></td>
+
+                      <td th:text="${stat.Third09></td>
+
+                      <td th:text="${stat.Third10></td>
+
+
+
         </tr>

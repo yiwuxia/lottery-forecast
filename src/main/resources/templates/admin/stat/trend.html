@@ -15,15 +15,24 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
     <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all"/>
     <style>
-        .content1{
-            width: 1300px;
-            border: 1px solid #3C763D;
-            padding: 5px;
+        .content1 {
+            padding-left: 5px;
+            padding-right: 5px;
             text-align: center;
         }
-        .head{
+
+        .head {
             background: #448833;
         }
+
+        .no {
+            background: grey;
+        }
+
+        .ok {
+            background: deepskyblue;
+        }
+
     </style>
 </head>
 <body>
@@ -89,48 +98,136 @@
             <td th:text="${re.prizeNo01}"></td>
             <td th:text="${re.prizeNo02}"></td>
             <td th:text="${re.prizeNo03}"></td>
-            <td th:text="${re.numRegion01}"></td>
-            <td th:text="${re.numRegion02}"></td>
-            <td th:text="${re.numRegion03}"></td>
-            <td th:text="${re.numRegion04}"></td>
-            <td th:text="${re.numRegion05}"></td>
-            <td th:text="${re.numRegion06}"></td>
-            <td th:text="${re.numRegion07}"></td>
-            <td th:text="${re.numRegion08}"></td>
-            <td th:text="${re.numRegion09}"></td>
-            <td th:text="${re.numRegion10}"></td>
-            <td th:text="${re.first01}"></td>
-            <td th:text="${re.first02}"></td>
-            <td th:text="${re.first03}"></td>
-            <td th:text="${re.first04}"></td>
-            <td th:text="${re.first05}"></td>
-            <td th:text="${re.first06}"></td>
-            <td th:text="${re.first07}"></td>
-            <td th:text="${re.first08}"></td>
-            <td th:text="${re.first09}"></td>
-            <td th:text="${re.first10}"></td>
-            <td th:text="${re.second01}"></td>
-            <td th:text="${re.second02}"></td>
-            <td th:text="${re.second03}"></td>
-            <td th:text="${re.second04}"></td>
-            <td th:text="${re.second05}"></td>
-            <td th:text="${re.second06}"></td>
-            <td th:text="${re.second07}"></td>
-            <td th:text="${re.second08}"></td>
-            <td th:text="${re.second09}"></td>
-            <td th:text="${re.second10}"></td>
-            <td th:text="${re.third01}"></td>
-            <td th:text="${re.third02}"></td>
-            <td th:text="${re.third03}"></td>
-            <td th:text="${re.third04}"></td>
-            <td th:text="${re.third05}"></td>
-            <td th:text="${re.third06}"></td>
-            <td th:text="${re.third07}"></td>
-            <td th:text="${re.third08}"></td>
-            <td th:text="${re.third09}"></td>
-            <td th:text="${re.third10}"></td>
+            <td th:text="${re.numRegion01.substring(3)}" th:class="${re.numRegion01.substring(0,2)}"></td>
+            <td th:text="${re.numRegion02.substring(3)}" th:class="${re.numRegion02.substring(0,2)}"></td>
+            <td th:text="${re.numRegion03.substring(3)}" th:class="${re.numRegion03.substring(0,2)}"></td>
+            <td th:text="${re.numRegion04.substring(3)}" th:class="${re.numRegion04.substring(0,2)}"></td>
+            <td th:text="${re.numRegion05.substring(3)}" th:class="${re.numRegion05.substring(0,2)}"></td>
+            <td th:text="${re.numRegion06.substring(3)}" th:class="${re.numRegion06.substring(0,2)}"></td>
+            <td th:text="${re.numRegion07.substring(3)}" th:class="${re.numRegion07.substring(0,2)}"></td>
+            <td th:text="${re.numRegion08.substring(3)}" th:class="${re.numRegion08.substring(0,2)}"></td>
+            <td th:text="${re.numRegion09.substring(3)}" th:class="${re.numRegion09.substring(0,2)}"></td>
+            <td th:text="${re.numRegion10.substring(3)}" th:class="${re.numRegion10.substring(0,2)}"></td>
+            <td th:text="${re.first01.substring(3)}" th:class="${re.first01.substring(0,2)}"></td>
+            <td th:text="${re.first02.substring(3)}" th:class="${re.first02.substring(0,2)}"></td>
+            <td th:text="${re.first03.substring(3)}" th:class="${re.first03.substring(0,2)}"></td>
+            <td th:text="${re.first04.substring(3)}" th:class="${re.first04.substring(0,2)}"></td>
+            <td th:text="${re.first05.substring(3)}" th:class="${re.first05.substring(0,2)}"></td>
+            <td th:text="${re.first06.substring(3)}" th:class="${re.first06.substring(0,2)}"></td>
+            <td th:text="${re.first07.substring(3)}" th:class="${re.first07.substring(0,2)}"></td>
+            <td th:text="${re.first08.substring(3)}" th:class="${re.first08.substring(0,2)}"></td>
+            <td th:text="${re.first09.substring(3)}" th:class="${re.first09.substring(0,2)}"></td>
+            <td th:text="${re.first10.substring(3)}" th:class="${re.first10.substring(0,2)}"></td>
+            <td th:text="${re.second01.substring(3)}" th:class="${re.second01.substring(0,2)}"></td>
+            <td th:text="${re.second02.substring(3)}" th:class="${re.second02.substring(0,2)}"></td>
+            <td th:text="${re.second03.substring(3)}" th:class="${re.second03.substring(0,2)}"></td>
+            <td th:text="${re.second04.substring(3)}" th:class="${re.second04.substring(0,2)}"></td>
+            <td th:text="${re.second05.substring(3)}" th:class="${re.second05.substring(0,2)}"></td>
+            <td th:text="${re.second06.substring(3)}" th:class="${re.second06.substring(0,2)}"></td>
+            <td th:text="${re.second07.substring(3)}" th:class="${re.second07.substring(0,2)}"></td>
+            <td th:text="${re.second08.substring(3)}" th:class="${re.second08.substring(0,2)}"></td>
+            <td th:text="${re.second09.substring(3)}" th:class="${re.second09.substring(0,2)}"></td>
+            <td th:text="${re.second10.substring(3)}" th:class="${re.second10.substring(0,2)}"></td>
+            <td th:text="${re.third01.substring(3)}" th:class="${re.third01.substring(0,2)}"></td>
+            <td th:text="${re.third02.substring(3)}" th:class="${re.third02.substring(0,2)}"></td>
+            <td th:text="${re.third03.substring(3)}" th:class="${re.third03.substring(0,2)}"></td>
+            <td th:text="${re.third04.substring(3)}" th:class="${re.third04.substring(0,2)}"></td>
+            <td th:text="${re.third05.substring(3)}" th:class="${re.third05.substring(0,2)}"></td>
+            <td th:text="${re.third06.substring(3)}" th:class="${re.third06.substring(0,2)}"></td>
+            <td th:text="${re.third07.substring(3)}" th:class="${re.third07.substring(0,2)}"></td>
+            <td th:text="${re.third08.substring(3)}" th:class="${re.third08.substring(0,2)}"></td>
+            <td th:text="${re.third09.substring(3)}" th:class="${re.third09.substring(0,2)}"></td>
+            <td th:text="${re.third10.substring(3)}" th:class="${re.third10.substring(0,2)}"></td>
 
         </tr>
+
+        <!--底部统计 start-->
+        <tr th:each="stat:${statics}">
+            <td th:text="${stat.description}" colspan="4"></td>
+
+            <td th:text="${stat.numRegion01}"></td>
+
+            <td th:text="${stat.numRegion02}"></td>
+
+            <td th:text="${stat.numRegion03}"></td>
+
+            <td th:text="${stat.numRegion04}"></td>
+
+            <td th:text="${stat.numRegion05}"></td>
+
+            <td th:text="${stat.numRegion06}"></td>
+
+            <td th:text="${stat.numRegion07}"></td>
+
+            <td th:text="${stat.numRegion08}"></td>
+
+            <td th:text="${stat.numRegion09}"></td>
+
+            <td th:text="${stat.numRegion10}"></td>
+
+            <td th:text="${stat.first01}"></td>
+
+            <td th:text="${stat.first02}"></td>
+
+            <td th:text="${stat.first03}"></td>
+
+            <td th:text="${stat.first04}"></td>
+
+            <td th:text="${stat.first05}"></td>
+
+            <td th:text="${stat.first06}"></td>
+
+            <td th:text="${stat.first07}"></td>
+
+            <td th:text="${stat.first08}"></td>
+
+            <td th:text="${stat.first09}"></td>
+
+            <td th:text="${stat.first10}"></td>
+
+            <td th:text="${stat.second01}"></td>
+
+            <td th:text="${stat.second02}"></td>
+
+            <td th:text="${stat.second03}"></td>
+
+            <td th:text="${stat.second04}"></td>
+
+            <td th:text="${stat.second05}"></td>
+
+            <td th:text="${stat.second06}"></td>
+
+            <td th:text="${stat.second07}"></td>
+
+            <td th:text="${stat.second08}"></td>
+
+            <td th:text="${stat.second09}"></td>
+
+            <td th:text="${stat.second10}"></td>
+
+            <td th:text="${stat.third01}"></td>
+
+            <td th:text="${stat.third02}"></td>
+
+            <td th:text="${stat.third03}"></td>
+
+            <td th:text="${stat.third04}"></td>
+
+            <td th:text="${stat.third05}"></td>
+
+            <td th:text="${stat.third06}"></td>
+
+            <td th:text="${stat.third07}"></td>
+
+            <td th:text="${stat.third08}"></td>
+
+            <td th:text="${stat.third09}"></td>
+
+            <td th:text="${stat.third10}"></td>
+
+        </tr>
+        <!--底部统计 end-->
+
         <tr class="head">
             <td rowspan="2">期号</td>
             <td rowspan="2" colspan="3">开奖号码</td>

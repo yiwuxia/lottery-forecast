@@ -140,22 +140,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lijin-log/log_debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/lijin-log/log_debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lijin-log/log_error.log" beforeDir="false" afterPath="$PROJECT_DIR$/lijin-log/log_error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lijin-log/log_info.log" beforeDir="false" afterPath="$PROJECT_DIR$/lijin-log/log_info.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lijin-log/log_warn.log" beforeDir="false" afterPath="$PROJECT_DIR$/lijin-log/log_warn.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lijin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lijin.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lzhpo-shiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lzhpo-shiro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/StaticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/StaticController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lzhpo/core/service/PrizeDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lzhpo/core/service/PrizeDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/MainWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/MainWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/lzhpo-shiro.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/stat/trend.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/stat/trend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lzhpo/admin/controller/StaticController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lzhpo/admin/controller/StaticController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lzhpo/core/service/PrizeDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lzhpo/core/service/PrizeDataService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lzhpo/core/work/MainWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lzhpo/core/work/MainWork.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/admin/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/login/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/stat/trend.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/stat/trend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lzhpo/lzhposhiro/DemoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lzhpo/lzhposhiro/DemoTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -171,52 +172,58 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeDetailVo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/StaticController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/service/PrizeDataService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="88">
+              <caret line="393" selection-start-line="393" selection-end-line="393" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../../lijin_work/maven/mvn_repository/org/springframework/spring-web/5.0.7.RELEASE/spring-web-5.0.7.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="208" selection-start-line="208" selection-end-line="208" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/LzhpoShiroApplicationTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/stat/trend.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="89" column="47" lean-forward="true" selection-start-line="89" selection-start-column="47" selection-end-line="89" selection-end-column="47" />
+            <state relative-caret-position="280">
+              <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/AdminApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+              <folding>
+                <element signature="e#415#416#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -224,8 +231,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lijin.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="16" />
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/StaticController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="71" column="31" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeDetailVo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeStaticVo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -236,19 +282,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inser</find>
-      <find>insert</find>
-      <find>userStatus</find>
-      <find>code</find>
-      <find>password</find>
-      <find>findUserByLoginName</find>
-      <find>selectUserByMap</find>
       <find>user</find>
       <find>initCredentialsMatcher</find>
       <find>layui-timeline-title</find>
@@ -265,21 +303,28 @@
       <find>INFO_FILE</find>
       <find>LOG_PATH</find>
       <find>_</find>
-      <find>First</find>
-      <find>Second</find>
-      <find>Third</find>
-      <find>1214742533</find>
-      <find>third01</find>
-      <find>&lt;td</find>
-      <find>&lt;td&gt;</find>
+      <find>18b8b543-9ad7-11e8-aebe-1368d4ec24eb</find>
+      <find>/stat</find>
+      <find>Sysstem</find>
+      <find>setOccurTimes</find>
+      <find>buffer</find>
+      <find>&gt;=0</find>
+      <find>th:class=&quot;${re.numRegion01.substring(0,2)}&quot;</find>
+      <find>re</find>
+      <find>String</find>
+      <find>occurTimes</find>
+      <find>maxMiss</find>
+      <find>first08OkList</find>
+      <find>trend</find>
+      <find>substring(</find>
     </findStrings>
     <replaceStrings>
       <replace>0</replace>
-      <replace>Second</replace>
-      <replace>Third</replace>
-      <replace>Region</replace>
-      <replace>numRegion</replace>
-      <replace>&lt;td th:text=&quot;${}&quot;</replace>
+      <replace>&gt;=0</replace>
+      <replace>stat</replace>
+      <replace>Integer</replace>
+      <replace>&gt;=0</replace>
+      <replace>1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -294,13 +339,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/common/config/ShiroConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/LonginController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/DataGeneratorUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/utils/DataGeneratorUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/RemoteData.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/config/RedisConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/constant/PrizeDataConstant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/cache/PrizeDataCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeDetail.java" />
@@ -310,28 +355,27 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/controller/HelloController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/config/MyDbHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/config/DbSourceConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeInfoEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeDetailVo.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/LzhpoShiroApplicationTests.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/MainWork.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/admin/css/main.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/main.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/main.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeVo.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/StaticController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/service/PrizeDataService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeStaticVo.java" />
         <option value="$PROJECT_DIR$/lijin.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/stat/trend.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lzhpo/core/service/PrizeDataService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/main.js" />
+        <option value="$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java" />
       </list>
     </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../lijin_work/maven/apache-maven-3.6.0/bin" />
-        <option name="userSettingsFile" value="$PROJECT_DIR$/../../../lijin_work/maven/apache-maven-3.6.0/conf/settings.xml" />
+        <option name="mavenHome" value="D:/devTool/apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="D:\devTool\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -369,10 +413,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="825" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="464" />
+    <option name="y" value="93" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -394,6 +439,11 @@
             <path>
               <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
               <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -434,15 +484,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lzhpo" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lzhpo" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -479,6 +520,16 @@
               <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lzhpo" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="work" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -488,15 +539,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
@@ -515,6 +557,27 @@
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="stat" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lzhpo-shiro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lzhpo-shiro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lzhposhiro" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -522,31 +585,26 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577027681502" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577089817390" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/lzhpo/core" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.lzhpo.core.domain" />
-      <recent name="com.lzhpo.admin.controller" />
       <recent name="com.lzhpo.lzhposhiro" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/static/admin/css" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static/login/vendor/bootstrap" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static/login/vendor/bootstrap/css" />
       <recent name="D:\gitCode\back-end\springboot\day1218\lzhpo-shiro\sql" />
     </key>
   </component>
@@ -562,7 +620,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AdminApplication">
+  <component name="RunManager" selected="JUnit.DemoTest.a">
     <configuration name="DataGeneratorUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lzhpo.core.utils.DataGeneratorUtil" />
       <module name="lzhpo-shiro" />
@@ -649,9 +707,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoTest.a" />
         <item itemvalue="JUnit.LzhpoShiroApplicationTests.generateData" />
         <item itemvalue="JUnit.LzhpoShiroApplicationTests.printViewTable" />
-        <item itemvalue="JUnit.DemoTest.a" />
         <item itemvalue="JUnit.LzhpoShiroApplicationTests.contextLoads" />
         <item itemvalue="Application.DataGeneratorUtil" />
       </list>
@@ -678,10 +736,8 @@
       <workItem from="1576816978375" duration="13768000" />
       <workItem from="1576831552714" duration="867000" />
       <workItem from="1576832546974" duration="196000" />
-      <workItem from="1576897069818" duration="2385000" />
-      <workItem from="1576915009469" duration="407000" />
-      <workItem from="1576915468046" duration="4862000" />
-      <workItem from="1576976885417" duration="9661000" />
+      <workItem from="1576837911453" duration="1017000" />
+      <workItem from="1577078853730" duration="10597000" />
     </task>
     <task id="LOCAL-00001" summary="定义实体类建表">
       <created>1576823014153</created>
@@ -701,46 +757,46 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LzhpoShiroApplicationTests_printViewTable - 2019.12.20 at 16h 21m 48s.xml">
-      <configuration name="LzhpoShiroApplicationTests.printViewTable" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 15m 19s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_printViewTable - 2019.12.20 at 16h 24m 16s.xml">
-      <configuration name="LzhpoShiroApplicationTests.printViewTable" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 16m 02s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_printViewTable - 2019.12.20 at 16h 28m 15s.xml">
-      <configuration name="LzhpoShiroApplicationTests.printViewTable" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 32m 29s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.20 at 16h 50m 20s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 35m 01s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.20 at 16h 51m 40s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 35m 38s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.20 at 16h 54m 03s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 36m 13s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.20 at 16h 54m 52s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 36m 49s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.21 at 11h 31m 02s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 38m 13s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.21 at 11h 31m 53s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 39m 23s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LzhpoShiroApplicationTests_generateData - 2019.12.21 at 11h 32m 34s.xml">
-      <configuration name="LzhpoShiroApplicationTests.generateData" configurationId="JUnit" />
+    <history-entry file="DemoTest_a - 2019.12.23 at 15h 57m 51s.xml">
+      <configuration name="DemoTest.a" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50362000" />
+    <option name="totallyTimeSpent" value="44661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49907234" visible="true" weight="0.18240343" />
-      <window_info id="Structure" order="1" sideWeight="0.5009276" side_tool="true" weight="0.12875536" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.148533" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -749,8 +805,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32949308" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19930875" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3112676" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33179724" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.22119816" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -763,13 +819,13 @@
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
       <window_info anchor="bottom" id="MyBatis Log" order="15" />
-      <window_info anchor="bottom" id="Problems" order="16" />
+      <window_info anchor="bottom" id="Problems" order="16" weight="0.32949308" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Maven" order="3" weight="0.3294621" />
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Codota" order="5" weight="0.32904148" />
+      <window_info anchor="right" id="Codota" order="5" weight="0.3294621" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="aiXcoder" order="7" />
       <window_info anchor="right" id="Database" order="8" />
@@ -825,6 +881,24 @@
     <MESSAGE value="利用反射设置对象值" />
     <option name="LAST_COMMIT_MESSAGE" value="利用反射设置对象值" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/LonginController.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/LonginController.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
@@ -850,6 +924,72 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/itVipStall/java/jdk/src.zip!/java/util/concurrent/ScheduledExecutorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/itVipStall/java/jdk/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="378" column="46" selection-start-line="378" selection-start-column="37" selection-end-line="378" selection-end-column="46" />
+          <folding>
+            <element signature="e#11985#11986#0" expanded="true" />
+            <element signature="e#12016#12017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/common/config/CaptchaConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-361">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/common/config/MybatisPlusConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.0.7.RELEASE/spring-jdbc-5.0.7.RELEASE.jar!/org/springframework/jdbc/core/BeanPropertyRowMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/common/config/MyHandlerInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/common/config/MyMetaObjectHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -871,15 +1011,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.0.8.RELEASE/spring-data-redis-2.0.8.RELEASE.jar!/org/springframework/data/redis/core/RedisTemplate.class" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="132">
+            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/itVipStall/java/jdk/src.zip!/java/util/concurrent/Executors.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.0.8.RELEASE/spring-data-redis-2.0.8.RELEASE.jar!/org/springframework/data/redis/core/RedisTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="775" column="32" selection-start-line="775" selection-start-column="11" selection-end-line="775" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/itVipStall/java/jdk/src.zip!/java/util/concurrent/Executors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/constant.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/cache/PrizeDataCache.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/constant/PrizeDataConstant.java">
@@ -899,6 +1054,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/controller/HelloController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -925,11 +1087,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/itVipStall/java/jdk/src.zip!/java/lang/Class.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java">
+    <entry file="jar://D:/itVipStall/java/jdk/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="41602">
+          <caret line="1974" column="29" selection-start-line="1974" selection-start-column="29" selection-end-line="1974" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -946,6 +1114,30 @@
     <entry file="file://$PROJECT_DIR$/sql/lijin.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/MainWork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1474">
+          <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1826">
+          <caret line="113" column="24" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -960,70 +1152,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql/lzhpo-shiro.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="25" selection-end-line="153" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/LzhpoShiroApplicationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/work/MainWork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login/vendor/bootstrap/css/bootstrap.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/css/bootstrap.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/AdminApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#348#349#0" expanded="true" />
-            <element signature="e#415#416#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/common/realm/AuthRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2398">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login/vendor/bootstrap/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1031,123 +1159,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/css/main.css">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="151" column="29" lean-forward="true" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
+        <state relative-caret-position="176">
+          <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="126" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/login.html">
+    <entry file="file://$PROJECT_DIR$/sql/lzhpo-shiro.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="83" column="46" selection-start-line="83" selection-end-line="84" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="264">
+          <caret line="24" column="28" selection-end-line="153" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/controller/HelloController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="436">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/LonginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="181" column="9" lean-forward="true" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3436">
-          <caret line="73" column="13" lean-forward="true" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        <state relative-caret-position="724">
+          <caret line="177" selection-start-line="177" selection-end-line="177" />
           <folding>
-            <element signature="n#style#0;n#fieldset#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2075#2076#0" expanded="true" />
+            <element signature="e#2114#2115#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/index.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="132">
-            <caret line="6" selection-start-line="6" selection-end-line="6" />
-          </first_editor>
-          <second_editor />
+        <state relative-caret-position="204">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        <state relative-caret-position="110">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeDetailVo.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/LzhpoShiroApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        <state relative-caret-position="374">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../lijin_work/maven/mvn_repository/org/springframework/spring-web/5.0.7.RELEASE/spring-web-5.0.7.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeDetailVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="208" selection-start-line="208" selection-end-line="208" />
+        <state relative-caret-position="178">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lijin.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/domain/PrizeStaticVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/AdminApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding>
+            <element signature="e#415#416#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/core/service/PrizeDataService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        <state relative-caret-position="88">
+          <caret line="393" selection-start-line="393" selection-end-line="393" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1156,22 +1261,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lzhpo/admin/controller/StaticController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lijin.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="378">
+          <caret line="71" column="31" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/stat/trend.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="89" column="47" lean-forward="true" selection-start-line="89" selection-start-column="47" selection-end-line="89" selection-end-column="47" />
+        <state relative-caret-position="280">
+          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/lzhpo/lzhposhiro/DemoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
