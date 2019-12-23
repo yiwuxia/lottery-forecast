@@ -44,7 +44,7 @@ public class MainWork {
 
     BlockingQueue<PrizeData> dataQueue = new ArrayBlockingQueue<>(1000);
 
-    @PostConstruct
+   // @PostConstruct
     public void init() {
         /**
          * 上一次任务执行完毕后才执行下一次

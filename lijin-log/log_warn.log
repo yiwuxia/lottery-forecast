@@ -1,12 +1,45 @@
-2019-12-20 14:36:36.514 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 14:58:20.199 [main] WARN  o.s.w.context.support.GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'prizeDataService': Unsatisfied dependency expressed through field 'helper'; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'com.lzhpo.core.config.MyDbHelper' available: expected single matching bean but found 2: myDbHelper,dbHelper
-2019-12-20 14:59:46.218 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 15:36:26.629 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 15:40:27.532 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:21:47.020 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:23:40.644 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:28:13.880 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:50:18.160 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:51:38.566 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:54:01.578 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
-2019-12-20 16:54:50.247 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 09:08:48.516 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 09:09:04.729 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 09:09:04.731 [http-nio-8080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 09:09:07.475 [http-nio-8080-exec-8] WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/$%7Bsite.logo%7D] in DispatcherServlet with name 'dispatcherServlet'
+2019-12-22 10:43:38.756 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/admin/stat/trend.html] in DispatcherServlet with name 'dispatcherServlet'
+2019-12-22 10:44:19.088 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 10:44:26.168 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:44:26.169 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 10:44:27.029 [http-nio-8080-exec-3] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:44:27.030 [http-nio-8080-exec-3] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 10:44:27.212 [http-nio-8080-exec-5] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:44:27.212 [http-nio-8080-exec-5] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 10:44:37.222 [http-nio-8080-exec-10] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:44:37.223 [http-nio-8080-exec-10] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 10:44:48.399 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/admin/stat/trend.html] in DispatcherServlet with name 'dispatcherServlet'
+2019-12-22 10:57:43.467 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 10:58:09.273 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 10:58:19.173 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:58:19.175 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 10:58:19.494 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:58:19.495 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 10:58:26.095 [http-nio-8080-exec-9] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 10:58:26.096 [http-nio-8080-exec-9] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 18:36:10.132 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 18:50:17.713 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 18:50:17.714 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 18:50:17.947 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 18:50:17.947 [http-nio-8080-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 18:50:25.626 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 18:50:25.627 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 18:57:11.299 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 18:57:23.220 [http-nio-8080-exec-5] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 18:57:23.221 [http-nio-8080-exec-5] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 19:01:13.464 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 19:02:21.333 [http-nio-8080-exec-7] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 19:02:21.334 [http-nio-8080-exec-7] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 23:05:30.623 [http-nio-8080-exec-9] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 23:05:30.625 [http-nio-8080-exec-9] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 23:05:30.904 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 23:05:30.905 [http-nio-8080-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 23:05:36.709 [http-nio-8080-exec-3] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 23:05:36.710 [http-nio-8080-exec-3] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2019-12-22 23:11:29.048 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-12-22 23:11:38.015 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.PageNotFound - Request method 'GET' not supported
+2019-12-22 23:11:38.017 [http-nio-8080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported

@@ -10,41 +10,63 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" th:href="@{/static/login/vendor/bootstrap/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
     <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all"/>
 </head>
 <body>
 
-<div class="layui-card">
-    <div class="layui-card-body">
 
-        <div class="content1-head">
-            <div class="layui-row layui-col-space10">
-                <div class="layui-col-md4">
-                    1/3
+    <div class="my-container">
+
+        <div class="my-header">
+            <div class="layui-row">
+                <div class="layui-col-xs4">
+                    <div class="grid-demo grid-demo-bg1">3/12</div>
                 </div>
-                <div class="layui-col-md4">
-                    第n期
+                <div class="layui-col-xs4">
+                    <div class="grid-demo">3/12</div>
                 </div>
-                <div class="layui-col-md4">
-                    1/3
+                <div class="layui-col-xs4">
+                    <div class="grid-demo grid-demo-bg1">3/12</div>
                 </div>
             </div>
-        </div>
 
-        <div class="content1-body">
 
         </div>
+        <div class="my-body">
+            <div class="btn-area">
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                    <div>
+                        <button type="button" class="layui-btn" id="basic_trend">基本走势</button>
+                        <button type="button" class="layui-btn layui-btn-normal">百搭按钮</button>
+                        <button type="button" class="layui-btn layui-btn-warm">暖色按钮</button>
+                        <button type="button" class="layui-btn layui-btn-danger">警告按钮</button>
+                    </div>
+                </fieldset>
+            </div>
 
-        <div class="content1-foot">
+
+            <div class="layui-row">
+                <div class="layui-col-md9">
+                    <div class="grid-demo grid-demo-bg1">75%</div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="grid-demo">25%</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="my-footer">
 
         </div>
 
     </div>
-</div>
+
 
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
-<script type="text/javascript" th:src="@{/static/admin/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/static/admin/js/main.js}"></script>
 </body>
 </html>
