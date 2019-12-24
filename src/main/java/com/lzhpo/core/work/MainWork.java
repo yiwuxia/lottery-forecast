@@ -31,7 +31,6 @@ public class MainWork {
     @Autowired
     private PrizeDataService prizeDataService;
 
-    private AtomicInteger termNum = new AtomicInteger(1);
 
     private static final FastDateFormat format = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
 
@@ -62,7 +61,7 @@ public class MainWork {
 
         @Override
         public void run() {
-            // itemNo;01,02,....10
+
             String data = "";
             if (simulation == 1) {
                 data = generateSimulationData();

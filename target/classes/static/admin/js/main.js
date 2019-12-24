@@ -25,7 +25,7 @@ layui.use(['form','element','layer','jquery'],function(){
 
     });
     //按钮点击  numRegion01。。。
-    $("#numRegion01").click(function(){
+    $(".btn-nums-select").click(function(){
         var val=$(this);
         if(val.hasClass("btn-click")){
             val.removeClass("btn-click")
