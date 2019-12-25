@@ -1,14 +1,17 @@
 package com.lzhpo.core.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @author <a href="lijing1@wxchina.com@wxchina.com">Lijin</a>
@@ -17,8 +20,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @Version 1.0
  **/
 
-//@Configuration
-public class RedisConfig {
+@Configuration
+public class RedisConfig extends CachingConfigurerSupport {
+
+
+
 
     @Bean(name = "jedisConnectionFactory")
     @ConfigurationProperties(prefix = "spring.redis")
@@ -26,12 +32,14 @@ public class RedisConfig {
         return new JedisConnectionFactory();
     }
 
-    @Bean(name = "redisTemplate")
+
+
+   /* @Bean(name = "redisTemplate")
     RedisTemplate<String, String> redisTemplate() {
         RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
         return redisTemplate;
-    }
+    }*/
 
 
 
@@ -44,6 +52,7 @@ public class RedisConfig {
         template.setConnectionFactory(redisConnectionFactory);
         return template;
     }
+
 
 
 }

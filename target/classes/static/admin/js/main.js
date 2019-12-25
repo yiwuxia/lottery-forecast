@@ -27,11 +27,22 @@ layui.use(['form','element','layer','jquery'],function(){
     //按钮点击  numRegion01。。。
     $(".btn-nums-select").click(function(){
         var val=$(this);
-        if(val.hasClass("btn-click")){
-            val.removeClass("btn-click")
+        if(val.hasClass("btn-click-trend")){
+            val.removeClass("btn-click-trend")
         }else{
-            val.addClass("btn-click");
+            val.addClass("btn-click-trend");
         }
     });
+
+    //点击基本走势提交按钮
+    $("#submit-choose-trend").click(function () {
+          var arr= $(".btn-click-trend");
+          for (var i =0 ; i < arr.length; i++) {
+              var obj=$(arr[i]);
+              console.log(obj.hasClass("region"));
+              console.log(obj);
+          }
+    });
+
 
 });

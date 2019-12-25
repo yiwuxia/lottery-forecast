@@ -19,6 +19,11 @@ spring:
       minIdle: 5
       maxActive: 20
       maxWait: 60000
-
-
+  redis:
+    host: localhost
+    port: 6379
+    max-wait: 30000
+    max-active: 100
+    max-idel: 20
+    min-idel: 0
 

@@ -71,7 +71,6 @@ public class MainWork {
             } else {
 
             }
-
         }
 
 
@@ -80,7 +79,7 @@ public class MainWork {
     public String generateSimulationData() {
 
         StringBuffer buffer = new StringBuffer();
-        buffer.append(UUID.randomUUID().toString());
+        buffer.append("742955");
         buffer.append(";");
         buffer.append(DataGeneratorUtil.generate());
         buffer.append(";").append(format.format(new Date()));

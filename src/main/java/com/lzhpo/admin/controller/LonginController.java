@@ -184,6 +184,7 @@ public class LonginController {
 
     @GetMapping("admin/main")
     public String main(ModelMap map){
+        //返回最新一期的中奖数字 显示在顶部
         return "admin/main";
     }
 

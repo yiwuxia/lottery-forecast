@@ -12,6 +12,7 @@ layui.use(['form','layer'],function(){
         }else{
             data.field.rememberMe = false;
         }
+        //post请求ljin
         $.post(data.form.action, data.field, function(res) {
             layer.close(loadIndex);
             if(res.success){
