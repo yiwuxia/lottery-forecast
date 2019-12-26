@@ -1,4 +1,7 @@
-layui.use(['form', 'element', 'layer', 'jquery'], function () {
+layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
+
+    var table = layui.table;
+
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
         element = layui.element,
@@ -59,9 +62,6 @@ layui.use(['form', 'element', 'layer', 'jquery'], function () {
             }
         }
         console.log("regions:"+regions);
-        console.log("firsts:"+firsts);
-        console.log("seconds:"+seconds);
-        console.log("thirds:"+thirds);
         var occur1=regions.length>3?3:regions.length;
         var occur2=0;
         if (firsts.length>0){
@@ -90,10 +90,24 @@ layui.use(['form', 'element', 'layer', 'jquery'], function () {
             occurTimesRegion:occur1Arr.join(","),
             occurTimes:occur2Arr.join(","),
         }
+        console.log(params);
         $.post("/stat/getTrendCalcData",params, function(res) {
-           console.log(res);
+
         });
 
+    });
+    
+    $("#trend-clear").click(function () {
+        table.render({
+            elem: '#test'
+            ,url:'/stat/getTrendFullData'
+            ,method: 'post'
+            ,height: 315
+            ,cellMinWidth: 100 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,cols: [[
+                ,{field:'value', width:200, title: '列表'}
+            ]]
+        });
     });
 
 });

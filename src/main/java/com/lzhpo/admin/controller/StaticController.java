@@ -6,7 +6,9 @@ import com.lzhpo.admin.service.UserService;
 import com.lzhpo.core.domain.PrizeDetailVo;
 import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
+import com.lzhpo.core.domain.TrendCode;
 import com.lzhpo.core.service.PrizeDataService;
+import com.lzhpo.core.utils.CommonResp;
 import com.lzhpo.core.utils.JsonResp;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -21,7 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p> Author：lzhpo </p>
@@ -91,6 +96,22 @@ public class StaticController {
         return JsonResp.success(combination);
     }
 
+
+
+    /**
+     * 基本走势页面选择，返回720中可能
+     */
+    @PostMapping("/getTrendFullData")
+    @ResponseBody
+    public CommonResp getTrandIndexCodeData(
+    ) {
+        //所有可能的组合
+        List<String> combination=prizeDataService.getTrandIndexCodeData();
+        Collections.sort(combination);
+        List<TrendCode>  result=combination.stream().map(s->new TrendCode(s)).collect(Collectors.toList());
+        return CommonResp.success(result);
+    }
+
     private List<Integer> intCommonsStrToList(String regionsPredict) {
         List<Integer> list =new ArrayList<>();
         String [] arr= org.springframework.util.StringUtils.commaDelimitedListToStringArray(regionsPredict);
@@ -99,6 +120,9 @@ public class StaticController {
         }
         return list;
     }
+
+
+
 
 
 }

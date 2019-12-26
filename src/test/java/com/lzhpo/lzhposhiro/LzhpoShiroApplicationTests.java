@@ -19,6 +19,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -32,14 +33,17 @@ public class LzhpoShiroApplicationTests {
     @Autowired
     private RedisUtil redisUtil;
 
+    @Autowired
+    private PrizeDataService prizeDataService;
+
 
     @Test
     public void generateData() {
-        Dog dog=new Dog(1,"hello");
-        Dog dog2=new Dog(1,"hello");
-        String keys= JSON.toJSONString(dog);
-        redisUtil.set("lijin",keys);
-        System.out.println(redisUtil.get("lijin"));
+        List<String> list= prizeDataService.getTrandIndexCodeData();
+        //list.stream().forEach(System.out::println);
+        System.out.println("08-10-03".compareTo("01-09-10"));
+        Collections.sort(list);
+        list.stream().forEach(System.out::println);
     }
 
 }

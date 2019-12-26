@@ -51,6 +51,25 @@ public class CalculateUtil {
         return result;
     }
 
+
+    public static Set<String> calcNoCondition() {
+        Set<String> result = new HashSet<>();
+        for (Integer first : firsts) {
+            for (Integer second : seconds) {
+                for (Integer third : thirds) {
+                    if (first.equals(second) || first.equals(third) || second.equals(third)) {
+                        continue;
+                    }
+                        result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                + "-" + (third==10?third:"0"+third));
+                }
+
+            }
+        }
+        System.out.println(result.size());
+        return result;
+    }
+
     /**
      * 计算定位码出现的情况 123  456  789  0 （1,2）
      *occurTimes 0,（1,2,3）

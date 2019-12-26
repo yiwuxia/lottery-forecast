@@ -1401,4 +1401,15 @@ public class PrizeDataService {
         }
         return resut;
     }
+
+    /**
+     * 返回720种数据可能
+     * @return
+     */
+    public List<String> getTrandIndexCodeData() {
+        Set<String> danma=  CalculateUtil.calcNoCondition();
+        List<String> resut=Lists.newArrayList();
+        resut=Lists.newArrayList(danma);
+        return resut;
+    }
 }
