@@ -1,6 +1,7 @@
 package com.lzhpo.core.utils;
 
 import com.google.common.collect.Lists;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.HashSet;
 import java.util.List;
@@ -27,6 +28,9 @@ public class CalculateUtil {
      * @return
      */
     public static Set<String> calcDanMa(List<Integer> nums, List<Integer> occurTimes) {
+        if (CollectionUtils.isEmpty(occurTimes)){
+            return new HashSet<>();
+        }
         Set<String> result = new HashSet<>();
         for (Integer first : firsts) {
             for (Integer second : seconds) {
@@ -36,7 +40,8 @@ public class CalculateUtil {
                     }
                     List<Integer> temp = Lists.newArrayList(first, second, third);
                     if (checkIfFillCondition(temp, nums, occurTimes)) {
-                        result.add(first + "-" + second + "-" + third);
+                        result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                + "-" + (third==10?third:"0"+third));
                     }
                 }
 
@@ -57,6 +62,9 @@ public class CalculateUtil {
                                              List<Integer> occurTimes
 
     ) {
+        if (CollectionUtils.isEmpty(occurTimes)){
+            return new HashSet<>();
+        }
         Set<String> result = new HashSet<>();
         for(Integer occur:occurTimes){
                 for (Integer first : firsts) {
@@ -66,45 +74,51 @@ public class CalculateUtil {
                                 continue;
                             }
                             if (occur==0){
-                                if (firstPredict.contains(first) ||  secondPredict.contains(second) ||  thirdPredict.contains(third)){
-                                    continue;
-                                }else {
-                                    result.add(first + "-" + second + "-" + third);
+                                if (firstPredict.contains(first) &&  secondPredict.contains(second) &&  thirdPredict.contains(third)){
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                             }
                             if (occur==1){
                                 if (firstPredict.contains(first) &&   !secondPredict.contains(second) &&  !thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                                 if (!firstPredict.contains(first) &&   secondPredict.contains(second) &&  !thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
 
                                     continue;
                                 }
                                 if (!firstPredict.contains(first) &&   !secondPredict.contains(second) &&  thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                             }
                             if (occur==2){
                                 if (firstPredict.contains(first) &&   secondPredict.contains(second) &&  !thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                                 if (firstPredict.contains(first) &&   !secondPredict.contains(second) &&  thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                                 if (!firstPredict.contains(first) &&   secondPredict.contains(second) &&  thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                             }
                             if (occur==3){
                                 if (firstPredict.contains(first) &&   secondPredict.contains(second) &&  thirdPredict.contains(third)){
-                                    result.add(first + "-" + second + "-" + third);
+                                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                            + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
                             }
@@ -128,11 +142,15 @@ public class CalculateUtil {
     }
 
     public static void main(String[] args) {
-        List<Integer> a = Lists.newArrayList(2,3, 4, 5);
-        List<Integer> b = Lists.newArrayList(6,7,8,9);
-        List<Integer> c = Lists.newArrayList(1,  3);
-        List<Integer> d = Lists.newArrayList(2);
-        calcDingweiMa(a, b,c,d);
+        List<Integer> a = Lists.newArrayList( 5);
+        List<Integer> b = Lists.newArrayList(4,8);
+        List<Integer> c = Lists.newArrayList(5);
+        List<Integer> d = Lists.newArrayList(1,2,3);
+         Set<String> set1=  calcDingweiMa(a, b,c,d);//164
+         Set<String> set2=  calcDanMa(Lists.newArrayList(1,3,4),Lists.newArrayList(1,2));//164
+         set2.retainAll(set1);
+        System.out.println(set2.size());
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.lzhpo.core.service;
 
 import com.google.common.collect.Lists;
 import com.lzhpo.core.domain.*;
+import com.lzhpo.core.utils.CalculateUtil;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import  static  java.util.Collections.max;
 import  static  java.util.Collections.min;
 
@@ -1377,5 +1380,25 @@ public class PrizeDataService {
         maxMiss.setThird08(max(third08NoList));
         maxMiss.setThird09(max(third09NoList));
         maxMiss.setThird10(max(third10NoList));
+    }
+
+    public List<String> calculateTrendIndexData(List<Integer> region,
+                                                List<Integer> first,
+                                                List<Integer> second,
+                                                List<Integer> third,
+                                                List<Integer> regionOccurs,
+                                                List<Integer> occurs) {
+        List<String> resut=Lists.newArrayList();
+        Set<String> danma=  CalculateUtil.calcDanMa(region,regionOccurs);
+        Set<String> dingweima=  CalculateUtil.calcDingweiMa(first,second,third,occurs);
+        if(CollectionUtils.isEmpty(regionOccurs)){
+            resut=Lists.newArrayList(dingweima);
+        }else {
+            if (occurs.size()>0){
+                danma.retainAll(dingweima);
+            }
+            resut=Lists.newArrayList(danma);
+        }
+        return resut;
     }
 }
