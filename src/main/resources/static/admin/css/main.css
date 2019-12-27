@@ -182,11 +182,9 @@
     .panel{ width:100%; }
 }
 
-
-
-.my-footer {
-    margin-top: -50px;
-    height: 50px;
-    background-color: #eee;
-    z-index: 9999;
+#count-desc{
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
 }
+

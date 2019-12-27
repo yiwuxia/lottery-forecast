@@ -9,8 +9,18 @@ import lombok.Data;
  * @Date 2019/12/26 14:41
  * @Version 1.0
  **/
-@AllArgsConstructor
+
 @Data
 public class TrendCode {
-    private String value;
+    private String valueComma;
+    private String first;
+    private String second;
+    private String third;
+
+    public TrendCode(String first, String second, String third,String valueComma) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.valueComma=valueComma;
+    }
 }

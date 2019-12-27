@@ -89,7 +89,6 @@ public class StaticController {
         List<Integer> third= intCommonsStrToList(thirdPredict);
         List<Integer> regionOccurs= intCommonsStrToList(occurTimesRegion);
         List<Integer> occurs= intCommonsStrToList(occurTimes);
-        System.out.println();
         //所有可能的组合
         List<String> combination=prizeDataService.calculateTrendIndexData(region,first,second,third,regionOccurs,occurs);
         //返回两个数据
@@ -108,7 +107,9 @@ public class StaticController {
         //所有可能的组合
         List<String> combination=prizeDataService.getTrandIndexCodeData();
         Collections.sort(combination);
-        List<TrendCode>  result=combination.stream().map(s->new TrendCode(s)).collect(Collectors.toList());
+        List<TrendCode>  result=combination.stream().map(s->
+                new TrendCode(s.split("-")[0],s.split("-")[1],s.split("-")[2],s)
+        ).collect(Collectors.toList());
         return CommonResp.success(result);
     }
 

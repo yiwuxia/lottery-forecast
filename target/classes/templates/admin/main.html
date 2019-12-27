@@ -40,26 +40,27 @@
                 <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
                     <div>
                         <button type="button" class="layui-btn" id="basic_trend">基本走势</button>
-                        <button type="button" class="layui-btn layui-btn-normal">百搭按钮</button>
-                        <button type="button" class="layui-btn layui-btn-warm">暖色按钮</button>
-                        <button type="button" class="layui-btn layui-btn-danger">警告按钮</button>
+                        <!--<button type="button" class="layui-btn layui-btn-normal">百搭按钮</button>-->
+                        <!--<button type="button" class="layui-btn layui-btn-warm">暖色按钮</button>-->
+                        <button type="button" id="trend-clear" class="layui-btn layui-btn-danger">清空</button>
                     </div>
                 </fieldset>
             </div>
 
 
             <div class="layui-row">
-                <div class="layui-col-md10">
+                <div class="layui-col-md9">
                     <div class="grid-demo grid-demo-bg1">
 
-                        <div class="my-footer">
-                            <button type="button" class="layui-btn" id="trend-clear">清</button>
-                        </div>
+                        <p>hello world</p>
 
                     </div>
                 </div>
-                <div class="layui-col-md2">
+                <div class="layui-col-md3" style="border-left: 2px solid grey;height: 450px;">
                     <div class="grid-demo">
+                        <div style="text-align: center;">
+                            <span>结果</span><span id="count-desc"></span><span>注</span>
+                        </div>
                         <table class="layui-hide" id="test"></table>
                     </div>
                 </div>

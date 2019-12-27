@@ -90,9 +90,8 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             occurTimesRegion:occur1Arr.join(","),
             occurTimes:occur2Arr.join(","),
         }
-        console.log(params);
         $.post("/stat/getTrendCalcData",params, function(res) {
-
+                console.log(res);
         });
 
     });
@@ -102,11 +101,16 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             elem: '#test'
             ,url:'/stat/getTrendFullData'
             ,method: 'post'
-            ,height: 315
-            ,cellMinWidth: 100 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,height: 450
+            ,cellMinWidth: 50 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             ,cols: [[
-                ,{field:'value', width:200, title: '列表'}
+                {field:'valueComma', width:200, title: '前三位',align:'center'}
+                // ,{field:'second', width:80, title: '第二位',align:'center'}
+                // ,{field:'third', width:80, title: '第三位',align:'center'}
             ]]
+            ,done:function (res, curr, count) {
+                $("#count-desc").text(count);
+            }
         });
     });
 
