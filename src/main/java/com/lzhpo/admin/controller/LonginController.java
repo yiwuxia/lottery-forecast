@@ -77,7 +77,7 @@ public class LonginController {
     }
 
 
-    @GetMapping(value = {"/toLogin","/"})
+    @GetMapping(value = {"/toLogin","/","/admin/login"})
     public String adminToLogin(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType,
                                HttpServletRequest request
                                ) {

@@ -38,7 +38,8 @@ public class ShiroConfig {
 
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("authRealm") AuthRealm authRealm){
-        ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
+        //ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
+        ShiroFilterFactoryBean bean = new MyShiroFilterFactoryBean();
         bean.setSecurityManager(securityManager(authRealm));
         bean.setSuccessUrl("/index");
         bean.setLoginUrl("/admin/login");
