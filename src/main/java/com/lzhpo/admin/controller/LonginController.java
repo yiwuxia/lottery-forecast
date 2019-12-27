@@ -89,15 +89,19 @@ public class LonginController {
 
         if(LoginTypeEnum.ADMIN.name().equals(loginType)) {
             session.setAttribute(LOGIN_TYPE, LoginTypeEnum.ADMIN);
-            return "admin/login";
+            return "admin/login";//去登录页面
         }else {
             session.setAttribute(LOGIN_TYPE, LoginTypeEnum.PAGE);
             return "login";
         }
     }
 
+    //跳转到首页
     @GetMapping(value = "index")
     public String index(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType) {
+
+        Object obj= SecurityUtils.getSubject().getPrincipal();
+        System.out.println(obj);
         if(StringUtils.isBlank(loginType)) {
             LoginTypeEnum attribute = (LoginTypeEnum) session.getAttribute(LOGIN_TYPE);
             loginType = attribute == null ? loginType : attribute.name();
