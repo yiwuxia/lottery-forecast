@@ -2,10 +2,13 @@ package com.lzhpo.core.utils;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
+import org.checkerframework.checker.units.qual.C;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author <a href="lijing1@wxchina.com@wxchina.com">Lijin</a>
@@ -171,5 +174,41 @@ public class CalculateUtil {
         System.out.println(set2.size());
 
     }
+    /**
+     * 多个集合取交集
+     */
+    public static <T, C extends Collection<T>> C findIntersection(C newCollection,
+                                                                  List<Collection<T>> collections) {
+        boolean first = true;
+        for (Collection<T> collection : collections) {
+            if (first) {
+                newCollection.addAll(collection);
+                first = false;
+            } else {
+                newCollection.retainAll(collection);
+            }
+        }
+        return newCollection;
+    }
+
+
+    public static List<String> findIntersectionNew(List<String> newCollection,
+                                       List<List<String>> collections) {
+        boolean first = true;
+        for (List<String> collection : collections) {
+            if (first) {
+                newCollection.addAll(collection);
+                first = false;
+            } else {
+                newCollection.retainAll(collection);
+            }
+        }
+        if (CollectionUtils.isNotEmpty(newCollection)){
+            newCollection =newCollection.stream().distinct().collect(Collectors.toList());
+        }
+        return newCollection;
+    }
+
+
 
 }

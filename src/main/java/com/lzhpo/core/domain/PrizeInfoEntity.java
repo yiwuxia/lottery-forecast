@@ -21,7 +21,7 @@ public class PrizeInfoEntity {
     private String prizeNo05;
     private String prizeNo06;
     private String prizeNo07;
-    private String prizeMo08;
+    private String prizeNo08;
     private String prizeNo09;
     private String prizeNo10;
 

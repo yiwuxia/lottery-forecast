@@ -16,17 +16,20 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         $(this).html($(this).text() > 9999 ? ($(this).text() / 10000).toFixed(2) + "<em>万</em>" : $(this).text());
     });
 
-    $("#basic_trend").on('click', function () {
 
-        layer.open({
-            type: 2,
-            title: '基本走势',
-            skin: 'layui-layer-rim', //加上边框
-            area: ['1200px', '500px'], //宽高
-            content: '/stat/trend'
-        });
 
-    });
+
+
+    // $("#basic_trend").on('click', function () {
+    //     layer.open({
+    //         type: 2,
+    //         title: '基本走势',
+    //         skin: 'layui-layer-rim', //加上边框
+    //         area: ['1200px', '500px'], //宽高
+    //         content: '/stat/trend'
+    //     });
+    //
+    // });
     //按钮点击  numRegion01。。。
     $(".btn-nums-select").click(function () {
         var val = $(this);
@@ -37,8 +40,24 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         }
     });
 
+    $("#clear-trend").click(function(){
+        //在iframe页面选择负页面元素
+       // var obj=$("#condition",window.parent.document);
+      //  obj.css("background","red");
+       // console.log($("#condition",window.parent.document).length);
+        $(".btn-nums-select").each(function(){
+           var numBtn=$(this);
+            if (numBtn.hasClass("btn-click-trend")) {
+                numBtn.removeClass("btn-click-trend")
+            }
+        });
+    });
+
     //点击基本走势提交按钮
     $("#submit-choose-trend").click(function () {
+
+        //测试
+
         var arr = $(".btn-click-trend");
         var regions = [];
         var firsts = [];
@@ -61,7 +80,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                 thirds.push(obj.text())
             }
         }
-        console.log("regions:"+regions);
         var occur1=regions.length>3?3:regions.length;
         var occur2=0;
         if (firsts.length>0){
@@ -81,6 +99,10 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         for (var j =1 ; j <=occur2; j++) {
             occur2Arr.push(j);
         }
+        if (occur1Arr.length+occur2Arr.length==0){
+            layer.msg('所选数字不能为空');
+            return;
+        }
         //将参数带到后台
         var params = {
             regionsPredict:regions.join(","),
@@ -91,8 +113,44 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             occurTimes:occur2Arr.join(","),
         }
         $.post("/stat/getTrendCalcData",params, function(res) {
-                console.log(res);
+                layer.close(layer.index);
+                console.log(res.data);
+                var conditionTable=$("#condition-table",window.parent.document);
+            conditionTable.empty();
+            for (var i = 0; i <res.data.length ; i++) {
+                var condition=res.data[i];
+                console.log(condition);
+                var str="<tr><td>"+condition.type+"</td><td>"+condition.content
+                    +"</td><td>"+condition.count+"</td><td>" +
+                    "<input type='checkbox'>容错" +
+                    "</td><td> <button type='button'>编 辑</button>" +
+                    "</td><td><button type='button'>删 除</button></td>" +
+                    "</tr>";
+                conditionTable.append(str);
+            }
+            //生成条件后 记载数据集合
+            $.post("/stat/getInitCombination",{}, function(res) {
+                var count=res.data.length;
+                $("#combination-count",window.parent.document).text(count);
+                //cb-table
+                var dataArr=res.data;
+                var table=$("#cb-table",window.parent.document);
+             //   table.empty();
+                for (var i = 0; i < dataArr.length; i++) {
+                    let obj=dataArr[i];
+                    let arrTemp=obj.split("-");
+                    var trStr="<tr>" +
+                        "<td>"+arrTemp[0]+"</td>"+
+                        "<td>"+arrTemp[1]+"</td>"+
+                        "<td>"+arrTemp[2]+"</td>"+
+                        "</tr>";
+                    table.append(trStr);
+                }
+            });
+
         });
+
+
 
     });
     

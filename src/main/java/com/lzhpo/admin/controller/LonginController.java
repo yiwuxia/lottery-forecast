@@ -1,6 +1,8 @@
 package com.lzhpo.admin.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.google.common.collect.Lists;
 import com.lzhpo.admin.entity.vo.ShowMenuVo;
 import com.lzhpo.admin.service.MenuService;
 import com.lzhpo.admin.service.UserService;
@@ -10,6 +12,11 @@ import com.lzhpo.common.exception.UserTypeAccountException;
 import com.lzhpo.common.realm.AuthRealm;
 import com.lzhpo.common.util.Constants;
 import com.lzhpo.common.util.ResponseEntity;
+import com.lzhpo.core.config.RedisUtil;
+import com.lzhpo.core.domain.PrizeInfoEntity;
+import com.lzhpo.core.domain.TrendCode;
+import com.lzhpo.core.service.PrizeDataService;
+import com.lzhpo.core.utils.RedisConstant;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -24,6 +31,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.imageio.ImageIO;
@@ -33,7 +41,9 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p> Author：lzhpo </p>
@@ -56,6 +66,13 @@ public class LonginController {
 
     @Autowired
     MenuService menuService;
+
+    @Autowired
+    private PrizeDataService prizeDataService;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
 
     public enum LoginTypeEnum {
         PAGE,ADMIN;
@@ -98,23 +115,30 @@ public class LonginController {
 
     //跳转到首页
     @GetMapping(value = "index")
-    public String index(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType) {
-
-        Object obj= SecurityUtils.getSubject().getPrincipal();
-        System.out.println(obj);
+    public ModelAndView index(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType) {
+        //初始化右侧组合数据集
+        //获取最新一期的号码
+        PrizeInfoEntity entity=prizeDataService.getNewestPrizeData();
         if(StringUtils.isBlank(loginType)) {
             LoginTypeEnum attribute = (LoginTypeEnum) session.getAttribute(LOGIN_TYPE);
             loginType = attribute == null ? loginType : attribute.name();
         }
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("termInfo",entity);
         if(LoginTypeEnum.ADMIN.name().equals(loginType)) {
             AuthRealm.ShiroUser principal = (AuthRealm.ShiroUser) SecurityUtils.getSubject().getPrincipal();
             session.setAttribute("icon",StringUtils.isBlank(principal.getIcon()) ? "/static/admin/img/face.jpg" : principal.getIcon());
-            return "admin/index";
+            mv.setViewName("admin/index");
+            return mv;
         }else {
-            return "index";
+            mv.setViewName("index");
+            return  mv;
         }
 
     }
+
+
+
 
     @GetMapping("/getCaptcha")
     public void getCaptcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -176,6 +200,7 @@ public class LonginController {
             }
 
             if(StringUtils.isBlank(errorMsg)) {
+
                 ResponseEntity responseEntity = new ResponseEntity();
                 responseEntity.setSuccess(Boolean.TRUE);
                 responseEntity.setAny("url","index");
@@ -200,8 +225,8 @@ public class LonginController {
     @ResponseBody
     public List<ShowMenuVo> getUserMenu(){
         String userId = MySysUser.id();
-        List<ShowMenuVo> list = menuService.getShowMenuByUser(userId);
-        return list;
+        //List<ShowMenuVo> list = menuService.getShowMenuByUser(userId);
+        return Lists.newArrayList();
     }
 
     @GetMapping("systemLogout")

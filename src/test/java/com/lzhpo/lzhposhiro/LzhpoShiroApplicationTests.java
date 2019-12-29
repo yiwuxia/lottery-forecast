@@ -19,6 +19,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,11 +40,11 @@ public class LzhpoShiroApplicationTests {
 
     @Test
     public void generateData() {
-        List<String> list= prizeDataService.getTrandIndexCodeData();
-        //list.stream().forEach(System.out::println);
-        System.out.println("08-10-03".compareTo("01-09-10"));
-        Collections.sort(list);
-        list.stream().forEach(System.out::println);
+
+        String str="a,b,c,d";
+        String [] arr= StringUtils.split(str,",");
+        System.out.println(Arrays.toString(arr));
+
     }
 
 }

@@ -323,6 +323,70 @@ layui.config({
         //渲染顶部窗口
         tab.tabMove();
     })
+    //点击基本趋势按钮
+    $("#basic_trend").on('click', function () {
+        layer.open({
+            type: 2,
+            title: '基本走势',
+            skin: 'layui-layer-rim', //加上边框
+            area: ['1200px', '500px'], //宽高
+            content: '/stat/trend'
+        });
+
+    });
+
+
+
+    function initCombinationTable(){
+        //请求初始数据，获取组合列表 返回[1-1-2,2-2-3]格式
+        $.post("/stat/getInitCombination",{}, function(res) {
+            var count=res.data.length;
+            $("#combination-count").text(count);
+            //cb-table
+            var dataArr=res.data;
+            var table=$("#cb-table");
+            //table.empty();
+            for (var i = 0; i < dataArr.length; i++) {
+                let obj=dataArr[i];
+                let arrTemp=obj.split("-");
+                var trStr="<tr>" +
+                    "<td>"+arrTemp[0]+"</td>"+
+                    "<td>"+arrTemp[1]+"</td>"+
+                    "<td>"+arrTemp[2]+"</td>"+
+                    "</tr>";
+                table.append(trStr);
+            }
+        });
+    }
+
+
+   var del=  function() {
+       alert("aa");
+    }
+
+    $.post("/stat/getConditions",{}, function(res) {
+        var dataArr=res.data;
+        var conditionTable=$("#condition-table");
+        conditionTable.empty();
+        for (var i = 0; i <res.data.length ; i++) {
+            var condition=res.data[i];
+            var str="<tr><td>"+condition.type+"</td><td>"+condition.content
+                +"</td><td>"+condition.count+"</td><td>" +
+                "<input type='checkbox'>容错" +
+                "</td><td> <button type='button' >编 辑</button>" +
+                "</td><td><button type='button' onclick='del()'>删 除</button></td>" +
+                "</tr>";
+            conditionTable.append(str);
+        }
+        //加载完条件再加载数据集合
+        initCombinationTable();
+    });
+
+
+
+
+
+
 })
 
 //打开新窗口

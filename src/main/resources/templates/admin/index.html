@@ -14,17 +14,19 @@
 
     <link rel="icon" href="${site.logo}">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/static/layui/css/bootstrap.min.css}" media="all" />
     <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
     <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all" />
+    <style>
+    </style>
 </head>
-<body class="main_body">
+<body>
 <div class="layui-layout layui-layout-admin">
     <!-- 顶部 -->
     <div class="layui-header header">
         <div class="layui-main">
-            <a href="#" class="logo">lzhpo-shiro</a>
+
             <!-- 显示/隐藏菜单 -->
-            <a href="javascript:" class="iconfont hideMenu icon-menu1"></a>
         <div class="weather" pc>
             <div id="tp-weather-widget"></div>
             <script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
@@ -65,7 +67,7 @@
 
                 <dl class="layui-nav-child">
                     <shiro:user>
-                    <dd><a href="javascript:" data-url="/admin/system/user/userinfo"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
+                        <!--管理员增加新增用户功能。增加修改密码功能。 弹窗形式-->
                     <dd><a href="javascript:" data-url="/admin/system/user/changePassword"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
                     </shiro:user>
                     <dd><a href="javascript:" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
@@ -78,45 +80,164 @@
     </div>
 </div>
 <!-- 左侧导航 -->
-<div class="layui-side layui-bg-black">
-    <div class="user-photo">
-        <a class="img" title="我的头像" ><img th:src="${session.icon}"></a>
-        <p>您好！<span class="userName"><shiro:principal property = "nickName"/></span></p>
-    </div>
-    <div class="navBar layui-side-scroll"></div>
-</div>
 <!-- 右侧内容 -->
-<div class="layui-body layui-form">
-    <div class="layui-tab marg0" lay-filter="bodyTab" id="top_tabs_box">
-        <ul class="layui-tab-title top_tab" id="top_tabs">
-            <li class="layui-this" lay-id=""><i class="iconfont icon-computer"></i> <cite>首页</cite></li>
-        </ul>
-        <ul class="layui-nav closeBox">
-            <li class="layui-nav-item">
-                <a href="javascript:"><i class="iconfont icon-caozuo"></i> 页面操作</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:" class="refresh refreshThis"><i class="layui-icon layui-icon-refresh-3"></i> 刷新当前</a></dd>
-                    <dd><a href="javascript:" class="closePageOther"><i class="iconfont icon-prohibit"></i> 关闭其他</a></dd>
-                    <dd><a href="javascript:" class="closePageAll"><i class="iconfont icon-guanbi"></i> 关闭全部</a></dd>
-                </dl>
-            </li>
-        </ul>
-        <!--右侧主体内容-->
-        <div class="layui-tab-content clildFrame">
-            <div class="layui-tab-item layui-show">
-                <iframe th:src="@{/admin/main}"></iframe>
+
+
+</div>
+
+<div class="content">
+    <div class="myheader">
+        <div class="div1">
+        </div>
+        <div class="container-fluid">
+            <div class="row head-desc">
+                <div class="col-md-2 term"><span>第<span>[[${termInfo.termNo}]]</span>期</span></div>
+                <div class="col-md-8 term-no">
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo01}]]
+										</span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo02}]]
+										</span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo03}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo04}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo05}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo06}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo07}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo08}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo09}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo10}]]
+                                    </span>
+								</span>
+                    </div>
+                </div>
+                <div class="col-md-2 term"><span>18:02:59</span></div>
             </div>
         </div>
     </div>
+
+
+    <!-- 主数据区域 -->
+    <div class="container-fluid term-main">
+        <div class="row">
+            <div class="col-md-2 desc main_left">
+                <div class="text1">
+                    <span>玩法</span>
+                </div>
+
+                <div class="div_qian_san">
+                    <div class="div_qian_san_txt">
+                        <span>前三</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div style="margin: 0 auto;width: 50px;">
+                    <select class="form-control" id="dateType" style="width: 200px;">
+                        <option value="1">北京赛车</option>
+                        <option value="2">北京飞艇</option>
+                    </select>
+                </div>
+                <hr />
+                <div class="operate-btn" style="height:50px;border-bottom: 1px solid red;">
+                    <button type="button" class="btn btn-primary" id="basic_trend">基本走势</button>
+                    <button type="button" class="btn btn-primary">龙凤012</button>
+                    <button type="button" class="btn btn-primary">和合值</button>
+                    <button type="button" class="btn btn-primary">合2码阻断</button>
+                    <button type="button" class="btn btn-primary">跨度传落</button>
+                    <button type="button" class="btn btn-primary">代码3</button>
+                    <button type="button" class="btn btn-primary">代码4</button>
+                </div>
+
+                <div id="condition" style="height: 400px;overflow-y: auto;border: 1px solid red;">
+                    <div>
+                        <span>已选条件</span>
+                    </div>
+                        <table class="table table-bordered" id="condition-table">
+
+                        </table>
+                </div>
+
+            </div>
+            <div class="col-md-2 desc main_right">
+
+                <div class="combination-top">
+                    <span>筛选结果</span><span id="combination-count"></span><span>注</span>
+                </div>
+                <div class="table-responsive"
+                     style="height: 500px;overflow-y: scroll;border: 2px solid grey;">
+                    <table id="cb-table" class="table table-borderless">
+
+                    </table>
+                </div>
+                <div style="border: 2px solid white;">
+                </div>
+
+                <div id="copy_btn" style="width: 100%;text-align: center;">
+                    <button type="button" class="btn btn-primary">复制</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
-<!-- 底部 -->
-<div class="layui-footer footer">
-    <p>Copyright © 2018 lzhpo | All Rights Reserved | Powered by <a href="http://www.liuzhaopo.top">lzhpo</a></p>
-</div>
-</div>
-<!-- 移动导航 -->
-<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
-<div class="site-mobile-shade"></div>
+
+
 
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/leftNav.js}"></script>

@@ -7,6 +7,10 @@ package com.lzhpo.core.config;
  * @Version 1.0
  **/
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 import com.lzhpo.core.utils.ExpireEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.PostConstruct;
 import java.io.ObjectStreamClass;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +33,19 @@ import java.util.concurrent.TimeUnit;
  *  @author yinxp@dist.com.cn
  */
 @Component
-public class RedisUtil {
+public class RedisUtil{
 
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+
+    //删除所有都key
+    @PostConstruct
+    public void init(){
+        Set<String> keys = stringRedisTemplate.keys("*");
+        stringRedisTemplate.delete(keys);
+    }
 
 
     /**
@@ -227,6 +240,27 @@ public class RedisUtil {
     public void hdel(String key, String... item){
         stringRedisTemplate.opsForHash().delete(key,item);
     }
+
+
+    /**
+     * 获取某个hash 对应都所有value值
+     */
+    public  List<List<String>> hValues(String key){
+        Map<Object, Object> maps= stringRedisTemplate.opsForHash().entries(key);
+        if (maps ==null || maps.size()==0){
+            return Lists.newArrayList();
+        }
+        List<List<String>>  list = Lists.newArrayList();
+        maps.values().stream().forEach(s->{
+            //list.add(JSONObject.parseArray(s,String.class));
+            List<String> temp= JSON.parseArray(s.toString(),String.class);
+            list.add(temp);
+        });
+        return list;
+    }
+
+
+
 
     /**
      * 判断hash表中是否有该项的值

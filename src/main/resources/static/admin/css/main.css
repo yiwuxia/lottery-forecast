@@ -1,5 +1,5 @@
 /*公共样式*/
-.main_body{ min-width:320px; }
+/*.main_body{ min-width:320px; }*/
 .layui-elem-quote.title{ padding:10px 15px; margin-bottom:0; }
 .layui-tab-more{ position: relative; z-index: 99; background:#fff; }
 .layui-layer-tab .layui-layer-title span.layui-layer-tabnow{ height:42px !important; }
@@ -188,3 +188,91 @@
     font-size: 15px;
 }
 
+
+.content{
+    border: 1px solid gray;
+}
+.div1 {
+    background-color: #cae0b9;
+    height: 50px;
+}
+
+.head-desc {
+    background-color: #b8602a;
+    height: 50px;
+}
+
+.head-desc .term {
+    color: white;
+    line-height: 50px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.term-no {
+    text-align: center;
+}
+
+.term-circle {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.term-circle .out-circle {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    background: #cae0b9;
+    vertical-align: top;
+}
+
+.term-circle .num-circle {
+    display: block;
+    color: #262626;
+    height: 50px;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center
+}
+.term-main{
+    border-bottom: 2px solid black;
+}
+.term-main .desc{
+    height: 600px;
+    background: #cae0b9;
+}
+.term-main .desc .text1{
+    text-align: center;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid white;
+}
+.term-main .desc .div_qian_san{
+    text-align: center;
+    font-size: 20px;
+    margin: 0 auto;
+}
+.div_qian_san_txt{
+    position: absolute;
+    top:50%;
+    width: 60%;
+    background: #FFFD01;
+}
+.operate-btn{
+    text-align: center;
+}
+.operate-btn button{
+    width: 13%;
+}
+.combination-top{
+    text-align: center;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid white;
+}
+#combination-count{
+    color: red;
+}

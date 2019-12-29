@@ -1,31 +1,39 @@
 package com.lzhpo.admin.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.lzhpo.admin.entity.vo.SelectCondition;
 import com.lzhpo.admin.service.MenuService;
 import com.lzhpo.admin.service.UserService;
+import com.lzhpo.common.config.MySysUser;
+import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.PrizeDetailVo;
 import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
 import com.lzhpo.core.domain.TrendCode;
 import com.lzhpo.core.service.PrizeDataService;
+import com.lzhpo.core.utils.CalculateUtil;
 import com.lzhpo.core.utils.CommonResp;
 import com.lzhpo.core.utils.JsonResp;
-import org.apache.commons.lang3.StringUtils;
+import com.lzhpo.core.utils.RedisConstant;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import javax.annotation.PostConstruct;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,6 +62,18 @@ public class StaticController {
     @Autowired
     private PrizeDataService prizeDataService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
+    public   static List<String> result720;
+
+
+    @PostConstruct
+    public void init(){
+        result720=prizeDataService.getTrandIndexCodeData();
+    }
+
+
 
     @GetMapping(value = "/trend")
     public ModelAndView adminIndex() {
@@ -71,7 +91,11 @@ public class StaticController {
 
 
     /**
-     * 基本走势页面选择，后返回算法计算的数据
+     * 基本走势页面选择，生成条件和各条件对应的集合。 (胆码和定位码)
+     * 1，判断是否会产生条件
+     * 2，如果会产生条件，生成条件对象，uuid为键，生成条件对应一个数据集
+     * 每个用户的每个条件都会对应一份集合数据。
+     *
      */
     @PostMapping("/getTrendCalcData")
     @ResponseBody
@@ -83,35 +107,70 @@ public class StaticController {
             String occurTimesRegion,
             String occurTimes
     ) {
+
         List<Integer> region= intCommonsStrToList(regionsPredict);
         List<Integer> first= intCommonsStrToList(firstPredict);
         List<Integer> second= intCommonsStrToList(secondPredict);
         List<Integer> third= intCommonsStrToList(thirdPredict);
         List<Integer> regionOccurs= intCommonsStrToList(occurTimesRegion);
         List<Integer> occurs= intCommonsStrToList(occurTimes);
-        //所有可能的组合
-        List<String> combination=prizeDataService.calculateTrendIndexData(region,first,second,third,regionOccurs,occurs);
-        //返回两个数据
-        return JsonResp.success(combination);
+        List<SelectCondition> conditions=Lists.newArrayList();
+        //生成胆码条件
+        if (regionOccurs.size()>0){
+               Set<String> danma=  CalculateUtil.calcDanMa(region,regionOccurs);
+                SelectCondition condition=new SelectCondition();
+                StringBuffer buffer=new StringBuffer();
+                condition.setType("胆码");
+                condition.setCount(danma.size());
+                condition.setId(System.currentTimeMillis()+"");
+                buffer.append(org.springframework.util.StringUtils.collectionToCommaDelimitedString(region));
+                buffer.append("  出");
+                buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
+                condition.setContent(buffer.toString());
+                conditions.add(condition);
+                //将id对应的数据集合放入redis
+                redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
+                        condition.getId(),
+                        JSON.toJSONString(danma));
+                // //将条件缓存起来
+            redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+
+        }
+        if (occurs.size()>0){
+            Set<String> dingweima=  CalculateUtil.calcDingweiMa(first,second,third,occurs);
+            SelectCondition condition=new SelectCondition();
+            StringBuffer buffer=new StringBuffer();
+            condition.setType("定位码");
+            condition.setCount(dingweima.size());
+            condition.setId(System.currentTimeMillis()+"");
+            if (CollectionUtils.isNotEmpty(first)){
+                buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(first));
+            }
+            if (CollectionUtils.isNotEmpty(second)){
+                buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(second));
+            }
+            if (CollectionUtils.isNotEmpty(third)){
+                buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(third));
+            }
+            condition.setContent(buffer.toString());
+            conditions.add(condition);
+            redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
+                    condition.getId(),
+                    JSON.toJSONString(dingweima));
+            //将条件缓存起来
+            redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+
+        }
+        //将条件存到redis中。只有页面删除时才删除。
+        return JsonResp.success(conditions);
     }
 
 
 
-    /**
-     * 基本走势页面选择，返回720中可能
-     */
-    @PostMapping("/getTrendFullData")
-    @ResponseBody
-    public CommonResp getTrandIndexCodeData(
-    ) {
-        //所有可能的组合
-        List<String> combination=prizeDataService.getTrandIndexCodeData();
-        Collections.sort(combination);
-        List<TrendCode>  result=combination.stream().map(s->
-                new TrendCode(s.split("-")[0],s.split("-")[1],s.split("-")[2],s)
-        ).collect(Collectors.toList());
-        return CommonResp.success(result);
-    }
+
+
+
+
 
     private List<Integer> intCommonsStrToList(String regionsPredict) {
         List<Integer> list =new ArrayList<>();
@@ -122,6 +181,44 @@ public class StaticController {
         return list;
     }
 
+
+
+    @PostMapping("/getInitCombination")
+    @ResponseBody
+    public JsonResp getInitCombination(
+    ) {
+        //公共的获取初始化组合集合
+       //String str= redisUtil.get(RedisConstant.INDEX_COMBINATION_RESULT);
+      // List<String> list = JSON.parseArray(str,String.class);
+        List<String> response=Lists.newArrayList();
+        List<List<String>> resultFromRedis=
+                redisUtil.hValues(RedisConstant.USER_UUID_SET+MySysUser.id());
+        resultFromRedis.add(result720);
+        CalculateUtil.findIntersectionNew(response,resultFromRedis);
+        Collections.sort(response);
+        return JsonResp.success(response);
+    }
+
+
+    /**
+     * 首页加载时就获取已选都条件
+     * @return
+     */
+    @PostMapping("/getConditions")
+    @ResponseBody
+    public JsonResp getConditions(
+    ) {
+        //公共的获取初始化组合集合
+        List<String> conditions= redisUtil.rangeList(RedisConstant.USER_CONDITION+MySysUser.id(),
+                0,-1);
+        List<SelectCondition> conditionsResult=Lists.newArrayList();
+        for(String str:conditions){
+            SelectCondition con= JSONObject.parseObject(str,SelectCondition.class);
+            conditionsResult.add(con);
+        }
+        return JsonResp.success(conditionsResult);
+
+    }
 
 
 

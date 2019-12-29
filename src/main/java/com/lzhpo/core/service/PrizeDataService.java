@@ -1,6 +1,7 @@
 package com.lzhpo.core.service;
 
 import com.google.common.collect.Lists;
+import com.lzhpo.admin.entity.vo.SelectCondition;
 import com.lzhpo.core.domain.*;
 import com.lzhpo.core.utils.CalculateUtil;
 import org.apache.commons.collections.CollectionUtils;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +61,7 @@ public class PrizeDataService {
         String sql = "select id,term_no termNo,prize_no1 prizeNo01,prize_no2 prizeNo02,prize_no3 prizeNo03," +
                 "prize_no4 prizeNo04," +
                 "prize_no5 prizeNo05,prize_no6 prizeNo06,prize_no7 prizeNo07," +
-                "prize_no8 prizeMo08,prize_no9 prizeNo09,prize_no10 prizeNo10,open_time prizeNo10 from  t_prize_base_info order by id desc limit 500";
+                "prize_no8 prizeNo08,prize_no9 prizeNo09,prize_no10 prizeNo10,open_time openTime from  t_prize_base_info order by id desc limit 500";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper(PrizeInfoEntity.class));
 
     }
@@ -1412,4 +1414,22 @@ public class PrizeDataService {
         resut=Lists.newArrayList(danma);
         return resut;
     }
+
+    public PrizeInfoEntity getNewestPrizeData() {
+        String sql = "select id,term_no termNo,prize_no1 prizeNo01,prize_no2 prizeNo02,prize_no3 prizeNo03," +
+                "prize_no4 prizeNo04," +
+                "prize_no5 prizeNo05,prize_no6 prizeNo06,prize_no7 prizeNo07," +
+                "prize_no8 prizeNo08,prize_no9 prizeNo09,prize_no10 prizeNo10," +
+                "open_time openTime from  t_prize_base_info order by id desc limit 1";
+        List<PrizeInfoEntity> list= jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(PrizeInfoEntity.class));
+        if (CollectionUtils.isNotEmpty(list)){
+            return  list.get(0);
+        }else {
+            return new PrizeInfoEntity();
+        }
+
+    }
+
+
+
 }
