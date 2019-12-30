@@ -360,9 +360,12 @@ layui.config({
     }
 
 
-   var del=  function() {
-       alert("aa");
-    }
+    $("#condition-table").on('click',"button[class='del-condition']" ,function() {
+        var id = $(this).parent().parent().find(".con-id");
+        console.log(id.eq(0).val());
+
+    });
+
 
     $.post("/stat/getConditions",{}, function(res) {
         var dataArr=res.data;
@@ -370,11 +373,11 @@ layui.config({
         conditionTable.empty();
         for (var i = 0; i <res.data.length ; i++) {
             var condition=res.data[i];
-            var str="<tr><td>"+condition.type+"</td><td>"+condition.content
+            var str="<tr><td><input class='con-id' type='hidden' value='"+condition.id+"' /> "+condition.type+"</td><td>"+condition.content
                 +"</td><td>"+condition.count+"</td><td>" +
                 "<input type='checkbox'>容错" +
                 "</td><td> <button type='button' >编 辑</button>" +
-                "</td><td><button type='button' onclick='del()'>删 除</button></td>" +
+                "</td><td><button type='button' class='del-condition'>删 除</button></td>" +
                 "</tr>";
             conditionTable.append(str);
         }
