@@ -16,7 +16,9 @@ public class RedisConstant {
 
     public static  final  String  USER_CONDITION="user_condition";
 
-    
+    public static  final  String  USER_CONDITION_INFO="user_condition_info";
+
+
 
     public static void main(String[] args) {
         System.out.println("index_combination_result".toUpperCase());

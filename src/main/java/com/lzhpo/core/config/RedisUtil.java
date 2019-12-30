@@ -245,7 +245,7 @@ public class RedisUtil{
     /**
      * 获取某个hash 对应都所有value值
      */
-    public  List<List<String>> hValues(String key){
+    public  List<List<String>> hListValues(String key){
         Map<Object, Object> maps= stringRedisTemplate.opsForHash().entries(key);
         if (maps ==null || maps.size()==0){
             return Lists.newArrayList();
@@ -259,6 +259,18 @@ public class RedisUtil{
         return list;
     }
 
+
+    public  List<String> hStrValues(String key){
+        Map<Object, Object> maps= stringRedisTemplate.opsForHash().entries(key);
+        if (maps ==null || maps.size()==0){
+            return Lists.newArrayList();
+        }
+        List<String>  list = Lists.newArrayList();
+        maps.values().stream().forEach(s->{
+           list.add(s.toString());
+        });
+        return list;
+    }
 
 
 

@@ -15,10 +15,7 @@ import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
 import com.lzhpo.core.domain.TrendCode;
 import com.lzhpo.core.service.PrizeDataService;
-import com.lzhpo.core.utils.CalculateUtil;
-import com.lzhpo.core.utils.CommonResp;
-import com.lzhpo.core.utils.JsonResp;
-import com.lzhpo.core.utils.RedisConstant;
+import com.lzhpo.core.utils.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -133,7 +130,17 @@ public class StaticController {
                         condition.getId(),
                         JSON.toJSONString(danma));
                 // //将条件缓存起来
-            redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+           // redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+                redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
+
+                //将条件关键数值放入redis
+                 buffer=new StringBuffer();
+                buffer.append(ConditionEnum.DANMA.getIndex());
+                buffer.append(";");
+                buffer.append(StringUtils.collectionToCommaDelimitedString(region));
+                buffer.append(";");
+                buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
+                redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
 
         }
         if (occurs.size()>0){
@@ -147,18 +154,31 @@ public class StaticController {
                 buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(first));
             }
             if (CollectionUtils.isNotEmpty(second)){
-                buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(second));
+                buffer.append("第二位:").append(StringUtils.collectionToCommaDelimitedString(second));
             }
             if (CollectionUtils.isNotEmpty(third)){
-                buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(third));
+                buffer.append("第三位:").append(StringUtils.collectionToCommaDelimitedString(third));
             }
+            buffer.append("  出");
+            buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
             condition.setContent(buffer.toString());
             conditions.add(condition);
             redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
                     condition.getId(),
                     JSON.toJSONString(dingweima));
             //将条件缓存起来
-            redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+            redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
+            buffer=new StringBuffer();
+            buffer.append(ConditionEnum.DINGWEIMA.getIndex());
+            buffer.append(";");
+            buffer.append(StringUtils.collectionToCommaDelimitedString(first));
+            buffer.append(";");
+            buffer.append(StringUtils.collectionToCommaDelimitedString(second));
+            buffer.append(";");
+            buffer.append(StringUtils.collectionToCommaDelimitedString(third));
+            buffer.append(";");
+            buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
+            redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
 
         }
         //将条件存到redis中。只有页面删除时才删除。
@@ -187,12 +207,9 @@ public class StaticController {
     @ResponseBody
     public JsonResp getInitCombination(
     ) {
-        //公共的获取初始化组合集合
-       //String str= redisUtil.get(RedisConstant.INDEX_COMBINATION_RESULT);
-      // List<String> list = JSON.parseArray(str,String.class);
         List<String> response=Lists.newArrayList();
         List<List<String>> resultFromRedis=
-                redisUtil.hValues(RedisConstant.USER_UUID_SET+MySysUser.id());
+                redisUtil.hListValues(RedisConstant.USER_UUID_SET+MySysUser.id());
         resultFromRedis.add(result720);
         CalculateUtil.findIntersectionNew(response,resultFromRedis);
         Collections.sort(response);
@@ -209,8 +226,8 @@ public class StaticController {
     public JsonResp getConditions(
     ) {
         //公共的获取初始化组合集合
-        List<String> conditions= redisUtil.rangeList(RedisConstant.USER_CONDITION+MySysUser.id(),
-                0,-1);
+        List<String> conditions=
+                redisUtil.hStrValues(RedisConstant.USER_CONDITION+MySysUser.id());
         List<SelectCondition> conditionsResult=Lists.newArrayList();
         for(String str:conditions){
             SelectCondition con= JSONObject.parseObject(str,SelectCondition.class);
@@ -220,6 +237,26 @@ public class StaticController {
 
     }
 
+    @PostMapping("/delConditionById")
+    @ResponseBody
+    public JsonResp delConditionById(
+            String id
+    ) {
+        redisUtil.hdel(RedisConstant.USER_UUID_SET+MySysUser.id(),id);
+        redisUtil.hdel(RedisConstant.USER_CONDITION+MySysUser.id(),id);
+        return JsonResp.success("ok");
+
+    }
+
+    @PostMapping("/getConditionById")
+    @ResponseBody
+    public JsonResp getConditionById(
+            String id
+    ) {
+        String conditionStr= redisUtil.hget(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),id);
+        return JsonResp.success(conditionStr);
+
+    }
 
 
 

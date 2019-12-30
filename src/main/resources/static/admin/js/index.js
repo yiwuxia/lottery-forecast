@@ -359,11 +359,30 @@ layui.config({
         });
     }
 
-
+    /**
+     * 删除条件
+     */
     $("#condition-table").on('click',"button[class='del-condition']" ,function() {
         var id = $(this).parent().parent().find(".con-id");
         console.log(id.eq(0).val());
+        //去后台删除掉
+        $.post("/stat/delConditionById",{id:id.eq(0).val()}, function(res) {
+            console.log(res);
+            id.parent().parent().remove();//移除当前的条件行
+            initCombinationTable();
+        });
+    });
 
+    /**
+     * 修改条件
+     */
+    $("#condition-table").on('click',"button[class='edit-condition']" ,function() {
+        var idObj = $(this).parent().parent().find(".con-id");
+        console.log(idObj.eq(0).val());
+        //去后台删除掉
+        $.post("/stat/getConditionById",{id:idObj.eq(0).val()}, function(res) {
+            console.log(res);
+        });
     });
 
 
@@ -376,7 +395,7 @@ layui.config({
             var str="<tr><td><input class='con-id' type='hidden' value='"+condition.id+"' /> "+condition.type+"</td><td>"+condition.content
                 +"</td><td>"+condition.count+"</td><td>" +
                 "<input type='checkbox'>容错" +
-                "</td><td> <button type='button' >编 辑</button>" +
+                "</td><td> <button type='button'  class='edit-condition'>编 辑</button>" +
                 "</td><td><button type='button' class='del-condition'>删 除</button></td>" +
                 "</tr>";
             conditionTable.append(str);
