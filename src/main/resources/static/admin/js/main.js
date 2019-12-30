@@ -114,12 +114,10 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         }
         $.post("/stat/getTrendCalcData",params, function(res) {
                 layer.close(layer.index);
-                console.log(res.data);
                 var conditionTable=$("#condition-table",window.parent.document);
             conditionTable.empty();
             for (var i = 0; i <res.data.length ; i++) {
                 var condition=res.data[i];
-                console.log(condition);
                 var str="<tr><td>"+condition.type+"</td><td>"+condition.content
                     +"</td><td>"+condition.count+"</td><td>" +
                     "<input type='checkbox'>容错" +

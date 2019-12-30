@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="icon" href="${site.logo}">
+
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all" />
     <link rel="stylesheet" th:href="@{/static/layui/css/bootstrap.min.css}" media="all" />
     <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
@@ -237,9 +237,86 @@
 
 </div>
 
+ <!--胆码条件修改-->
+<div class="modal fade" id="danmaConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog num-select">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    胆码
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: left;">
+                <div>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"  value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="5"> 5
+                    </label>
+                </div>
+                <div>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"  value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"  value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"   value="10"> 10
+                    </label>
+                    <hr />
+                </div>
+                <div style="text-align: left;">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="0"> 0
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="3"> 3
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="danmaOk">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 
+<script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/leftNav.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/index.js}"></script>
 </body>

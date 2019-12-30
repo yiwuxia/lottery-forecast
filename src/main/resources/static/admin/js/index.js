@@ -364,13 +364,60 @@ layui.config({
      */
     $("#condition-table").on('click',"button[class='del-condition']" ,function() {
         var id = $(this).parent().parent().find(".con-id");
-        console.log(id.eq(0).val());
         //去后台删除掉
         $.post("/stat/delConditionById",{id:id.eq(0).val()}, function(res) {
-            console.log(res);
             id.parent().parent().remove();//移除当前的条件行
             initCombinationTable();
         });
+    });
+
+    //处理胆码条件修改
+    function handlerDanMa(regions,occurs){
+        var regionArr=regions.split(",");
+        var occursArr=occurs.split(",");
+        //弹出修改窗,动态复制
+        $('#danmaConditionWin').modal('show');
+        //
+        $("#danmaConditionWin input:checkbox[name='region']").each(function () {
+            var cbVal=$(this).val();
+            if ($.inArray(cbVal, regionArr)>=0){
+                $(this).prop("checked",true); //标准写法，推荐！
+            }
+        });
+        $("#danmaConditionWin input:checkbox[name='occurs']").each(function () {
+            var cbVal=$(this).val();
+            if ($.inArray(cbVal, occursArr)>=0){
+                $(this).prop("checked",true); //标准写法，推荐！
+            }
+        });
+
+    }
+
+    /**
+     * 胆码条件修改确定
+     */
+    $("#danmaOk").click(function(){
+        var regions= "";
+        var regionCbNum=0;
+        $("#danmaConditionWin input:checkbox[name='region']:checked").each(function () {
+            regions+= $(this).val() + ",";
+            regionCbNum=regionCbNum+1;
+        });
+        var occurs= "";
+        var occursCbNum=0;
+        $("#danmaConditionWin input:checkbox[name='occurs']:checked").each(function () {
+            occurs+= $(this).val() + ",";
+            occursCbNum=occursCbNum+1;
+        });
+
+        console.log(regions);
+        console.log(occurs);
+        if (regionCbNum==0 || occursCbNum==0){
+            alert("wrong select");
+            $('#danmaConditionWin').modal('hide');
+        }
+
+
     });
 
     /**
@@ -378,10 +425,16 @@ layui.config({
      */
     $("#condition-table").on('click',"button[class='edit-condition']" ,function() {
         var idObj = $(this).parent().parent().find(".con-id");
-        console.log(idObj.eq(0).val());
         //去后台删除掉
         $.post("/stat/getConditionById",{id:idObj.eq(0).val()}, function(res) {
             console.log(res);
+            var conditions=res.data;
+            var arr=conditions.split(";");
+            if (arr[0]==1){
+                var regions=arr[1];
+                var occurs=arr[2];
+                handlerDanMa(regions,occurs);
+            }
         });
     });
 
