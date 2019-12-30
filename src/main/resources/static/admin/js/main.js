@@ -113,7 +113,7 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             occurTimes:occur2Arr.join(","),
         }
         $.post("/stat/getTrendCalcData",params, function(res) {
-                layer.close(layer.index);
+
                 var conditionTable=$("#condition-table",window.parent.document);
             conditionTable.empty();
             for (var i = 0; i <res.data.length ; i++) {
@@ -144,6 +144,8 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                         "</tr>";
                     table.append(trStr);
                 }
+                //关闭最新的弹窗
+                layer.close(layer.index);
             });
 
         });
