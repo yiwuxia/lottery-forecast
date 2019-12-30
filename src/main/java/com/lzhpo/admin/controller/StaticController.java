@@ -131,6 +131,7 @@ public class StaticController {
                         JSON.toJSONString(danma));
                 // //将条件缓存起来
            // redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+            //table record show
                 redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
 
                 //将条件关键数值放入redis
@@ -140,6 +141,7 @@ public class StaticController {
                 buffer.append(StringUtils.collectionToCommaDelimitedString(region));
                 buffer.append(";");
                 buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
+                //pure data for deal
                 redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
 
         }
