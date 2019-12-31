@@ -1451,4 +1451,6 @@ public class PrizeDataService {
         redisUtil.hdel(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),id);
 
     }
+
+
 }

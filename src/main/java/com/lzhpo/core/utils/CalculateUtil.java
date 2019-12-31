@@ -1,6 +1,7 @@
 package com.lzhpo.core.utils;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.checkerframework.checker.units.qual.C;
@@ -19,6 +20,10 @@ public class CalculateUtil {
     private static final Integer[] firsts = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private static final Integer[] seconds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private static final Integer[] thirds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    private static  final  Set<Integer> zhishuList= Sets.newHashSet(1, 2, 3, 5, 7);
+   // private static  final  Set<Integer> heshuList=Sets.newHashSet(4,6,8,9,10);
+
 
 
     /**
@@ -222,6 +227,19 @@ public class CalculateUtil {
         return list;
     }
 
+    /**
+     * 判断一个数是质数
+     * true  质数
+     * false 合数
+     */
+
+    public static boolean isPrimeNumber(Integer num){
+        return  zhishuList.contains(num);
+    }
+
+    public static boolean isPrimeNumber(String num){
+        return  zhishuList.contains(Integer.valueOf(num));
+    }
 
 
 }
