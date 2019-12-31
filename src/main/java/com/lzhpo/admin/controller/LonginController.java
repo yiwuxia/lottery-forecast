@@ -204,6 +204,8 @@ public class LonginController {
                 ResponseEntity responseEntity = new ResponseEntity();
                 responseEntity.setSuccess(Boolean.TRUE);
                 responseEntity.setAny("url","index");
+                //清空改用户下的数据
+                //deleteUserRedisData();
                 return responseEntity;
             }else {
                 return ResponseEntity.failure(errorMsg);

@@ -11,6 +11,8 @@ layui.config({
         url : "/admin/user/getUserMenu" //获取菜单json地址
     });
 
+    var updateConditionId='';
+
     //更换皮肤
     function skins(){
         var skin = window.sessionStorage.getItem("skin");
@@ -375,6 +377,8 @@ layui.config({
     function handlerDanMa(regions,occurs,uuid){
         var regionArr=regions.split(",");
         var occursArr=occurs.split(",");
+        //当前修改条件的id
+        updateConditionId=uuid;
         //弹出修改窗,动态复制
         $('#danmaConditionWin').modal('show');
         //
@@ -394,28 +398,110 @@ layui.config({
     }
 
     /**
+     * 修改定位码的条件
+     * @param firsts
+     * @param seconds
+     * @param thirds
+     * @param occurs
+     * @param uuid
+     */
+    function handlerDingweima(firsts,seconds,thirds,occurs,uuid){
+        updateConditionId=uuid;
+        var firstArr=firsts.split(",");
+        var secondArr=seconds.split(",");
+        var thirdArr=thirds.split(",");
+        var occurs=occurs.split(",");
+        $('#dingweimaConditionWin').modal('show');
+        $("#dingweimaConditionWin input:checkbox[name='first']").each(function () {
+            var cbVal=$(this).val();
+            if ($.inArray(cbVal, firstArr)>=0){
+                $(this).prop("checked",true); //标准写法，推荐！
+            }
+        });
+        $("#dingweimaConditionWin input:checkbox[name='second']").each(function () {
+            var cbVal=$(this).val();
+            if ($.inArray(cbVal, secondArr)>=0){
+                $(this).prop("checked",true); //标准写法，推荐！
+            }
+        });
+        $("#dingweimaConditionWin input:checkbox[name='third']").each(function () {
+            var cbVal=$(this).val();
+            if ($.inArray(cbVal, thirdArr)>=0){
+                $(this).prop("checked",true); //标准写法，推荐！
+            }
+        });
+        $("#dingweimaConditionWin input:checkbox[name='occurs']").each(function () {
+            var cbVal=$(this).val();
+            if ($.inArray(cbVal, occurs)>=0){
+                $(this).prop("checked",true); //标准写法，推荐！
+            }
+        });
+    }
+
+    function getCheckValuesFromModal(modalId,cbName){
+        var str= "";
+        $("#"+modalId+" input:checkbox[name='"+cbName+"']:checked").each(function () {
+            str+= $(this).val() + ",";
+        });
+        if (str.substr(str.length-1)==','){
+            str=str.substring(0,str.length-1);
+        }
+        return str;
+    }
+
+    /**
+     * 对定位码的修改确定定义点击事件
+     */
+        $("#dingweimaOk").click(function(){
+            var firsts=getCheckValuesFromModal("dingweimaConditionWin","first");
+            var seconds=getCheckValuesFromModal("dingweimaConditionWin","second");
+            var thirds=getCheckValuesFromModal("dingweimaConditionWin","third");
+            var occurs=getCheckValuesFromModal("dingweimaConditionWin","occurs");
+            //第一位,第二位,第三位必须选一个
+            if (occurs.length==0 || (firsts.length==0 && seconds.length==0 && thirds.length==0 )) {
+                alert("wrong select");
+            }else{
+                var params={
+                    firstPredict:firsts,
+                    secondPredict: seconds,
+                    thirdPredict: thirds,
+                    occurTimes: occurs,
+                    uuid: updateConditionId
+                };
+                console.log(params);
+                $.post("/stat/dingweimaConditionChange",params, function(res) {
+                    $('#dingweimaConditionWin').modal('hide');
+                    location.reload();
+                });
+            }
+
+
+        });
+
+
+
+
+    /**
      * 胆码条件修改确定
      */
     $("#danmaOk").click(function(){
-        var regions= "";
-        var regionCbNum=0;
-        $("#danmaConditionWin input:checkbox[name='region']:checked").each(function () {
-            regions+= $(this).val() + ",";
-            regionCbNum=regionCbNum+1;
-        });
-        var occurs= "";
-        var occursCbNum=0;
-        $("#danmaConditionWin input:checkbox[name='occurs']:checked").each(function () {
-            occurs+= $(this).val() + ",";
-            occursCbNum=occursCbNum+1;
-        });
-
-        console.log(regions);
-        console.log(occurs);
-        if (regionCbNum==0 || occursCbNum==0){
+        var regions= getCheckValuesFromModal("danmaConditionWin","region");
+        var occurs= getCheckValuesFromModal("danmaConditionWin","occurs");
+        //没有选择，不操作
+        if (regions.length==0 || occurs.length==0){
             alert("wrong select");
-            $('#danmaConditionWin').modal('hide');
+        }else {
+            var params={
+                regions:regions,
+                occurs: occurs,
+                uuid: updateConditionId
+            };
+            $.post("/stat/danmaConditionChange",params, function(res) {
+                $('#danmaConditionWin').modal('hide');
+                location.reload();
+            });
         }
+
 
 
     });
@@ -426,7 +512,6 @@ layui.config({
     $("#condition-table").on('click',"button[class='edit-condition']" ,function() {
         var idObj = $(this).parent().parent().find(".con-id");
         var uuid=idObj.eq(0).val();
-        console.log(idObj);
         //去后台删除掉
         $.post("/stat/getConditionById",{id:uuid}, function(res) {
             console.log(res);
@@ -436,6 +521,13 @@ layui.config({
                 var regions=arr[1];
                 var occurs=arr[2];
                 handlerDanMa(regions,occurs,uuid);
+            }
+            if (arr[0]==2){
+                var firsts=arr[1];
+                var seconds=arr[2]
+                var thirds=arr[3];
+                var occurs=arr[4];
+                handlerDingweima(firsts,seconds,thirds,occurs,uuid);
             }
         });
     });

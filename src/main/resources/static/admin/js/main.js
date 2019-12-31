@@ -99,6 +99,7 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         for (var j =1 ; j <=occur2; j++) {
             occur2Arr.push(j);
         }
+        //必须要选择
         if (occur1Arr.length+occur2Arr.length==0){
             layer.msg('所选数字不能为空');
             return;

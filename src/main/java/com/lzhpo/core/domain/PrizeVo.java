@@ -10,7 +10,7 @@ public class PrizeVo {
     private Integer id;
     private String termNo;
     private String [] prizeNums;
-    private String [] region;
+    private String [] region;//胆码分布
     private String [] first;
     private String [] second;
     private String [] third;

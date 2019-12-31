@@ -2,8 +2,11 @@ package com.lzhpo.core.service;
 
 import com.google.common.collect.Lists;
 import com.lzhpo.admin.entity.vo.SelectCondition;
+import com.lzhpo.common.config.MySysUser;
+import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.*;
 import com.lzhpo.core.utils.CalculateUtil;
+import com.lzhpo.core.utils.RedisConstant;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -33,6 +36,10 @@ public class PrizeDataService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
 
 
     /**
@@ -77,6 +84,7 @@ public class PrizeDataService {
             PrizeVo vo = new PrizeVo();
             vo.setId(entity.getId());
             vo.setTermNo(entity.getTermNo());
+            //前3开奖号码
             String[] prizeNumArr = {entity.getPrizeNo01(), entity.getPrizeNo02(), entity.getPrizeNo03()};
             vo.setPrizeNums(prizeNumArr);
             //第一条数据
@@ -95,6 +103,7 @@ public class PrizeDataService {
                 String[] pre_first = preVo.getFirst();
                 String[] pre_second = preVo.getSecond();
                 String[] pre_third = preVo.getThird();
+                //每条数据和上一条比较，如果该位置为no。根据上一条同位置是否为no.来计算计数值。
                 arrValueStatics(region, pre_region);
                 arrValueStatics(first, pre_first);
                 arrValueStatics(second, pre_second);
@@ -124,6 +133,7 @@ public class PrizeDataService {
 
     }
 
+    //判断该位置是否显示了对应的数字
     private void staticFirstRecord(PrizeVo vo, PrizeInfoEntity entity) {
         int num1 = Integer.valueOf(entity.getPrizeNo01());
         int num2 = Integer.valueOf(entity.getPrizeNo02());
@@ -1431,5 +1441,14 @@ public class PrizeDataService {
     }
 
 
+    public void deleteTrendConditionById(String id) {
 
+        //删除该条件对应的数据集合
+        redisUtil.hdel(RedisConstant.USER_UUID_SET+ MySysUser.id(),id);
+        //删除对应的条件 表格视图展示(含汉字)
+        redisUtil.hdel(RedisConstant.USER_CONDITION+MySysUser.id(),id);
+        //删除对应的条件 表格处理数据(只包含要处理的数据)
+        redisUtil.hdel(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),id);
+
+    }
 }

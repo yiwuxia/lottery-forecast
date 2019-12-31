@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.lzhpo.admin.entity.vo.SelectCondition;
 import com.lzhpo.admin.service.MenuService;
 import com.lzhpo.admin.service.UserService;
@@ -13,7 +12,6 @@ import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.PrizeDetailVo;
 import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
-import com.lzhpo.core.domain.TrendCode;
 import com.lzhpo.core.service.PrizeDataService;
 import com.lzhpo.core.utils.*;
 import org.apache.commons.collections.CollectionUtils;
@@ -22,6 +20,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+//import org.springframework.util.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +31,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <p> Author：lzhpo </p>
@@ -105,16 +104,16 @@ public class StaticController {
             String occurTimes
     ) {
         //从字符串中解析出待处理数据
-        List<Integer> region= intCommonsStrToList(regionsPredict);
-        List<Integer> first= intCommonsStrToList(firstPredict);
-        List<Integer> second= intCommonsStrToList(secondPredict);
-        List<Integer> third= intCommonsStrToList(thirdPredict);
-        List<Integer> regionOccurs= intCommonsStrToList(occurTimesRegion);
-        List<Integer> occurs= intCommonsStrToList(occurTimes);
+        List<Integer> region= CalculateUtil.intCommonsStrToList(regionsPredict);
+        List<Integer> first= CalculateUtil.intCommonsStrToList(firstPredict);
+        List<Integer> second= CalculateUtil.intCommonsStrToList(secondPredict);
+        List<Integer> third= CalculateUtil.intCommonsStrToList(thirdPredict);
+        List<Integer> regionOccurs= CalculateUtil.intCommonsStrToList(occurTimesRegion);
+        List<Integer> occurs= CalculateUtil.intCommonsStrToList(occurTimes);
         List<SelectCondition> conditions=Lists.newArrayList();
         //生成胆码条件
         if (regionOccurs.size()>0){
-            SelectCondition selectCondition=saveTrendRegionDataToRedis(region,regionOccurs);
+            SelectCondition selectCondition=saveTrendRegionDataToRedis(region,regionOccurs, null);
             conditions.add(selectCondition);
         }
         if (occurs.size()>0){
@@ -168,21 +167,27 @@ public class StaticController {
      * 根据胆码的基本信息，计算并保存胆码的一切缓存信息。
      * @param region
      * @param regionOccurs
+     * @param uuid
      * @return
      */
-    private SelectCondition saveTrendRegionDataToRedis(List<Integer> region, List<Integer> regionOccurs) {
+    private SelectCondition saveTrendRegionDataToRedis(List<Integer> region, List<Integer> regionOccurs, String uuid) {
 
+        String conditionId="";
+        if (org.apache.commons.lang3.StringUtils.isBlank(uuid)){
+            conditionId=System.currentTimeMillis()+"";
+        }else {
+            conditionId=uuid;
+        }
         Set<String> danma=  CalculateUtil.calcDanMa(region,regionOccurs);
         SelectCondition condition=new SelectCondition();
         StringBuffer buffer=new StringBuffer();
         condition.setType("胆码");
         condition.setCount(danma.size());
-        condition.setId(System.currentTimeMillis()+"");
+        condition.setId(conditionId);
         buffer.append(org.springframework.util.StringUtils.collectionToCommaDelimitedString(region));
         buffer.append("  出");
         buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
         condition.setContent(buffer.toString());
-
         //将id对应的数据集合放入redis
         redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
                 condition.getId(),
@@ -205,14 +210,7 @@ public class StaticController {
     }
 
 
-    private List<Integer> intCommonsStrToList(String regionsPredict) {
-        List<Integer> list =new ArrayList<>();
-        String [] arr= org.springframework.util.StringUtils.commaDelimitedListToStringArray(regionsPredict);
-        for (String s : arr){
-            list.add(Integer.valueOf(s));
-        }
-        return list;
-    }
+
 
 
 
@@ -246,6 +244,7 @@ public class StaticController {
             SelectCondition con= JSONObject.parseObject(str,SelectCondition.class);
             conditionsResult.add(con);
         }
+        conditionsResult.stream().sorted(Comparator.comparing(SelectCondition::getId));
         return JsonResp.success(conditionsResult);
 
     }
@@ -255,14 +254,11 @@ public class StaticController {
     public JsonResp delConditionById(
             String id
     ) {
-        //删除该条件对应的数据集合
-        redisUtil.hdel(RedisConstant.USER_UUID_SET+MySysUser.id(),id);
-        //删除对应的条件 表格视图展示(含汉字)
-        redisUtil.hdel(RedisConstant.USER_CONDITION+MySysUser.id(),id);
-        //删除对应的条件 表格处理数据(只包含要处理的数据)
-        redisUtil.hdel(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),id);
+        prizeDataService.deleteTrendConditionById(id);
         return JsonResp.success("ok");
     }
+
+
 
     @PostMapping("/getConditionById")
     @ResponseBody
@@ -274,6 +270,40 @@ public class StaticController {
 
     }
 
+    @PostMapping("/danmaConditionChange")
+    @ResponseBody
+    public JsonResp danmaConditionChange(
+          String   regions,
+          String  occurs,
+          String uuid
+    ) {
+        List<Integer>  regionsList=CalculateUtil.intCommonsStrToList(regions);
+        List<Integer>  occursList=CalculateUtil.intCommonsStrToList(occurs);
+        if (occursList.size()>0){
+            //先删除再更新
+            prizeDataService.deleteTrendConditionById(uuid);
+            saveTrendRegionDataToRedis(regionsList,occursList,uuid);
+        }
+        return JsonResp.success("ok");
+    }
 
-
+    @PostMapping("/dingweimaConditionChange")
+    @ResponseBody
+    public JsonResp dingweimaConditionChange(
+            String firstPredict,
+            String secondPredict,
+            String thirdPredict,
+            String occurTimes,String uuid
+    ) {
+        List<Integer> first= CalculateUtil.intCommonsStrToList(firstPredict);
+        List<Integer> second= CalculateUtil.intCommonsStrToList(secondPredict);
+        List<Integer> third= CalculateUtil.intCommonsStrToList(thirdPredict);
+        List<Integer> occurs= CalculateUtil.intCommonsStrToList(occurTimes);
+        if (occurs.size()>0){
+            //先删除再更新
+            prizeDataService.deleteTrendConditionById(uuid);
+            saveTrendFirstSecondThirdDataToRedis(first,second,third,occurs);
+        }
+        return JsonResp.success("ok");
+    }
 }
