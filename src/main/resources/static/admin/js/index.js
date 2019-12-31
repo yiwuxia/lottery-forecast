@@ -372,7 +372,7 @@ layui.config({
     });
 
     //处理胆码条件修改
-    function handlerDanMa(regions,occurs){
+    function handlerDanMa(regions,occurs,uuid){
         var regionArr=regions.split(",");
         var occursArr=occurs.split(",");
         //弹出修改窗,动态复制
@@ -425,15 +425,17 @@ layui.config({
      */
     $("#condition-table").on('click',"button[class='edit-condition']" ,function() {
         var idObj = $(this).parent().parent().find(".con-id");
+        var uuid=idObj.eq(0).val();
+        console.log(idObj);
         //去后台删除掉
-        $.post("/stat/getConditionById",{id:idObj.eq(0).val()}, function(res) {
+        $.post("/stat/getConditionById",{id:uuid}, function(res) {
             console.log(res);
             var conditions=res.data;
             var arr=conditions.split(";");
             if (arr[0]==1){
                 var regions=arr[1];
                 var occurs=arr[2];
-                handlerDanMa(regions,occurs);
+                handlerDanMa(regions,occurs,uuid);
             }
         });
     });

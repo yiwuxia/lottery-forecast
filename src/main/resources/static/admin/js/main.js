@@ -114,7 +114,10 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         }
         $.post("/stat/getTrendCalcData",params, function(res) {
 
-                var conditionTable=$("#condition-table",window.parent.document);
+            layer.close(layer.index);
+            parent.location.reload();
+
+               /* var conditionTable=$("#condition-table",window.parent.document);
             conditionTable.empty();
             for (var i = 0; i <res.data.length ; i++) {
                 var condition=res.data[i];
@@ -146,7 +149,8 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                 }
                 //关闭最新的弹窗
                 layer.close(layer.index);
-            });
+                parent.location.reload();
+            });*/
 
         });
 

@@ -104,7 +104,7 @@ public class StaticController {
             String occurTimesRegion,
             String occurTimes
     ) {
-
+        //从字符串中解析出待处理数据
         List<Integer> region= intCommonsStrToList(regionsPredict);
         List<Integer> first= intCommonsStrToList(firstPredict);
         List<Integer> second= intCommonsStrToList(secondPredict);
@@ -114,84 +114,95 @@ public class StaticController {
         List<SelectCondition> conditions=Lists.newArrayList();
         //生成胆码条件
         if (regionOccurs.size()>0){
-               Set<String> danma=  CalculateUtil.calcDanMa(region,regionOccurs);
-                SelectCondition condition=new SelectCondition();
-                StringBuffer buffer=new StringBuffer();
-                condition.setType("胆码");
-                condition.setCount(danma.size());
-                condition.setId(System.currentTimeMillis()+"");
-                buffer.append(org.springframework.util.StringUtils.collectionToCommaDelimitedString(region));
-                buffer.append("  出");
-                buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
-                condition.setContent(buffer.toString());
-                conditions.add(condition);
-                //将id对应的数据集合放入redis
-                redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
-                        condition.getId(),
-                        JSON.toJSONString(danma));
-                // //将条件缓存起来
-           // redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
-            //table record show
-                redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
-
-                //将条件关键数值放入redis
-                 buffer=new StringBuffer();
-                buffer.append(ConditionEnum.DANMA.getIndex());
-                buffer.append(";");
-                buffer.append(StringUtils.collectionToCommaDelimitedString(region));
-                buffer.append(";");
-                buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
-                //pure data for deal
-                redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
-
+            SelectCondition selectCondition=saveTrendRegionDataToRedis(region,regionOccurs);
+            conditions.add(selectCondition);
         }
         if (occurs.size()>0){
-            Set<String> dingweima=  CalculateUtil.calcDingweiMa(first,second,third,occurs);
-            SelectCondition condition=new SelectCondition();
-            StringBuffer buffer=new StringBuffer();
-            condition.setType("定位码");
-            condition.setCount(dingweima.size());
-            condition.setId(System.currentTimeMillis()+"");
-            if (CollectionUtils.isNotEmpty(first)){
-                buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(first));
-            }
-            if (CollectionUtils.isNotEmpty(second)){
-                buffer.append("第二位:").append(StringUtils.collectionToCommaDelimitedString(second));
-            }
-            if (CollectionUtils.isNotEmpty(third)){
-                buffer.append("第三位:").append(StringUtils.collectionToCommaDelimitedString(third));
-            }
-            buffer.append("  出");
-            buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
-            condition.setContent(buffer.toString());
-            conditions.add(condition);
-            redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
-                    condition.getId(),
-                    JSON.toJSONString(dingweima));
-            //将条件缓存起来
-            redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
-            buffer=new StringBuffer();
-            buffer.append(ConditionEnum.DINGWEIMA.getIndex());
-            buffer.append(";");
-            buffer.append(StringUtils.collectionToCommaDelimitedString(first));
-            buffer.append(";");
-            buffer.append(StringUtils.collectionToCommaDelimitedString(second));
-            buffer.append(";");
-            buffer.append(StringUtils.collectionToCommaDelimitedString(third));
-            buffer.append(";");
-            buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
-            redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
-
+            SelectCondition selectCondition=
+                    saveTrendFirstSecondThirdDataToRedis(first,second,third,occurs);
+            conditions.add(selectCondition);
         }
         //将条件存到redis中。只有页面删除时才删除。
         return JsonResp.success(conditions);
     }
 
+    private SelectCondition saveTrendFirstSecondThirdDataToRedis(List<Integer> first, List<Integer> second, List<Integer> third, List<Integer> occurs) {
+        Set<String> dingweima=  CalculateUtil.calcDingweiMa(first,second,third,occurs);
+        SelectCondition condition=new SelectCondition();
+        StringBuffer buffer=new StringBuffer();
+        condition.setType("定位码");
+        condition.setCount(dingweima.size());
+        condition.setId(System.currentTimeMillis()+"");
+        if (CollectionUtils.isNotEmpty(first)){
+            buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(first));
+        }
+        if (CollectionUtils.isNotEmpty(second)){
+            buffer.append("第二位:").append(StringUtils.collectionToCommaDelimitedString(second));
+        }
+        if (CollectionUtils.isNotEmpty(third)){
+            buffer.append("第三位:").append(StringUtils.collectionToCommaDelimitedString(third));
+        }
+        buffer.append("  出");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
+        condition.setContent(buffer.toString());
+        redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
+                condition.getId(),
+                JSON.toJSONString(dingweima));
+        //将条件缓存起来
+        redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
+        buffer=new StringBuffer();
+        buffer.append(ConditionEnum.DINGWEIMA.getIndex());
+        buffer.append(";");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(first));
+        buffer.append(";");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(second));
+        buffer.append(";");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(third));
+        buffer.append(";");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
+        redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
+        return  condition;
+    }
 
+    /**
+     * 根据胆码的基本信息，计算并保存胆码的一切缓存信息。
+     * @param region
+     * @param regionOccurs
+     * @return
+     */
+    private SelectCondition saveTrendRegionDataToRedis(List<Integer> region, List<Integer> regionOccurs) {
 
+        Set<String> danma=  CalculateUtil.calcDanMa(region,regionOccurs);
+        SelectCondition condition=new SelectCondition();
+        StringBuffer buffer=new StringBuffer();
+        condition.setType("胆码");
+        condition.setCount(danma.size());
+        condition.setId(System.currentTimeMillis()+"");
+        buffer.append(org.springframework.util.StringUtils.collectionToCommaDelimitedString(region));
+        buffer.append("  出");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
+        condition.setContent(buffer.toString());
 
+        //将id对应的数据集合放入redis
+        redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
+                condition.getId(),
+                JSON.toJSONString(danma));
+        // //将条件缓存起来
+        // redisUtil.lSet(RedisConstant.USER_CONDITION+MySysUser.id(),JSON.toJSONString(condition));
+        //table record show
+        redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
 
-
+        //将条件关键数值放入redis
+        buffer=new StringBuffer();
+        buffer.append(ConditionEnum.DANMA.getIndex());
+        buffer.append(";");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(region));
+        buffer.append(";");
+        buffer.append(StringUtils.collectionToCommaDelimitedString(regionOccurs));
+        //pure data for deal
+        redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
+        return    condition;
+    }
 
 
     private List<Integer> intCommonsStrToList(String regionsPredict) {
@@ -244,10 +255,13 @@ public class StaticController {
     public JsonResp delConditionById(
             String id
     ) {
+        //删除该条件对应的数据集合
         redisUtil.hdel(RedisConstant.USER_UUID_SET+MySysUser.id(),id);
+        //删除对应的条件 表格视图展示(含汉字)
         redisUtil.hdel(RedisConstant.USER_CONDITION+MySysUser.id(),id);
+        //删除对应的条件 表格处理数据(只包含要处理的数据)
+        redisUtil.hdel(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),id);
         return JsonResp.success("ok");
-
     }
 
     @PostMapping("/getConditionById")
