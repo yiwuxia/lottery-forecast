@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -78,7 +79,45 @@ public class LzhpoShiroApplicationTests {
                 dragonPhoenixVo.setPhoenComposite("ok,合");
                 dragonPhoenixVo.setPhoenPrime("no,1");
             }
+            //龙头在0路
+            if (head%3==0){
+                dragonPhoenixVo.setDragonArea0("ok,0");
+                dragonPhoenixVo.setDragonArea1("no,1");
+                dragonPhoenixVo.setDragonArea2("no,1");
+                //龙头在1路
+            }else if (head%3==1){
+                dragonPhoenixVo.setDragonArea1("ok,1");
+                dragonPhoenixVo.setDragonArea0("no,1");
+                dragonPhoenixVo.setDragonArea2("no,1");
+                //龙头在2路
+            }else if (head%3==2){
+                dragonPhoenixVo.setDragonArea2("ok,2");
+                dragonPhoenixVo.setDragonArea0("no,1");
+                dragonPhoenixVo.setDragonArea1("no,1");
+            }
 
+            //凤尾在0路
+            if (tail%3==0){
+                dragonPhoenixVo.setPhoenArea0("ok,0");
+                dragonPhoenixVo.setPhoenArea1("no,1");
+                dragonPhoenixVo.setPhoenArea2("no,1");
+                //龙头在1路
+            }else if (tail%3==1){
+                dragonPhoenixVo.setPhoenArea1("ok,1");
+                dragonPhoenixVo.setPhoenArea0("no,1");
+                dragonPhoenixVo.setPhoenArea2("no,1");
+                //龙头在2路
+            }else if (tail%3==2){
+                dragonPhoenixVo.setPhoenArea2("ok,2");
+                dragonPhoenixVo.setPhoenArea0("no,1");
+                dragonPhoenixVo.setPhoenArea1("no,1");
+            }
+            //0路个数
+            List<Integer> numsThree=Lists.newArrayList(origin.getPrizeNo01(),origin.getPrizeNo02(),origin.getPrizeNo03()).stream().
+                    map(s->Integer.valueOf(s)).collect(Collectors.toList());
+           int area0Nums=CalculateUtil.getAreaNums(numsThree,0);
+           int area1Nums=CalculateUtil.getAreaNums(numsThree,1);
+           int area2Nums=CalculateUtil.getAreaNums(numsThree,2);
 
 
         }
