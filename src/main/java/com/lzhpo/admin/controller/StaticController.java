@@ -13,15 +13,16 @@ import com.lzhpo.core.domain.PrizeDetailVo;
 import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
 import com.lzhpo.core.service.PrizeDataService;
-import com.lzhpo.core.utils.*;
+import com.lzhpo.core.utils.CalculateUtil;
+import com.lzhpo.core.utils.ConditionEnum;
+import com.lzhpo.core.utils.JsonResp;
+import com.lzhpo.core.utils.RedisConstant;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-//import org.springframework.util.StringUtils;
-//import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,12 +31,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+
+//import org.springframework.util.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p> Author：lzhpo </p>
  * <p> Title：</p>
- * <p> Description：</p>
+ * <p> Description：主要是基本走势</p>
  */
 @Controller
 @RequestMapping("/stat")
@@ -91,7 +98,7 @@ public class StaticController {
      * 1，判断是否会产生条件
      * 2，如果会产生条件，生成条件对象，uuid为键，生成条件对应一个数据集
      * 每个用户的每个条件都会对应一份集合数据。
-     *
+     * 目前数据是每次请求实时计算出来的，其实可以在入库的时候计算好。有空再改 free to code
      */
     @PostMapping("/getTrendCalcData")
     @ResponseBody

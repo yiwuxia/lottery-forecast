@@ -75,7 +75,7 @@ public class PrizeDataService {
 
 
     public List<PrizeVo> getPrizeVoList() {
-
+        //原始数据(接口返回的数据)
         List<PrizeInfoEntity> remoteList = queryPrizeDataLimit();
         remoteList.sort(comparingInt(PrizeInfoEntity::getId));
         List<PrizeVo> voList = new ArrayList<>(remoteList.size());
