@@ -59,8 +59,10 @@ public class DragonController {
         //龙头凤尾显示页面统计数据（不包括最后三列）
         List<DragonPhoenixVo> listResult=dataService.getDragonAndPhoenIndexList();
         List<DragonPhoenixStaticVo> bottomStatic= dataService.getDragonBottomStatics(listResult);
-
         ModelAndView mv = new ModelAndView();
+        mv.addObject("lists",listResult);
+        mv.addObject("statics",bottomStatic);
+        mv.setViewName("admin/stat/dragon");
         return mv;
     }
 

@@ -1,5 +1,6 @@
 package com.lzhpo.core.utils;
 
+import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.collections.CollectionUtils;
@@ -20,7 +21,9 @@ public class CalculateUtil {
     private static final Integer[] firsts = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private static final Integer[] seconds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private static final Integer[] thirds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
+    /**
+     * 质数合集，不是质数就是合数。
+     */
     private static  final  Set<Integer> zhishuList= Sets.newHashSet(1, 2, 3, 5, 7);
    // private static  final  Set<Integer> heshuList=Sets.newHashSet(4,6,8,9,10);
 
@@ -95,11 +98,18 @@ public class CalculateUtil {
                 for (Integer first : firsts) {
                     for (Integer second : seconds) {
                         for (Integer third : thirds) {
+                            //组合的三个数不能相同
                             if (first.equals(second) || first.equals(third) || second.equals(third)) {
                                 continue;
                             }
+                            if(checkFillConditionSelect(occur,first,second,third,firstPredict,secondPredict,thirdPredict)){
+                                result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                        + "-" + (third==10?third:"0"+third));
+                                continue;
+                            }
+                            /*//一个条件都不满足  wuxia
                             if (occur==0){
-                                if (firstPredict.contains(first) &&  secondPredict.contains(second) &&  thirdPredict.contains(third)){
+                                if (!firstPredict.contains(first) &&  !secondPredict.contains(second) &&  !thirdPredict.contains(third)){
                                     result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
                                             + "-" + (third==10?third:"0"+third));
                                     continue;
@@ -146,7 +156,7 @@ public class CalculateUtil {
                                             + "-" + (third==10?third:"0"+third));
                                     continue;
                                 }
-                            }
+                            }*/
 
                         }
                     }
@@ -154,6 +164,36 @@ public class CalculateUtil {
         }
         System.out.println(result.size());
         return result;
+    }
+
+    /***
+     * 检查定位码满足所选的几个条件
+     * @param occur
+     * @param first
+     * @param second
+     * @param third
+     * @param firstPredict
+     * @param secondPredict
+     * @param thirdPredict
+     * @return
+     */
+    private static boolean checkFillConditionSelect(Integer occur,
+                                                    Integer first, Integer second, Integer third,
+                                                    List<Integer> firstPredict,
+                                                    List<Integer> secondPredict,
+                                                    List<Integer> thirdPredict) {
+
+        int i=0;
+        if (firstPredict.contains(first)){
+            i++;
+        }
+        if (secondPredict.contains(second)){
+            i++;
+        }
+        if (thirdPredict.contains(third)){
+            i++;
+        }
+        return occur==i;
     }
 
 
@@ -217,14 +257,17 @@ public class CalculateUtil {
      * @return
      */
     public static List<Integer> intCommonsStrToList(String regionsPredict) {
-        List<Integer> list =new ArrayList<>();
+       /* List<Integer> list =new ArrayList<>();
         String [] arr= org.springframework.util.StringUtils.commaDelimitedListToStringArray(regionsPredict);
         for (String s : arr){
             if (StringUtils.isNotBlank(s)){
                 list.add(Integer.valueOf(s));
             }
-        }
-        return list;
+        }*/
+        List<String> myList= Splitter.on(",")
+                .omitEmptyStrings()
+                .splitToList(regionsPredict);
+        return myList.stream().map(s->Integer.valueOf(s)).collect(Collectors.toList());
     }
 
     /**
