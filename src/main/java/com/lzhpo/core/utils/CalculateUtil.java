@@ -242,6 +242,7 @@ public class CalculateUtil {
     }
 
 
+
     /**
      * 求出第几路元素第个数
      * @param numsThree

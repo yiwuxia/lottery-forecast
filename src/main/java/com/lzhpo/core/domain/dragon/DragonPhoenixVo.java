@@ -22,16 +22,7 @@ public class DragonPhoenixVo {
     private String prizeNo01;
     private String prizeNo02;
     private String prizeNo03;
-    /**
-     * 龙头单双
-     */
-    private String dragonSingle;
-    private String dragonDouble;
-    /**
-     * 凤尾单双
-     */
-    private String phoenSingle;
-    private String phoenDouble;
+
     /**
      * 龙头质合
      */

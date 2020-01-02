@@ -85,34 +85,6 @@ public class DragonDataService {
     private void setCurRecordByPreRecord(DragonPhoenixVo prev,
                                          DragonPhoenixVo now) {
         //如果当前值为no.且上一个也为no。则在上一个计数基础上加1
-        if (now.getDragonSingle().startsWith("no")){
-            if (prev.getDragonSingle().startsWith("no")){
-                String value=prev.getDragonSingle().split(",")[1];
-                int times=Integer.valueOf(value)+1;
-                now.setDragonSingle("no,"+times);
-            }
-        }
-        if (now.getDragonDouble().startsWith("no")){
-            if (prev.getDragonDouble().startsWith("no")){
-                String value=prev.getDragonDouble().split(",")[1];
-                int times=Integer.valueOf(value)+1;
-                now.setDragonDouble("no,"+times);
-            }
-        }
-        if (now.getPhoenSingle().startsWith("no")){
-            if (prev.getPhoenSingle().startsWith("no")){
-                String value=prev.getPhoenSingle().split(",")[1];
-                int times=Integer.valueOf(value)+1;
-                now.setPhoenSingle("no,"+times);
-            }
-        }
-        if (now.getPhoenDouble().startsWith("no")){
-            if (prev.getPhoenDouble().startsWith("no")){
-                String value=prev.getPhoenDouble().split(",")[1];
-                int times=Integer.valueOf(value)+1;
-                now.setPhoenDouble("no,"+times);
-            }
-        }
         if (now.getDragonPrime().startsWith("no")){
             if (prev.getDragonPrime().startsWith("no")){
                 String value=prev.getDragonPrime().split(",")[1];
@@ -278,21 +250,6 @@ public class DragonDataService {
         Integer head=getMinValueFromStrLists(Lists.newArrayList(origin.getPrizeNo01(),origin.getPrizeNo02(),origin.getPrizeNo03()));
         //凤尾
         Integer tail=getMaxValueFromStrLists(Lists.newArrayList(origin.getPrizeNo01(),origin.getPrizeNo02(),origin.getPrizeNo03()));
-        if (head%2==0){
-            //当期龙头出双，龙头 单  累计一次没出
-            dragonPhoenixVo.setDragonDouble("ok,双");
-            dragonPhoenixVo.setDragonSingle("no,1");
-        }else {
-            dragonPhoenixVo.setDragonSingle("ok,单");
-            dragonPhoenixVo.setDragonDouble("no,1");
-        }
-        if (tail%2==0){
-            dragonPhoenixVo.setPhoenDouble("ok,双");
-            dragonPhoenixVo.setPhoenSingle("no,1");
-        }else {
-            dragonPhoenixVo.setPhoenSingle("ok,单");
-            dragonPhoenixVo.setPhoenDouble("no,1");
-        }
         //龙头为质数
         if (CalculateUtil.isPrimeNumber(head)){
             dragonPhoenixVo.setDragonPrime("ok,质");
@@ -427,22 +384,6 @@ public class DragonDataService {
         DragonPhoenixStaticVo occurs=new DragonPhoenixStaticVo();
         DragonPhoenixStaticVo maxContinu=new DragonPhoenixStaticVo();
         DragonPhoenixStaticVo maxMiss=new DragonPhoenixStaticVo();
-        Set<Integer> dragonSingleOkList= Sets.newHashSet();
-        Set<Integer> dragonSingleNoList= Sets.newHashSet();
-        Integer dragonSingleOk=0;
-        Integer dragonSingleNo=0;
-        Set<Integer> dragonDoubleOkList= Sets.newHashSet();
-        Set<Integer> dragonDoubleNoList= Sets.newHashSet();
-        Integer dragonDoubleOk=0;
-        Integer dragonDoubleNo=0;
-        Set<Integer> phoenSingleOkList= Sets.newHashSet();
-        Set<Integer> phoenSingleNoList= Sets.newHashSet();
-        Integer phoenSingleOk=0;
-        Integer phoenSingleNo=0;
-        Set<Integer> phoenDoubleOkList= Sets.newHashSet();
-        Set<Integer> phoenDoubleNoList= Sets.newHashSet();
-        Integer phoenDoubleOk=0;
-        Integer phoenDoubleNo=0;
         Set<Integer> dragonPrimeOkList= Sets.newHashSet();
         Set<Integer> dragonPrimeNoList= Sets.newHashSet();
         Integer dragonPrimeOk=0;
@@ -532,74 +473,6 @@ public class DragonDataService {
         Integer area2Num3Ok=0;
         Integer area2Num3No=0;
         for(DragonPhoenixVo vo:listResult){
-            if (vo.getDragonSingle().startsWith("ok")){
-                if (occurs.getDragonSingle()==null){
-                    occurs.setDragonSingle(1);
-                }else{
-                    occurs.setDragonSingle(1+occurs.getDragonSingle());
-                }
-                //如果是ok,将 no的计数保存
-                dragonSingleNoList.add(dragonSingleNo);
-                dragonSingleNo=0;
-                dragonSingleOk++;
-                dragonSingleOkList.add(dragonSingleOk);
-            }else {
-                dragonSingleOkList.add(dragonSingleOk);
-                dragonSingleOk=0;
-                dragonSingleNo++;
-                dragonSingleNoList.add(dragonSingleNo);
-            }
-            if (vo.getDragonDouble().startsWith("ok")){
-                if (occurs.getDragonDouble()==null){
-                    occurs.setDragonDouble(1);
-                }else{
-                    occurs.setDragonDouble(1+occurs.getDragonDouble());
-                }
-                //如果是ok,将 no的计数保存
-                dragonDoubleNoList.add(dragonDoubleNo);
-                dragonDoubleNo=0;
-                dragonDoubleOk++;
-                dragonDoubleOkList.add(dragonDoubleOk);
-            }else {
-                dragonDoubleOkList.add(dragonDoubleOk);
-                dragonDoubleOk=0;
-                dragonDoubleNo++;
-                dragonDoubleNoList.add(dragonDoubleNo);
-            }
-            if (vo.getPhoenSingle().startsWith("ok")){
-                if (occurs.getPhoenSingle()==null){
-                    occurs.setPhoenSingle(1);
-                }else{
-                    occurs.setPhoenSingle(1+occurs.getPhoenSingle());
-                }
-                //如果是ok,将 no的计数保存
-                phoenSingleNoList.add(phoenSingleNo);
-                phoenSingleNo=0;
-                phoenSingleOk++;
-                phoenSingleOkList.add(phoenSingleOk);
-            }else {
-                phoenSingleOkList.add(phoenSingleOk);
-                phoenSingleOk=0;
-                phoenSingleNo++;
-                phoenSingleNoList.add(phoenSingleNo);
-            }
-            if (vo.getPhoenDouble().startsWith("ok")){
-                if (occurs.getPhoenDouble()==null){
-                    occurs.setPhoenDouble(1);
-                }else{
-                    occurs.setPhoenDouble(1+occurs.getPhoenDouble());
-                }
-                //如果是ok,将 no的计数保存
-                phoenDoubleNoList.add(phoenDoubleNo);
-                phoenDoubleNo=0;
-                phoenDoubleOk++;
-                phoenDoubleOkList.add(phoenDoubleOk);
-            }else {
-                phoenDoubleOkList.add(phoenDoubleOk);
-                phoenDoubleOk=0;
-                phoenDoubleNo++;
-                phoenDoubleNoList.add(phoenDoubleNo);
-            }
             if (vo.getDragonPrime().startsWith("ok")){
                 if (occurs.getDragonPrime()==null){
                     occurs.setDragonPrime(1);
@@ -978,14 +851,6 @@ public class DragonDataService {
 
         }
 
-        maxContinu.setDragonSingle(Collections.max(dragonSingleOkList));
-        maxMiss.setDragonSingle(Collections.max(dragonSingleNoList));
-        maxContinu.setDragonDouble(Collections.max(dragonDoubleOkList));
-        maxMiss.setDragonDouble(Collections.max(dragonDoubleNoList));
-        maxContinu.setPhoenSingle(Collections.max(phoenSingleOkList));
-        maxMiss.setPhoenSingle(Collections.max(phoenSingleNoList));
-        maxContinu.setPhoenDouble(Collections.max(phoenDoubleOkList));
-        maxMiss.setPhoenDouble(Collections.max(phoenDoubleNoList));
         maxContinu.setDragonPrime(Collections.max(dragonPrimeOkList));
         maxMiss.setDragonPrime(Collections.max(dragonPrimeNoList));
         maxContinu.setDragonComposite(Collections.max(dragonCompositeOkList));

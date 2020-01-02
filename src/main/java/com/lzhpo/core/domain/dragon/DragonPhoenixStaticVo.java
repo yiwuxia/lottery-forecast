@@ -16,16 +16,6 @@ public class DragonPhoenixStaticVo {
 
    
     /**
-     * 龙头单双
-     */
-    private Integer dragonSingle;
-    private Integer dragonDouble;
-    /**
-     * 凤尾单双
-     */
-    private Integer phoenSingle;
-    private Integer phoenDouble;
-    /**
      * 龙头质合
      */
     private Integer dragonPrime;
