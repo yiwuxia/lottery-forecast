@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import sun.jvm.hotspot.jdi.LongValueImpl;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -251,7 +252,11 @@ public class StaticController {
             SelectCondition con= JSONObject.parseObject(str,SelectCondition.class);
             conditionsResult.add(con);
         }
-        conditionsResult.stream().sorted(Comparator.comparing(SelectCondition::getId));
+       // conditionsResult.stream().sorted(Comparator.comparing(SelectCondition::getId));
+        conditionsResult.sort((o1, o2) -> (int)(Long.valueOf(o1.getId()) - Long.valueOf(o2.getId())));
+        conditionsResult.forEach(s->{
+            System.out.println(s);
+        });
         return JsonResp.success(conditionsResult);
 
     }

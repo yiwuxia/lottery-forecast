@@ -242,4 +242,22 @@ public class CalculateUtil {
     }
 
 
+    /**
+     * 求出第几路元素第个数
+     * @param numsThree
+     * @param i
+     * @return
+     */
+    public static int getAreaNums(List<Integer> numsThree, int i) {
+
+        int count =0;
+        for (Integer e: numsThree
+             ) {
+            if (e%3==i){
+                count++;
+            }
+        }
+        return  count;
+
+    }
 }

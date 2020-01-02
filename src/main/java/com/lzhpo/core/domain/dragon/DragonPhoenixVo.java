@@ -1,6 +1,7 @@
 package com.lzhpo.core.domain.dragon;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @author <a href="lijing1@wxchina.com@wxchina.com">Lijin</a>
@@ -10,6 +11,7 @@ import lombok.Data;
  * @Version 1.0
  **/
 @Data
+@ToString
 public class DragonPhoenixVo {
 
     private Integer id;
