@@ -8,6 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 /**
@@ -207,13 +209,16 @@ public class CalculateUtil {
     }
 
     public static void main(String[] args) {
-        List<Integer> a = Lists.newArrayList( 5);
-        List<Integer> b = Lists.newArrayList(4,8);
-        List<Integer> c = Lists.newArrayList();
-        List<Integer> d = Lists.newArrayList(1,2,3);
-         Set<String> set1=  calcDingweiMa(a, b,c,d);//164
-        System.out.println(set1);
-       //  Set<String> set2=  calcDanMa(Lists.newArrayList(1,3,4),Lists.newArrayList(1,2));//164
+
+        /**
+         * 龙头 质 和 合
+         * 凤尾 质 和 合
+         * dragon-->0,1;1,0;1,2
+         * 龙头012路,
+         *
+         */
+
+
 
     }
     /**

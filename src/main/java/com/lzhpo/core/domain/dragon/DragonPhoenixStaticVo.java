@@ -14,7 +14,8 @@ import lombok.ToString;
 @ToString
 public class DragonPhoenixStaticVo {
 
-   
+
+    private String description;
     /**
      * 龙头质合
      */
@@ -63,11 +64,6 @@ public class DragonPhoenixStaticVo {
     private Integer area2Num1;
     private Integer area2Num2;
     private Integer area2Num3;
-
-
-
-
-
 
 
 }

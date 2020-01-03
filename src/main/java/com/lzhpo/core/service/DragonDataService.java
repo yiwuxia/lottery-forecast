@@ -485,6 +485,9 @@ public class DragonDataService {
                 dragonPrimeOk++;
                 dragonPrimeOkList.add(dragonPrimeOk);
             }else {
+                if (occurs.getDragonPrime()==null){
+                    occurs.setDragonPrime(0);
+                }
                 dragonPrimeOkList.add(dragonPrimeOk);
                 dragonPrimeOk=0;
                 dragonPrimeNo++;
@@ -502,6 +505,9 @@ public class DragonDataService {
                 dragonCompositeOk++;
                 dragonCompositeOkList.add(dragonCompositeOk);
             }else {
+                if (occurs.getDragonComposite()==null){
+                    occurs.setDragonComposite(0);
+                }
                 dragonCompositeOkList.add(dragonCompositeOk);
                 dragonCompositeOk=0;
                 dragonCompositeNo++;
@@ -519,6 +525,9 @@ public class DragonDataService {
                 phoenPrimeOk++;
                 phoenPrimeOkList.add(phoenPrimeOk);
             }else {
+                if (occurs.getPhoenPrime()==null){
+                    occurs.setPhoenPrime(0);
+                }
                 phoenPrimeOkList.add(phoenPrimeOk);
                 phoenPrimeOk=0;
                 phoenPrimeNo++;
@@ -536,6 +545,9 @@ public class DragonDataService {
                 phoenCompositeOk++;
                 phoenCompositeOkList.add(phoenCompositeOk);
             }else {
+                if (occurs.getPhoenComposite()==null){
+                    occurs.setPhoenComposite(0);
+                }
                 phoenCompositeOkList.add(phoenCompositeOk);
                 phoenCompositeOk=0;
                 phoenCompositeNo++;
@@ -553,6 +565,9 @@ public class DragonDataService {
                 dragonArea0Ok++;
                 dragonArea0OkList.add(dragonArea0Ok);
             }else {
+                if (occurs.getDragonArea0()==null){
+                    occurs.setDragonArea0(0);
+                }
                 dragonArea0OkList.add(dragonArea0Ok);
                 dragonArea0Ok=0;
                 dragonArea0No++;
@@ -570,6 +585,9 @@ public class DragonDataService {
                 dragonArea1Ok++;
                 dragonArea1OkList.add(dragonArea1Ok);
             }else {
+                if (occurs.getDragonArea1()==null){
+                    occurs.setDragonArea1(0);
+                }
                 dragonArea1OkList.add(dragonArea1Ok);
                 dragonArea1Ok=0;
                 dragonArea1No++;
@@ -587,6 +605,9 @@ public class DragonDataService {
                 dragonArea2Ok++;
                 dragonArea2OkList.add(dragonArea2Ok);
             }else {
+                if (occurs.getDragonArea2()==null){
+                    occurs.setDragonArea2(0);
+                }
                 dragonArea2OkList.add(dragonArea2Ok);
                 dragonArea2Ok=0;
                 dragonArea2No++;
@@ -604,6 +625,9 @@ public class DragonDataService {
                 phoenArea0Ok++;
                 phoenArea0OkList.add(phoenArea0Ok);
             }else {
+                if (occurs.getPhoenArea0()==null){
+                    occurs.setPhoenArea0(0);
+                }
                 phoenArea0OkList.add(phoenArea0Ok);
                 phoenArea0Ok=0;
                 phoenArea0No++;
@@ -621,6 +645,9 @@ public class DragonDataService {
                 phoenArea1Ok++;
                 phoenArea1OkList.add(phoenArea1Ok);
             }else {
+                if (occurs.getPhoenArea1()==null){
+                    occurs.setPhoenArea1(0);
+                }
                 phoenArea1OkList.add(phoenArea1Ok);
                 phoenArea1Ok=0;
                 phoenArea1No++;
@@ -638,6 +665,9 @@ public class DragonDataService {
                 phoenArea2Ok++;
                 phoenArea2OkList.add(phoenArea2Ok);
             }else {
+                if (occurs.getPhoenArea2()==null){
+                    occurs.setPhoenArea2(0);
+                }
                 phoenArea2OkList.add(phoenArea2Ok);
                 phoenArea2Ok=0;
                 phoenArea2No++;
@@ -655,6 +685,9 @@ public class DragonDataService {
                 area0Num0Ok++;
                 area0Num0OkList.add(area0Num0Ok);
             }else {
+                if (occurs.getArea0Num0()==null){
+                    occurs.setArea0Num0(0);
+                }
                 area0Num0OkList.add(area0Num0Ok);
                 area0Num0Ok=0;
                 area0Num0No++;
@@ -672,6 +705,9 @@ public class DragonDataService {
                 area0Num1Ok++;
                 area0Num1OkList.add(area0Num1Ok);
             }else {
+                if (occurs.getArea0Num1()==null){
+                    occurs.setArea0Num1(0);
+                }
                 area0Num1OkList.add(area0Num1Ok);
                 area0Num1Ok=0;
                 area0Num1No++;
@@ -689,6 +725,9 @@ public class DragonDataService {
                 area0Num2Ok++;
                 area0Num2OkList.add(area0Num2Ok);
             }else {
+                if (occurs.getArea0Num2()==null){
+                    occurs.setArea0Num2(0);
+                }
                 area0Num2OkList.add(area0Num2Ok);
                 area0Num2Ok=0;
                 area0Num2No++;
@@ -706,6 +745,9 @@ public class DragonDataService {
                 area0Num3Ok++;
                 area0Num3OkList.add(area0Num3Ok);
             }else {
+                if (occurs.getArea0Num3()==null){
+                    occurs.setArea0Num3(0);
+                }
                 area0Num3OkList.add(area0Num3Ok);
                 area0Num3Ok=0;
                 area0Num3No++;
@@ -723,6 +765,9 @@ public class DragonDataService {
                 area1Num0Ok++;
                 area1Num0OkList.add(area1Num0Ok);
             }else {
+                if (occurs.getArea1Num0()==null){
+                    occurs.setArea1Num0(0);
+                }
                 area1Num0OkList.add(area1Num0Ok);
                 area1Num0Ok=0;
                 area1Num0No++;
@@ -740,6 +785,9 @@ public class DragonDataService {
                 area1Num1Ok++;
                 area1Num1OkList.add(area1Num1Ok);
             }else {
+                if (occurs.getArea1Num1()==null){
+                    occurs.setArea1Num1(0);
+                }
                 area1Num1OkList.add(area1Num1Ok);
                 area1Num1Ok=0;
                 area1Num1No++;
@@ -757,6 +805,9 @@ public class DragonDataService {
                 area1Num2Ok++;
                 area1Num2OkList.add(area1Num2Ok);
             }else {
+                if (occurs.getArea1Num2()==null){
+                    occurs.setArea1Num2(0);
+                }
                 area1Num2OkList.add(area1Num2Ok);
                 area1Num2Ok=0;
                 area1Num2No++;
@@ -774,6 +825,9 @@ public class DragonDataService {
                 area1Num3Ok++;
                 area1Num3OkList.add(area1Num3Ok);
             }else {
+                if (occurs.getArea1Num3()==null){
+                    occurs.setArea1Num3(0);
+                }
                 area1Num3OkList.add(area1Num3Ok);
                 area1Num3Ok=0;
                 area1Num3No++;
@@ -791,6 +845,9 @@ public class DragonDataService {
                 area2Num0Ok++;
                 area2Num0OkList.add(area2Num0Ok);
             }else {
+                if (occurs.getArea2Num0()==null){
+                    occurs.setArea2Num0(0);
+                }
                 area2Num0OkList.add(area2Num0Ok);
                 area2Num0Ok=0;
                 area2Num0No++;
@@ -808,6 +865,9 @@ public class DragonDataService {
                 area2Num1Ok++;
                 area2Num1OkList.add(area2Num1Ok);
             }else {
+                if (occurs.getArea2Num1()==null){
+                    occurs.setArea2Num1(0);
+                }
                 area2Num1OkList.add(area2Num1Ok);
                 area2Num1Ok=0;
                 area2Num1No++;
@@ -825,6 +885,9 @@ public class DragonDataService {
                 area2Num2Ok++;
                 area2Num2OkList.add(area2Num2Ok);
             }else {
+                if (occurs.getArea2Num2()==null){
+                    occurs.setArea2Num2(0);
+                }
                 area2Num2OkList.add(area2Num2Ok);
                 area2Num2Ok=0;
                 area2Num2No++;
@@ -842,13 +905,14 @@ public class DragonDataService {
                 area2Num3Ok++;
                 area2Num3OkList.add(area2Num3Ok);
             }else {
+                if (occurs.getArea2Num3()==null){
+                    occurs.setArea2Num3(0);
+                }
                 area2Num3OkList.add(area2Num3Ok);
                 area2Num3Ok=0;
                 area2Num3No++;
                 area2Num3NoList.add(area2Num3No);
             }
-
-
         }
 
         maxContinu.setDragonPrime(Collections.max(dragonPrimeOkList));
@@ -896,6 +960,9 @@ public class DragonDataService {
         maxContinu.setArea2Num3(Collections.max(area2Num3OkList));
         maxMiss.setArea2Num3(Collections.max(area2Num3NoList));
         List<DragonPhoenixStaticVo> statics=new ArrayList<>();
+        occurs.setDescription("出现次数");
+        maxContinu.setDescription("最大连出");
+        maxMiss.setDescription("最大遗漏");
         statics.add(occurs);
         statics.add(maxContinu);
         statics.add(maxMiss);

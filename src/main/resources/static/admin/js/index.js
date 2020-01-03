@@ -337,6 +337,17 @@ layui.config({
 
     });
 
+    //basic_dragon
+    $("#basic_dragon").on('click', function () {
+        layer.open({
+            type: 2,
+            title: '龙头凤尾012路',
+            skin: 'layui-layer-rim', //加上边框
+            area: ['1200px', '500px'], //宽高
+            content: '/dragon/index'
+        });
+
+    });
 
 
     function initCombinationTable(){
