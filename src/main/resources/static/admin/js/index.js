@@ -518,6 +518,14 @@ layui.config({
     });
 
     /**
+     * 处理龙头凤尾选择条件
+     */
+    function handlerDragonPhoen(recordArr,uuid){
+        console.log("uuid>"+uuid+"\t recordArr>"+recordArr);
+        $('#dragonConditionWin').modal('show');
+    }
+
+    /**
      * 修改条件
      */
     $("#condition-table").on('click',"button[class='edit-condition']" ,function() {
@@ -525,10 +533,8 @@ layui.config({
         var uuid=idObj.eq(0).val();
         //去后台删除掉
         $.post("/stat/getConditionById",{id:uuid}, function(res) {
-            console.log(res);
             var conditions=res.data;
             var arr=conditions.split(";");
-            console.log(arr);
             if (arr[0]==1){
                 var regions=arr[1];
                 var occurs=arr[2];
@@ -541,7 +547,7 @@ layui.config({
                 var occurs=arr[4];
                 handlerDingweima(firsts,seconds,thirds,occurs,uuid);
             }else  if (arr[0]==3){
-                console.log("处理龙头凤尾");
+                handlerDragonPhoen(arr,uuid);
             }
 
         });
@@ -552,8 +558,8 @@ layui.config({
         var dataArr=res.data;
         var conditionTable=$("#condition-table");
         conditionTable.empty();
-        for (var i = 0; i <res.data.length ; i++) {
-            var condition=res.data[i];
+        for (var i = 0; i <dataArr.length ; i++) {
+            var condition=dataArr[i];
             var str="<tr><td><input class='con-id' type='hidden' value='"+condition.id+"' /> "+condition.type+"</td><td>"+condition.content
                 +"</td><td>"+condition.count+"</td><td>" +
                 "<input type='checkbox'>容错" +

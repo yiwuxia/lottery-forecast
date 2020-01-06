@@ -457,139 +457,158 @@
     </div><!-- /.modal -->
 </div>
  <!--龙头凤尾条件修改-->
+
 <div class="modal fade" id="dragonConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog num-select">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h4 class="modal-title" id="dragonLabel">
-                    龙头凤尾
+                <h4 class="modal-title" id="myModalLabel">
+                    龙头凤尾012路
                 </h4>
             </div>
-            <div class="modal-body" style="text-align: left;">
-                <div>
-                    <span>第一位:&nbsp;&nbsp;</span>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="1"> 1
+            <div class="modal-body">
+                <fieldset>
+                    <legend>龙头质合</legend>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <fieldset>
+                                    <legend>龙头</legend>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="head_1" name="head" value="1"> 质
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="head_0" name="head" value="0"> 合
+                                    </label>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset>
+                                    <legend>凤尾</legend>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="tail_1"  name="tail" value="1"> 质
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="tail_0" name="tail" value="0"> 合
+                                    </label>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset>
+                                    <legend>出现</legend>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" name="htoccur" value="0"> 0
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" name="htoccur" value="1"> 1
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" name="htoccur" value="2"> 2
+                                    </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>龙头012路</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="dragonArea" value="0"> 0
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="2"> 2
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="dragonArea" value="1"> 1
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="3"> 3
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="dragonArea" value="2"> 2
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="4"> 4
+                </fieldset>
+                <fieldset>
+                    <legend>凤尾012路</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="phoenArea" value="0"> 0
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first"  value="5"> 5
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="phoenArea" value="1"> 1
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox"  name="first" value="6"> 6
+                    <label class="radio-inline">
+                        <input type="checkbox" name="phoenArea"  value="2"> 2
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="7"> 7
+                </fieldset>
+                <fieldset>
+                    <legend>0路个数</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="area0" value="0"> 0
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="8"> 8
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="area0" value="1"> 1
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first" value="9"> 9
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="area0"  value="2"> 2
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="first"  value="10"> 10
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="area0"  value="3"> 3
                     </label>
-                </div>
-                <div>
-                    <span>第二位:&nbsp;&nbsp;</span>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="1"> 1
+                </fieldset>
+                <fieldset>
+                    <legend>1路个数</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="area1"   value="0"> 0
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="2"> 2
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area1"   value="1"> 1
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="3"> 3
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area1"   value="2"> 2
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="4"> 4
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area1"   value="3"> 3
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second"  value="5"> 5
+                </fieldset>
+                <fieldset>
+                    <legend>2路个数</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area2"  value="0"> 0
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox"  name="second" value="6"> 6
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area2"  value="1"> 1
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="7"> 7
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area2"  value="2"> 2
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="8"> 8
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="area2" value="3"> 3
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second" value="9"> 9
+                </fieldset>
+                <div style="text-align: center;">
+                    <span>出现:</span>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="occurs"  value="0"> 0
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="second"  value="10"> 10
-                    </label>
-                </div>
-                <div>
-                    <span>第三位:&nbsp;&nbsp;</span>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="1"> 1
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="2"> 2
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="3"> 3
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="4"> 4
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third"  value="5"> 5
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox"  name="third" value="6"> 6
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="7"> 7
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="8"> 8
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third" value="9"> 9
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="third"  value="10"> 10
-                    </label>
-                </div>
-
-                <div style="text-align: left;">
-                    <span>出次:&nbsp;&nbsp;</span>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="occurs"  value="0"> 0
-                    </label>
-                    <label class="checkbox-inline">
+                    <label class="radio-inline">
                         <input type="checkbox"  name="occurs" value="1"> 1
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox"  name="occurs" value="2"> 2
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  value="2"> 2
                     </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="occurs"  value="3"> 3
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="occurs" value="3"> 3
                     </label>
-
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  value="4"> 4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  value="5"> 5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  value="6"> 6
+                    </label>
                 </div>
-
             </div>
-
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
                 </button>
                 <button type="button" class="btn btn-primary" id="dragonOk">
                     确定
