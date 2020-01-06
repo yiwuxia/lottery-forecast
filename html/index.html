@@ -52,10 +52,10 @@
 										<fieldset>
 											<legend>龙头</legend>
 											<label class="radio-inline">
-												<input type="radio" id="head_0" value="1"> 质
+												<input type="checkbox" id="head_1" name="head" value="1"> 质
 											</label>
 											<label class="radio-inline">
-												<input type="radio" id="head_1" value="0"> 合
+												<input type="checkbox" id="head_0" name="head" value="0"> 合
 											</label>
 										</fieldset>
 									</div>
@@ -63,10 +63,10 @@
 										<fieldset>
 											<legend>凤尾</legend>
 											<label class="radio-inline">
-												<input type="radio" id="tail_0" value="1"> 质
+												<input type="checkbox" id="tail_1"  name="tail" value="1"> 质
 											</label>
 											<label class="radio-inline">
-												<input type="radio" id="tail_1" value="0"> 合
+												<input type="checkbox" id="tail_0" name="tail" value="0"> 合
 											</label>
 										</fieldset>
 									</div>
@@ -192,4 +192,22 @@
 			</div><!-- /.modal -->
 		</div>
 	</body>
+<script>
+    /**
+     * 设置checkbox 单选
+     */
+    $(document).ready(function() {
+
+        $("input[type=checkbox][name='head']").change(function() {
+            var obj=$(this);
+            var  val=obj.val();
+            console.log(val);
+            console.log(obj.prop("checked"));
+            if(obj.prop("checked")){
+                $("input[type=checkbox][name='head']").not(this).attr("checked", false);
+            }
+        });
+
+    });
+</script>
 </html>
