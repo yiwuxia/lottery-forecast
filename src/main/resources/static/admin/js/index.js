@@ -538,6 +538,7 @@ layui.config({
             if (arr[0]==1){
                 var regions=arr[1];
                 var occurs=arr[2];
+                //胆码
                 handlerDanMa(regions,occurs,uuid);
             }
             else if (arr[0]==2){
@@ -545,8 +546,10 @@ layui.config({
                 var seconds=arr[2]
                 var thirds=arr[3];
                 var occurs=arr[4];
+                //定位码
                 handlerDingweima(firsts,seconds,thirds,occurs,uuid);
             }else  if (arr[0]==3){
+                //龙头凤尾
                 handlerDragonPhoen(arr,uuid);
             }
 
