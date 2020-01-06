@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+		<script src="lib/jquery/jquery.min.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+		<style>
+			fieldset {
+            padding: .35em .625em .75em;
+            margin: 0 2px;
+            border: 1px solid silver;
+        }
+
+        legend {
+            border: 0;
+            width: auto;
+			    margin-bottom: 0px;
+				padding: -0.5em;
+        }
+    </style>
+
+	</head>
+	<body>
+
+
+		<!--<h2>创建模态框（Modal）</h2>
+		&lt;!&ndash; 按钮触发模态框 &ndash;&gt;
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			开始演示模态框
+		</button>-->
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							龙头凤尾012路
+						</h4>
+					</div>
+					<div class="modal-body">
+						<fieldset>
+							<legend>龙头质合</legend>
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-4">
+										<fieldset>
+											<legend>龙头</legend>
+											<label class="radio-inline">
+												<input type="radio" id="head0" value="1"> 质
+											</label>
+											<label class="radio-inline">
+												<input type="radio" id="head1" value="0"> 合
+											</label>
+										</fieldset>
+									</div>
+									<div class="col-md-4">
+										<fieldset>
+											<legend>凤尾</legend>
+											<label class="radio-inline">
+												<input type="radio" id="tail0" value="1"> 质
+											</label>
+											<label class="radio-inline">
+												<input type="radio" id="tail1" value="0"> 合
+											</label>
+										</fieldset>
+									</div>
+									<div class="col-md-4">
+										<fieldset>
+											<legend>出现</legend>
+											<label class="radio-inline">
+												<input type="checkbox" name="htoccur" value="0"> 0
+											</label>
+											<label class="radio-inline">
+												<input type="checkbox" name="htoccur" value="1"> 1
+											</label>
+											<label class="radio-inline">
+												<input type="checkbox" name="htoccur" value="2"> 2
+											</label>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<legend>龙头012路</legend>
+							<label class="radio-inline">
+								<input type="checkbox"  name="dragonArea" value="0"> 0
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"  name="dragonArea" value="1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"  name="dragonArea" value="2"> 2
+							</label>
+						</fieldset>
+						<fieldset>
+							<legend>凤尾012路</legend>
+							<label class="radio-inline">
+								<input type="checkbox"   name="phoenArea" value="0"> 0
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"  name="phoenArea" value="1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="phoenArea"  value="2"> 2
+							</label>
+						</fieldset>
+						<fieldset>
+							<legend>0路个数</legend>
+							<label class="radio-inline">
+								<input type="checkbox"  name="area0" value="0"> 0
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"   name="area0" value="1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"  name="area0"  value="2"> 2
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"   name="area0"  value="3"> 3
+							</label>
+						</fieldset>
+						<fieldset>
+							<legend>1路个数</legend>
+							<label class="radio-inline">
+								<input type="checkbox"  name="area1"   value="0"> 0
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="area1"   value="1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="area1"   value="2"> 2
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="area1"   value="3"> 3
+							</label>
+						</fieldset>
+						<fieldset>
+							<legend>2路个数</legend>
+							<label class="radio-inline">
+								<input type="checkbox" name="area2"  value="0"> 0
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="area2"  value="1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="area2"  value="2"> 2
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"   name="area2" value="3"> 3
+							</label>
+						</fieldset>
+						<div style="text-align: center;">
+							<span>出现:</span>
+							<label class="radio-inline">
+								<input type="checkbox"  name="occurs"  value="0"> 0
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"  name="occurs" value="1"> 1
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="occurs"  value="2"> 2
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox"  name="occurs" value="3"> 3
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="occurs"  value="4"> 4
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="occurs"  value="5"> 5
+							</label>
+							<label class="radio-inline">
+								<input type="checkbox" name="occurs"  value="6"> 6
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<button type="button" class="btn btn-primary">
+							提交更改
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+	</body>
+</html>
