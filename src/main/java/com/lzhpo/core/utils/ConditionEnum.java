@@ -11,7 +11,8 @@ import org.apache.commons.lang3.StringUtils;
 public enum ConditionEnum {
 
     DANMA(1,"胆码"),
-    DINGWEIMA(2,"定位码")
+    DINGWEIMA(2,"定位码"),
+    DRAGONPHOEN(3,"龙头凤尾")
     ;
 
 

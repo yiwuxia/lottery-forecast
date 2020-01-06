@@ -20,16 +20,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
 
 
 
-    // $("#basic_trend").on('click', function () {
-    //     layer.open({
-    //         type: 2,
-    //         title: '基本走势',
-    //         skin: 'layui-layer-rim', //加上边框
-    //         area: ['1200px', '500px'], //宽高
-    //         content: '/stat/trend'
-    //     });
-    //
-    // });
     //按钮点击  numRegion01。。。
     $(".btn-nums-select").click(function () {
         var val = $(this);
@@ -52,112 +42,106 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             }
         });
     });
+    //龙头凤尾选择后的出现次数
+    function calcDragonOccurs(dragon,phoen,dragonArea,phoenArea,area0,area1,area2){
+        var count=0;
+        if (dragon.length>0 || phoen.length>0){
+            count++
+        }
+        var arrTemp=[dragonArea,phoenArea,area0,area1,area2];
+        for (var i = 0; i < arrTemp.length; i++) {
+            if (arrTemp[i].length>0){
+                count++;
+            }
+        }
+        return count;
+    }
 
     //点击基本走势提交按钮
     $("#submit-choose-trend").click(function () {
-
         //测试
-
-        var arr = $(".btn-click-trend");
-        var regions = [];
-        var firsts = [];
-        var seconds = [];
-        var thirds = [];
-
-        //获取所选参数
-        for (var i = 0; i < arr.length; i++) {
-             var obj=$(arr[i]);
-            if (obj.hasClass("region")) {
-                regions.push(obj.text())
+        var dragon='';
+        var phoen='';
+        var dragonArea='';
+        var phoenArea='';
+        var area0='';
+        var area1='';
+        var area2='';
+        $(".btn-click-trend").each(function(){
+            var o=$(this);
+            if (o.hasClass('dragonPrime')){
+                dragon="1:1"
             }
-            if (obj.hasClass("first")) {
-                firsts.push(obj.text())
+            if (o.hasClass('dragonComposite')){
+                dragon="1:0"
             }
-            if (obj.hasClass("second")) {
-                seconds.push(obj.text())
+            if (o.hasClass('phoenPrime')){
+                phoen="0:1"
             }
-            if (obj.hasClass("third")) {
-                thirds.push(obj.text())
+            if (o.hasClass('phoenComposite')){
+                phoen="0:0"
             }
-        }
-        var occur1=regions.length>3?3:regions.length;
-        var occur2=0;
-        if (firsts.length>0){
-            occur2++
-        }
-        if (seconds.length>0){
-            occur2++
-        }
-        if (thirds.length>0){
-            occur2++
-        }
-        var occur1Arr=[];
-        var occur2Arr=[];
-        for (var i =1 ; i <=occur1; i++) {
-            occur1Arr.push(i);
-        }
-        for (var j =1 ; j <=occur2; j++) {
-            occur2Arr.push(j);
-        }
-        //必须要选择
-        if (occur1Arr.length+occur2Arr.length==0){
+            if (o.hasClass('dragonArea')){
+                dragonArea=dragonArea+o.text()+",";
+            }
+            if (o.hasClass('phoenArea')){
+                phoenArea=phoenArea+o.text()+",";
+            }
+            if (o.hasClass('area0')){
+                area0=area0+o.text()+",";
+            }
+            if (o.hasClass('area1')){
+                area1=area1+o.text()+",";
+            }
+            if (o.hasClass('area2')){
+                area2=area2+o.text()+",";
+            }
+        });
+        //质合默认选择 1，2
+        dragonArea=delStrEndwithComma(dragonArea);
+        phoenArea=delStrEndwithComma(phoenArea);
+        area0=delStrEndwithComma(area0);
+        area1=delStrEndwithComma(area1);
+        area2=delStrEndwithComma(area2);
+        var occurArr=calcDragonOccurs(dragon,phoen,dragonArea,phoenArea,area0,area1,area2);
+        if (occurArr==0){
             layer.msg('所选数字不能为空');
             return;
-        }
-        //将参数带到后台
-        var params = {
-            regionsPredict:regions.join(","),
-            firstPredict:firsts.join(","),
-            secondPredict:seconds.join(","),
-            thirdPredict:thirds.join(","),
-            occurTimesRegion:occur1Arr.join(","),
-            occurTimes:occur2Arr.join(","),
-        }
-        $.post("/stat/getTrendCalcData",params, function(res) {
-
-            layer.close(layer.index);
-            parent.location.reload();
-
-               /* var conditionTable=$("#condition-table",window.parent.document);
-            conditionTable.empty();
-            for (var i = 0; i <res.data.length ; i++) {
-                var condition=res.data[i];
-                var str="<tr><td>"+condition.type+"</td><td>"+condition.content
-                    +"</td><td>"+condition.count+"</td><td>" +
-                    "<input type='checkbox'>容错" +
-                    "</td><td> <button type='button'>编 辑</button>" +
-                    "</td><td><button type='button'>删 除</button></td>" +
-                    "</tr>";
-                conditionTable.append(str);
+        }else {
+            var arrOccurs=[];
+            for (var i = 0; i <occurArr ; i++) {
+                arrOccurs.push(i+1);
             }
-            //生成条件后 记载数据集合
-            $.post("/stat/getInitCombination",{}, function(res) {
-                var count=res.data.length;
-                $("#combination-count",window.parent.document).text(count);
-                //cb-table
-                var dataArr=res.data;
-                var table=$("#cb-table",window.parent.document);
-             //   table.empty();
-                for (var i = 0; i < dataArr.length; i++) {
-                    let obj=dataArr[i];
-                    let arrTemp=obj.split("-");
-                    var trStr="<tr>" +
-                        "<td>"+arrTemp[0]+"</td>"+
-                        "<td>"+arrTemp[1]+"</td>"+
-                        "<td>"+arrTemp[2]+"</td>"+
-                        "</tr>";
-                    table.append(trStr);
-                }
-                //关闭最新的弹窗
+            var params={
+                headAndTail:dragon+";"+phoen+";"+"1,2",//默认选择 1，2
+                headArea:dragonArea,
+                tailArea:phoenArea,
+                area0:area0,
+                area1:area1,
+                area2:area2,
+                occurs:arrOccurs.join(",")
+            };
+            console.log(params);
+            //处理龙头凤尾的选择数据
+            //生成条件，存到redis。页面加载再获取数据
+            $.post("/dragon/dealWithDragon",params, function(res) {
                 layer.close(layer.index);
                 parent.location.reload();
-            });*/
 
-        });
-
-
-
+            });
+        }
     });
+
+    //如果字符串不为空且以,结尾。则去掉最后一位
+    function delStrEndwithComma(str){
+        if (str!=null && str.length>0){
+            var last=str.substring(str.length-1);
+            if (last==','){
+                return str.substring(0,str.length-1);
+            }
+        }
+        return str;
+    }
     
     $("#trend-clear").click(function () {
         table.render({

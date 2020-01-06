@@ -117,42 +117,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
 
             layer.close(layer.index);
             parent.location.reload();
-
-               /* var conditionTable=$("#condition-table",window.parent.document);
-            conditionTable.empty();
-            for (var i = 0; i <res.data.length ; i++) {
-                var condition=res.data[i];
-                var str="<tr><td>"+condition.type+"</td><td>"+condition.content
-                    +"</td><td>"+condition.count+"</td><td>" +
-                    "<input type='checkbox'>容错" +
-                    "</td><td> <button type='button'>编 辑</button>" +
-                    "</td><td><button type='button'>删 除</button></td>" +
-                    "</tr>";
-                conditionTable.append(str);
-            }
-            //生成条件后 记载数据集合
-            $.post("/stat/getInitCombination",{}, function(res) {
-                var count=res.data.length;
-                $("#combination-count",window.parent.document).text(count);
-                //cb-table
-                var dataArr=res.data;
-                var table=$("#cb-table",window.parent.document);
-             //   table.empty();
-                for (var i = 0; i < dataArr.length; i++) {
-                    let obj=dataArr[i];
-                    let arrTemp=obj.split("-");
-                    var trStr="<tr>" +
-                        "<td>"+arrTemp[0]+"</td>"+
-                        "<td>"+arrTemp[1]+"</td>"+
-                        "<td>"+arrTemp[2]+"</td>"+
-                        "</tr>";
-                    table.append(trStr);
-                }
-                //关闭最新的弹窗
-                layer.close(layer.index);
-                parent.location.reload();
-            });*/
-
         });
 
 

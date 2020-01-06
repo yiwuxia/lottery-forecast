@@ -132,7 +132,7 @@ public class StaticController {
         Set<String> dingweima=  CalculateUtil.calcDingweiMa(first,second,third,occurs);
         SelectCondition condition=new SelectCondition();
         StringBuffer buffer=new StringBuffer();
-        condition.setType("定位码");
+        condition.setType(ConditionEnum.DINGWEIMA.getLabel());
         condition.setCount(dingweima.size());
         condition.setId(System.currentTimeMillis()+"");
         if (CollectionUtils.isNotEmpty(first)){
@@ -147,11 +147,14 @@ public class StaticController {
         buffer.append("  出");
         buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
         condition.setContent(buffer.toString());
+        //存放数据集
         redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
                 condition.getId(),
                 JSON.toJSONString(dingweima));
         //将条件缓存起来
-        redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),condition.getId(),JSON.toJSONString(condition));
+        redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),
+                condition.getId(),
+                JSON.toJSONString(condition));
         buffer=new StringBuffer();
         buffer.append(ConditionEnum.DINGWEIMA.getIndex());
         buffer.append(";");
@@ -184,7 +187,7 @@ public class StaticController {
         Set<String> danma=  CalculateUtil.calcDanMa(region,regionOccurs);
         SelectCondition condition=new SelectCondition();
         StringBuffer buffer=new StringBuffer();
-        condition.setType("胆码");
+        condition.setType(ConditionEnum.DANMA.getLabel());
         condition.setCount(danma.size());
         condition.setId(conditionId);
         buffer.append(org.springframework.util.StringUtils.collectionToCommaDelimitedString(region));

@@ -528,18 +528,22 @@ layui.config({
             console.log(res);
             var conditions=res.data;
             var arr=conditions.split(";");
+            console.log(arr);
             if (arr[0]==1){
                 var regions=arr[1];
                 var occurs=arr[2];
                 handlerDanMa(regions,occurs,uuid);
             }
-            if (arr[0]==2){
+            else if (arr[0]==2){
                 var firsts=arr[1];
                 var seconds=arr[2]
                 var thirds=arr[3];
                 var occurs=arr[4];
                 handlerDingweima(firsts,seconds,thirds,occurs,uuid);
+            }else  if (arr[0]==3){
+                console.log("处理龙头凤尾");
             }
+
         });
     });
 

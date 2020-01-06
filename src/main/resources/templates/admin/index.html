@@ -186,13 +186,13 @@
 
             </div>
             <div class="col-md-8">
-                <div style="margin: 0 auto;width: 50px;">
-                    <select class="form-control" id="dateType" style="width: 200px;">
+                <div style="margin: 0 auto;width: 50px;padding: 5px;">
+                    <select class="form-control" id="dataType" style="width: 200px;">
                         <option value="1">北京赛车</option>
                         <option value="2">北京飞艇</option>
                     </select>
                 </div>
-                <hr />
+                <!--<hr />-->
                 <div class="operate-btn" style="height:50px;border-bottom: 1px solid red;">
                     <button type="button" class="btn btn-primary" id="basic_trend">基本走势</button>
                     <button type="button" class="btn btn-primary" id="basic_dragon">龙凤012</button>
@@ -450,6 +450,148 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
                 <button type="button" class="btn btn-primary" id="dingweimaOk">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+ <!--龙头凤尾条件修改-->
+<div class="modal fade" id="dragonConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog num-select">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="dragonLabel">
+                    龙头凤尾
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: left;">
+                <div>
+                    <span>第一位:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first"  value="5"> 5
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="first" value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first"  value="10"> 10
+                    </label>
+                </div>
+                <div>
+                    <span>第二位:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second"  value="5"> 5
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="second" value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second"  value="10"> 10
+                    </label>
+                </div>
+                <div>
+                    <span>第三位:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third"  value="5"> 5
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="third" value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third"  value="10"> 10
+                    </label>
+                </div>
+
+                <div style="text-align: left;">
+                    <span>出次:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="0"> 0
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="3"> 3
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="dragonOk">
                     确定
                 </button>
             </div>

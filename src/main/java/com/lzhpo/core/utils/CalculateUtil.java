@@ -4,12 +4,8 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 /**
@@ -24,11 +20,19 @@ public class CalculateUtil {
     private static final Integer[] seconds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private static final Integer[] thirds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     /**
-     * 质数合集，不是质数就是合数。
+     * 质数合集，不是质数就是合数。 1 代表龙头 0 凤尾  1 表示质数 0 表示合数
      */
     private static  final  Set<Integer> zhishuList= Sets.newHashSet(1, 2, 3, 5, 7);
-   // private static  final  Set<Integer> heshuList=Sets.newHashSet(4,6,8,9,10);
+    // private static  final  Set<Integer> heshuList=Sets.newHashSet(4,6,8,9,10);
 
+
+    public static Map<String, String> dragonHeadAndTail=new HashMap<>();
+    static {
+        dragonHeadAndTail.put("1:1","头质");
+        dragonHeadAndTail.put("1:0","头合");
+        dragonHeadAndTail.put("0:1","尾质");
+        dragonHeadAndTail.put("0:0","尾合");
+    }
 
 
     /**
@@ -71,8 +75,8 @@ public class CalculateUtil {
                     if (first.equals(second) || first.equals(third) || second.equals(third)) {
                         continue;
                     }
-                        result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
-                                + "-" + (third==10?third:"0"+third));
+                    result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                            + "-" + (third==10?third:"0"+third));
                 }
 
             }
@@ -87,9 +91,9 @@ public class CalculateUtil {
      * @return
      */
     public static Set<String> calcDingweiMa(List<Integer> firstPredict,
-                                             List<Integer> secondPredict,
-                                             List<Integer> thirdPredict,
-                                             List<Integer> occurTimes
+                                            List<Integer> secondPredict,
+                                            List<Integer> thirdPredict,
+                                            List<Integer> occurTimes
 
     ) {
         if (CollectionUtils.isEmpty(occurTimes)){
@@ -97,18 +101,18 @@ public class CalculateUtil {
         }
         Set<String> result = new HashSet<>();
         for(Integer occur:occurTimes){
-                for (Integer first : firsts) {
-                    for (Integer second : seconds) {
-                        for (Integer third : thirds) {
-                            //组合的三个数不能相同
-                            if (first.equals(second) || first.equals(third) || second.equals(third)) {
-                                continue;
-                            }
-                            if(checkFillConditionSelect(occur,first,second,third,firstPredict,secondPredict,thirdPredict)){
-                                result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
-                                        + "-" + (third==10?third:"0"+third));
-                                continue;
-                            }
+            for (Integer first : firsts) {
+                for (Integer second : seconds) {
+                    for (Integer third : thirds) {
+                        //组合的三个数不能相同
+                        if (first.equals(second) || first.equals(third) || second.equals(third)) {
+                            continue;
+                        }
+                        if(checkFillConditionSelect(occur,first,second,third,firstPredict,secondPredict,thirdPredict)){
+                            result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                    + "-" + (third==10?third:"0"+third));
+                            continue;
+                        }
                             /*//一个条件都不满足  wuxia
                             if (occur==0){
                                 if (!firstPredict.contains(first) &&  !secondPredict.contains(second) &&  !thirdPredict.contains(third)){
@@ -126,7 +130,6 @@ public class CalculateUtil {
                                 if (!firstPredict.contains(first) &&   secondPredict.contains(second) &&  !thirdPredict.contains(third)){
                                     result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
                                             + "-" + (third==10?third:"0"+third));
-
                                     continue;
                                 }
                                 if (!firstPredict.contains(first) &&   !secondPredict.contains(second) &&  thirdPredict.contains(third)){
@@ -160,9 +163,9 @@ public class CalculateUtil {
                                 }
                             }*/
 
-                        }
                     }
                 }
+            }
         }
         System.out.println(result.size());
         return result;
@@ -208,19 +211,179 @@ public class CalculateUtil {
         return false;
     }
 
-    public static void main(String[] args) {
+    /**
+     * 计算龙头凤尾的条件
+     * @param headAndTail  龙头凤尾质合
+     * @param headArea
+     * @param tailArea
+     * @param area0
+     * @param area1
+     * @param area2
+     * @param occurs
+     * @return
+     */
+    public static Set<String>  calcDragon(
+            String headAndTail,
+            String headArea,
+            String tailArea,
+            String area0,
+            String area1,
+            String area2,
+            String occurs
+    ) {
 
-        /**
-         * 龙头 质 和 合
-         * 凤尾 质 和 合
-         * dragon-->0,1;1,0;1,2
-         * 龙头012路,
-         *
-         */
+        Set<String> result = new HashSet<>();
+        Splitter splitter=Splitter.on(";");
+        //龙头凤尾的质，合。及出现次数
+        List<String> headAndTailList= splitter.splitToList(headAndTail);
+        List<Integer> headAreaList= intCommonsStrToList(headArea);
+        List<Integer> tailAreaList= intCommonsStrToList(tailArea);
+        List<Integer> area0List= intCommonsStrToList(area0);
+        List<Integer> area1List= intCommonsStrToList(area1);
+        List<Integer> area2List= intCommonsStrToList(area2);
+        //occursList 为空时前台阻止提交
+        List<Integer> occursList= intCommonsStrToList(occurs);
+        for(Integer occur:occursList) {
+            for (Integer first : firsts) {
+                for (Integer second : seconds) {
+                    for (Integer third : thirds) {
+                        //组合的三个数不能相同
+                        if (first.equals(second) || first.equals(third) || second.equals(third)) {
+                            continue;
+                        }
+                        List<Integer> eles=Lists.newArrayList(first,second,third);
+                        //occur表示需要满足的条件个数
+                        int fillCount=0;
+                        //龙头凤尾质合满足
+                        if (fillHeadAndTail(headAndTailList,eles)){
+                            fillCount++;
+                        }
+                        //龙头满足012路条件
+                        if (fillHeadArea012(headAreaList,eles)){
+                            fillCount++;
+                        }
+                        if (fillTailArea012(tailAreaList,eles)){
+                            fillCount++;
+                        }
+                        if (fillArea0Num(area0List,eles)){
+                            fillCount++;
+                        }
+                        if (fillArea1Num(area1List,eles)){
+                            fillCount++;
+                        }
+                        if (fillArea2Num(area2List,eles)){
+                            fillCount++;
+                        }
+                        if (fillCount==occur){
+                            result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                    + "-" + (third==10?third:"0"+third));
+                        }
 
-
+                    }
+                }
+            }
+        }
+        System.out.println(result.size());
+        return  result;
 
     }
+
+    private static boolean fillArea2Num(List<Integer> area2List, List<Integer> eles) {
+        int count=0;
+        for(Integer a:eles){
+            if (a%3==2){
+                count++;
+            }
+        }
+        return area2List.contains(count);
+    }
+
+    private static boolean fillArea1Num(List<Integer> area1List, List<Integer> eles) {
+        int count=0;
+        for(Integer a:eles){
+            if (a%3==1){
+                count++;
+            }
+        }
+        return area1List.contains(count);
+    }
+
+    private static boolean fillArea0Num(List<Integer> area0List, List<Integer> eles) {
+        int count=0;
+        for(Integer a:eles){
+            if (a%3==0){
+                count++;
+            }
+        }
+        return area0List.contains(count);
+    }
+
+
+    private static boolean fillTailArea012(List<Integer> tailAreaList, List<Integer> eles) {
+        int tail=Collections.max(eles);
+        if (tailAreaList.contains(tail%3)){
+            return  true;
+        }
+        return false;
+    }
+
+    /**
+     * 龙头满足 0 1 2 路条件，1，2 表示龙头在 1 2 路都符合条件
+     * @param headAreaList
+     * @param eles
+     * @return
+     */
+    private static boolean fillHeadArea012(List<Integer> headAreaList, List<Integer> eles) {
+        int head=Collections.min(eles);
+        if (headAreaList.contains(head%3)){
+            return  true;
+        }
+        return false;
+    }
+
+    /**
+     * 数字满足龙头凤尾质合，及条件。
+     * @param headAndTailList
+     * @param eles
+     * @return
+     */
+    private static boolean fillHeadAndTail(List<String> headAndTailList,
+                                           List<Integer> eles) {
+        int head=Collections.min(eles);
+        int tail=Collections.max(eles);
+
+        if (headAndTailList.get(0).split(":").length<2){
+            return  false;
+        }
+        if (headAndTailList.get(1).split(":").length<2){
+            return  false;
+        }
+        //龙头是zhishu
+        int fill=0;
+        //如果龙头是质数
+        if (headAndTailList.get(0).split(":")[1].equals("1")){
+            if (zhishuList.contains(head)){
+                fill++;
+            }
+        }else{
+            if (!zhishuList.contains(head)){
+                fill++;
+            }
+        }
+        //如果凤尾是质数
+        if (headAndTailList.get(1).split(":")[1].equals("1")){
+            if (zhishuList.contains(tail)){
+                fill++;
+            }
+        }else{
+            if (!zhishuList.contains(tail)){
+                fill++;
+            }
+        }
+        List<Integer> occus=intCommonsStrToList(headAndTailList.get(2));
+        return occus.contains(fill);
+    }
+
     /**
      * 多个集合取交集
      */
@@ -240,7 +403,7 @@ public class CalculateUtil {
 
 
     public static List<String> findIntersectionNew(List<String> newCollection,
-                                       List<List<String>> collections) {
+                                                   List<List<String>> collections) {
         boolean first = true;
         for (List<String> collection : collections) {
             if (first) {
@@ -269,6 +432,7 @@ public class CalculateUtil {
                 list.add(Integer.valueOf(s));
             }
         }*/
+
         List<String> myList= Splitter.on(",")
                 .omitEmptyStrings()
                 .splitToList(regionsPredict);
@@ -301,7 +465,7 @@ public class CalculateUtil {
 
         int count =0;
         for (Integer e: numsThree
-             ) {
+        ) {
             if (e%3==i){
                 count++;
             }
