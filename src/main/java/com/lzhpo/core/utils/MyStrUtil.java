@@ -27,6 +27,11 @@ public class MyStrUtil {
         return  joiner.join(arr);
     }
 
+    public static String  joinMultiStrByLine(Object ... arr) {
+        Joiner joiner = Joiner.on("-").skipNulls();
+        return  joiner.join(arr);
+    }
+
     public static void main(String[] args) {
         System.out.println(joinMultiStrBySemi("",2,"","c"));
     }

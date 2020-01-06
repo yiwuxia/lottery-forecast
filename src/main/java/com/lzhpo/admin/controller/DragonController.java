@@ -8,6 +8,7 @@ import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.dragon.DragonPhoenixStaticVo;
 import com.lzhpo.core.domain.dragon.DragonPhoenixVo;
 import com.lzhpo.core.service.DragonDataService;
+import com.lzhpo.core.service.PrizeDataService;
 import com.lzhpo.core.utils.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,10 @@ public class DragonController {
     private DragonDataService dataService;
 
 
+    @Autowired
+    private PrizeDataService prizeDataService;
+
+
     @GetMapping(value = "/index")
     public ModelAndView adminIndex() {
         //龙头凤尾显示页面统计数据（不包括最后三列）
@@ -61,7 +66,7 @@ public class DragonController {
          String  area2,
          String   occurs
     ) {
-        saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs);
+        saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs,null);
 
 
         return JsonResp.success("");
@@ -73,13 +78,21 @@ public class DragonController {
                                            String area0,
                                            String area1,
                                            String area2,
-                                           String occurs) {
+                                           String occurs,
+                                           String uuid
+                                           ) {
 
+        String conditionId="";
         Set<String> result= CalculateUtil.calcDragon(headAndTail,headArea,tailArea,area0,area1,area2,occurs);
         SelectCondition condition=new SelectCondition();
+        if (org.apache.commons.lang3.StringUtils.isBlank(uuid)){
+            conditionId=System.currentTimeMillis()+"";
+        }else {
+            conditionId=uuid;
+        }
         condition.setType(ConditionEnum.DRAGONPHOEN.getLabel());
         condition.setCount(result.size());
-        condition.setId(System.currentTimeMillis()+"");
+        condition.setId(conditionId);
         StringBuffer showText=new StringBuffer();
         StringBuffer headAndTailBuffer=new StringBuffer();
         //headAndTail
@@ -130,7 +143,7 @@ public class DragonController {
         conditionDeal.append(MyStrUtil.joinMultiStrBySemi(
                 String.valueOf(ConditionEnum.DRAGONPHOEN.getIndex()),
                // headAndTail,
-                MyStrUtil.joinMultiStrByComma(head,tail,occus),
+                MyStrUtil.joinMultiStrByLine(head,tail,occus),
                 headArea,tailArea,area0,area1,area2,occurs
         ));
         redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),
@@ -139,5 +152,24 @@ public class DragonController {
 
     }
 
+
+    @PostMapping("/dragonConditionChange")
+    @ResponseBody
+    public JsonResp dragonConditionChange(
+            String   headAndTail,
+            String   headArea,
+            String  tailArea,
+            String  area0,
+            String   area1,
+            String  area2,
+            String   occurs,
+            String   uuid
+    ) {
+        if (StringUtils.isNotBlank(occurs)){
+            prizeDataService.deleteTrendConditionById(uuid);
+        }
+        saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs,uuid);
+        return JsonResp.success("");
+    }
 
 }

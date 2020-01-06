@@ -18,6 +18,18 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
     <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all" />
     <style>
+        fieldset {
+            padding: .35em .625em .75em;
+            margin: 0 2px;
+            border: 1px solid silver;
+        }
+
+        legend {
+            border: 0;
+            width: auto;
+            margin-bottom: 0px;
+            padding: -0.5em;
+        }
     </style>
 </head>
 <body>
@@ -474,7 +486,7 @@
                     <legend>龙头质合</legend>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding-left: 0px;">
                                 <fieldset>
                                     <legend>龙头</legend>
                                     <label class="radio-inline">
@@ -485,7 +497,7 @@
                                     </label>
                                 </fieldset>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding-left: 0px;">
                                 <fieldset>
                                     <legend>凤尾</legend>
                                     <label class="radio-inline">
@@ -496,17 +508,17 @@
                                     </label>
                                 </fieldset>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding-left: 0px;">
                                 <fieldset>
                                     <legend>出现</legend>
-                                    <label class="radio-inline">
-                                        <input type="checkbox" name="htoccur" value="0"> 0
+                                    <label class="radio-inline" style="padding-left: 10px;">
+                                        <input type="checkbox" name="htoccur" id="htoccur_0" value="0"> 0
                                     </label>
-                                    <label class="radio-inline">
-                                        <input type="checkbox" name="htoccur" value="1"> 1
+                                    <label class="radio-inline" style="padding-left: 10px;">
+                                        <input type="checkbox" name="htoccur" id="htoccur_1" value="1"> 1
                                     </label>
-                                    <label class="radio-inline">
-                                        <input type="checkbox" name="htoccur" value="2"> 2
+                                    <label class="radio-inline" style="padding-left: 10px;">
+                                        <input type="checkbox" name="htoccur" id="htoccur_2" value="2"> 2
                                     </label>
                                 </fieldset>
                             </div>
@@ -516,94 +528,94 @@
                 <fieldset>
                     <legend>龙头012路</legend>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="dragonArea" value="0"> 0
+                        <input type="checkbox"  name="dragonArea" id="dragonArea_0" value="0"> 0
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="dragonArea" value="1"> 1
+                        <input type="checkbox"  name="dragonArea" id="dragonArea_1" value="1"> 1
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="dragonArea" value="2"> 2
+                        <input type="checkbox"  name="dragonArea" id="dragonArea_2" value="2"> 2
                     </label>
                 </fieldset>
                 <fieldset>
                     <legend>凤尾012路</legend>
                     <label class="radio-inline">
-                        <input type="checkbox"   name="phoenArea" value="0"> 0
+                        <input type="checkbox"   name="phoenArea" id="phoenArea_0" value="0"> 0
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="phoenArea" value="1"> 1
+                        <input type="checkbox"  name="phoenArea" id="phoenArea_1" value="1"> 1
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="phoenArea"  value="2"> 2
+                        <input type="checkbox" name="phoenArea"  id="phoenArea_2" value="2"> 2
                     </label>
                 </fieldset>
                 <fieldset>
                     <legend>0路个数</legend>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="area0" value="0"> 0
+                        <input type="checkbox"  name="area0" id="area0_0" value="0"> 0
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"   name="area0" value="1"> 1
+                        <input type="checkbox"   name="area0" id="area0_1" value="1"> 1
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="area0"  value="2"> 2
+                        <input type="checkbox"  name="area0" id="area0_2"  value="2"> 2
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"   name="area0"  value="3"> 3
+                        <input type="checkbox"   name="area0" id="area0_3"  value="3"> 3
                     </label>
                 </fieldset>
                 <fieldset>
                     <legend>1路个数</legend>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="area1"   value="0"> 0
+                        <input type="checkbox"  name="area1" id="area1_0"  value="0"> 0
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="area1"   value="1"> 1
+                        <input type="checkbox" name="area1" id="area1_1"   value="1"> 1
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="area1"   value="2"> 2
+                        <input type="checkbox" name="area1"  id="area1_2"  value="2"> 2
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="area1"   value="3"> 3
+                        <input type="checkbox" name="area1"  id="area1_3"  value="3"> 3
                     </label>
                 </fieldset>
                 <fieldset>
                     <legend>2路个数</legend>
                     <label class="radio-inline">
-                        <input type="checkbox" name="area2"  value="0"> 0
+                        <input type="checkbox" name="area2" id="area2_0"  value="0"> 0
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="area2"  value="1"> 1
+                        <input type="checkbox" name="area2"  id="area2_1" value="1"> 1
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="area2"  value="2"> 2
+                        <input type="checkbox" name="area2"  id="area2_2" value="2"> 2
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"   name="area2" value="3"> 3
+                        <input type="checkbox"   name="area2"  id="area2_3" value="3"> 3
                     </label>
                 </fieldset>
                 <div style="text-align: center;">
                     <span>出现:</span>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="occurs"  value="0"> 0
+                        <input type="checkbox"  name="occurs"  id="occurs_0" value="0"> 0
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="occurs" value="1"> 1
+                        <input type="checkbox"  name="occurs"  id="occurs_1"  value="1"> 1
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="occurs"  value="2"> 2
+                        <input type="checkbox" name="occurs"  id="occurs_2" value="2"> 2
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox"  name="occurs" value="3"> 3
+                        <input type="checkbox"  name="occurs" id="occurs_3" value="3"> 3
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="occurs"  value="4"> 4
+                        <input type="checkbox" name="occurs"  id="occurs_4" value="4"> 4
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="occurs"  value="5"> 5
+                        <input type="checkbox" name="occurs"  id="occurs_5" value="5"> 5
                     </label>
                     <label class="radio-inline">
-                        <input type="checkbox" name="occurs"  value="6"> 6
+                        <input type="checkbox" name="occurs"  id="occurs_6" value="6"> 6
                     </label>
                 </div>
             </div>
