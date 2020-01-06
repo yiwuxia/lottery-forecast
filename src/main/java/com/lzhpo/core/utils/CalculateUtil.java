@@ -436,6 +436,9 @@ public class CalculateUtil {
         List<String> myList= Splitter.on(",")
                 .omitEmptyStrings()
                 .splitToList(regionsPredict);
+        if (CollectionUtils.isEmpty(myList)){
+            return  Lists.newArrayList();
+        }
         return myList.stream().map(s->Integer.valueOf(s)).collect(Collectors.toList());
     }
 

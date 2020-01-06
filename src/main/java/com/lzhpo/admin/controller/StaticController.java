@@ -13,10 +13,7 @@ import com.lzhpo.core.domain.PrizeDetailVo;
 import com.lzhpo.core.domain.PrizeStaticVo;
 import com.lzhpo.core.domain.PrizeVo;
 import com.lzhpo.core.service.PrizeDataService;
-import com.lzhpo.core.utils.CalculateUtil;
-import com.lzhpo.core.utils.ConditionEnum;
-import com.lzhpo.core.utils.JsonResp;
-import com.lzhpo.core.utils.RedisConstant;
+import com.lzhpo.core.utils.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -113,28 +110,39 @@ public class StaticController {
         List<Integer> third= CalculateUtil.intCommonsStrToList(thirdPredict);
         List<Integer> regionOccurs= CalculateUtil.intCommonsStrToList(occurTimesRegion);
         List<Integer> occurs= CalculateUtil.intCommonsStrToList(occurTimes);
-        List<SelectCondition> conditions=Lists.newArrayList();
+      //  List<SelectCondition> conditions=Lists.newArrayList();
         //生成胆码条件
         if (regionOccurs.size()>0){
-            SelectCondition selectCondition=saveTrendRegionDataToRedis(region,regionOccurs, null);
-            conditions.add(selectCondition);
+           // SelectCondition selectCondition=
+                    saveTrendRegionDataToRedis(region,regionOccurs, null);
+          //  conditions.add(selectCondition);
         }
         if (occurs.size()>0){
-            SelectCondition selectCondition=
-                    saveTrendFirstSecondThirdDataToRedis(first,second,third,occurs);
-            conditions.add(selectCondition);
+          //  SelectCondition selectCondition=
+                    saveTrendFirstSecondThirdDataToRedis(first,second,third,occurs, null);
+           // conditions.add(selectCondition);
         }
         //将条件存到redis中。只有页面删除时才删除。
-        return JsonResp.success(conditions);
+        return JsonResp.success("");
     }
 
-    private SelectCondition saveTrendFirstSecondThirdDataToRedis(List<Integer> first, List<Integer> second, List<Integer> third, List<Integer> occurs) {
+    //修改时保持uuid不变
+    private void saveTrendFirstSecondThirdDataToRedis(List<Integer> first,
+                                                                 List<Integer> second,
+                                                                 List<Integer> third,
+                                                                 List<Integer> occurs, String uuid) {
+        String conditionId="";
         Set<String> dingweima=  CalculateUtil.calcDingweiMa(first,second,third,occurs);
         SelectCondition condition=new SelectCondition();
+        if (org.apache.commons.lang3.StringUtils.isBlank(uuid)){
+            conditionId=System.currentTimeMillis()+"";
+        }else {
+            conditionId=uuid;
+        }
         StringBuffer buffer=new StringBuffer();
         condition.setType(ConditionEnum.DINGWEIMA.getLabel());
         condition.setCount(dingweima.size());
-        condition.setId(System.currentTimeMillis()+"");
+        condition.setId(conditionId);
         if (CollectionUtils.isNotEmpty(first)){
             buffer.append("第一位:").append(StringUtils.collectionToCommaDelimitedString(first));
         }
@@ -155,8 +163,16 @@ public class StaticController {
         redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),
                 condition.getId(),
                 JSON.toJSONString(condition));
-        buffer=new StringBuffer();
-        buffer.append(ConditionEnum.DINGWEIMA.getIndex());
+       // buffer=new StringBuffer();
+
+       String  recordMainInfo= MyStrUtil.joinMultiStrBySemi(ConditionEnum.DINGWEIMA.getIndex(),
+               StringUtils.collectionToCommaDelimitedString(first),
+               StringUtils.collectionToCommaDelimitedString(second),
+               StringUtils.collectionToCommaDelimitedString(third),
+               StringUtils.collectionToCommaDelimitedString(occurs)
+       );
+
+        /*buffer.append(ConditionEnum.DINGWEIMA.getIndex());
         buffer.append(";");
         buffer.append(StringUtils.collectionToCommaDelimitedString(first));
         buffer.append(";");
@@ -164,9 +180,11 @@ public class StaticController {
         buffer.append(";");
         buffer.append(StringUtils.collectionToCommaDelimitedString(third));
         buffer.append(";");
-        buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));
-        redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
-        return  condition;
+        buffer.append(StringUtils.collectionToCommaDelimitedString(occurs));*/
+     //   redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),condition.getId(),buffer.toString());
+        redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),
+                condition.getId(),recordMainInfo);
+      //  return  condition;
     }
 
     /**
@@ -176,7 +194,9 @@ public class StaticController {
      * @param uuid
      * @return
      */
-    private SelectCondition saveTrendRegionDataToRedis(List<Integer> region, List<Integer> regionOccurs, String uuid) {
+    private SelectCondition saveTrendRegionDataToRedis(List<Integer> region,
+                                                       List<Integer> regionOccurs,
+                                                       String uuid) {
 
         String conditionId="";
         if (org.apache.commons.lang3.StringUtils.isBlank(uuid)){
@@ -312,7 +332,7 @@ public class StaticController {
         if (occurs.size()>0){
             //先删除再更新
             prizeDataService.deleteTrendConditionById(uuid);
-            saveTrendFirstSecondThirdDataToRedis(first,second,third,occurs);
+            saveTrendFirstSecondThirdDataToRedis(first,second,third,occurs,uuid);
         }
         return JsonResp.success("ok");
     }

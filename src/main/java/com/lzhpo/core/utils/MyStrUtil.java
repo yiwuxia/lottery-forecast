@@ -7,18 +7,28 @@ import com.google.common.base.Joiner;
  */
 public class MyStrUtil {
 
-    public static String  joinMultiStrBySemi(String ... arr) {
+    /**
+     * 多个对象按;连接起来
+     * @param arr
+     * @return
+     */
+    public static String  joinMultiStrBySemi(Object ... arr) {
         Joiner joiner = Joiner.on(";").skipNulls();
         return  joiner.join(arr);
     }
 
-    public static String  joinMultiStrByComma(String ... arr) {
+    /**
+     * 多个对象按,连接起来
+     * @param arr
+     * @return
+     */
+    public static String  joinMultiStrByComma(Object ... arr) {
         Joiner joiner = Joiner.on(",").skipNulls();
         return  joiner.join(arr);
     }
 
     public static void main(String[] args) {
-        System.out.println(joinMultiStrBySemi("","b","","c"));
+        System.out.println(joinMultiStrBySemi("",2,"","c"));
     }
 
 }
