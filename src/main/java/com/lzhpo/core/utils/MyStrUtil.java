@@ -33,7 +33,7 @@ public class MyStrUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(joinMultiStrBySemi("",2,"","c"));
+
     }
 
 }

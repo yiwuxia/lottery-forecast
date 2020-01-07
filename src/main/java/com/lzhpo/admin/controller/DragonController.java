@@ -165,10 +165,11 @@ public class DragonController {
             String   occurs,
             String   uuid
     ) {
+        //总的条件必须选一个
         if (StringUtils.isNotBlank(occurs)){
             prizeDataService.deleteTrendConditionById(uuid);
+            saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs,uuid);
         }
-        saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs,uuid);
         return JsonResp.success("");
     }
 
