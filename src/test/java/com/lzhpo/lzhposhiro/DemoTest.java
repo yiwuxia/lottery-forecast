@@ -1,14 +1,11 @@
 package com.lzhpo.lzhposhiro;
 
-import com.lzhpo.core.domain.PrizeStaticVo;
-import com.lzhpo.core.domain.dragon.DragonPhoenixStaticVo;
-import com.lzhpo.core.domain.dragon.DragonPhoenixVo;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.Lists;
+import com.lzhpo.core.domain.concord.SumDataStaticsVo;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
 @SpringBootTest
 public class DemoTest {
@@ -19,7 +16,19 @@ public class DemoTest {
     @Test
     public  void a(){
 
-        System.out.println("".split(":").length);
+
+        Class clazz= SumDataStaticsVo.class;
+        Field[] fields =clazz.getDeclaredFields();
+        int i=10;
+        for (Field field : fields) {
+            String name=field.getName();
+            String name2=name.substring(0,1).toUpperCase()
+                    +name.substring(1);
+            String str="maxContinu.set"+name2+"(Collections.max("+name+"OkList));\n" +
+                    "        maxMiss.set"+name2+"(Collections.max("+name+"NoList));";
+            System.out.println(str);
+
+        }
 
     }
 

@@ -27,6 +27,11 @@ public class MyStrUtil {
         return  joiner.join(arr);
     }
 
+    /**
+     * 多个对象按-连接起来
+     * @param arr
+     * @return
+     */
     public static String  joinMultiStrByLine(Object ... arr) {
         Joiner joiner = Joiner.on("-").skipNulls();
         return  joiner.join(arr);

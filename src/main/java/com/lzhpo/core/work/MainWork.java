@@ -60,6 +60,7 @@ public class MainWork {
         public void run() {
 
             String data = "";
+            //产生模拟数据
             if (simulation == 1) {
                 data = generateSimulationData();
                 if (StringUtils.isNotBlank(data)) {

@@ -18,6 +18,10 @@ public class RedisConstant {
 
     public static  final  String  USER_CONDITION_INFO="user_condition_info";
 
+    /**
+     * 存放当期的中奖数据，产生数据时更新
+     */
+    public static  final  String  CUR_TERM_PRIZE_DATA="cur_term_prize_data";
 
 
     public static void main(String[] args) {
