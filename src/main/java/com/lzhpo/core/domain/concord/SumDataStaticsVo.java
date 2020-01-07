@@ -29,7 +29,6 @@ public class SumDataStaticsVo {
     private Integer rightValue7;//10
     private Integer rightValue8;//10
     private Integer rightValue9;//10
-    private Integer rightValue10;//10
     /**
      * 合传断
      */

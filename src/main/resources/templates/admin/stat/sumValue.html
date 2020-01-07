@@ -3,7 +3,7 @@
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="utf-8">
-    <title>基本走势</title>
+    <title>和合值</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,13 +33,15 @@
             background: deepskyblue;
         }
 
-        .btn-click-trend{
-            background-color: 	#F4A460;
+        .btn-click-trend {
+            background-color: #F4A460;
         }
-        td button{
+
+        td button {
             width: auto;
         }
-        .btn-nums-select{
+
+        .btn-nums-select {
             cursor: pointer;;
         }
     </style>
@@ -52,91 +54,76 @@
         <tr class="head">
             <td rowspan="2">期号</td>
             <td rowspan="2" colspan="3">开奖号码</td>
-            <td colspan="2">龙头</td>
-            <td colspan="2">凤尾</td>
-            <td colspan="3">龙头012路</td>
-            <td colspan="3">凤尾012路</td>
-            <td colspan="4">0路个数</td>
-            <td colspan="4">1路个数</td>
-            <td colspan="4">2路个数</td>
+            <td colspan="10">合值走势图</td>
+            <td colspan="3">合传断</td>
+            <td colspan="2">合段落</td>
         </tr>
         <tr class="head">
-            <td>质</td>
-            <td>合</td>
-            <td>质</td>
-            <td>合</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
             <td>0</td>
             <td>1</td>
             <td>2</td>
             <td>3</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>左传</td>
+            <td>断</td>
+            <td>右传</td>
+            <td>断</td>
+            <td>落</td>
         </tr>
         <tr th:each="re:${lists}">
-
             <td th:text="${re.termNo}"></td>
             <td th:text="${re.prizeNo01}"></td>
             <td th:text="${re.prizeNo02}"></td>
             <td th:text="${re.prizeNo03}"></td>
-            <td th:text="${re.dragonPrime.substring(3)}" th:class="${re.dragonPrime.substring(0,2)}"></td>
-            <td style="border-right: 1px solid  red;" th:text="${re.dragonComposite.substring(3)}" th:class="${re.dragonComposite.substring(0,2)}"></td>
-            <td th:text="${re.phoenPrime.substring(3)}" th:class="${re.phoenPrime.substring(0,2)}"></td>
-            <td style="border-right: 1px solid  red;"  th:text="${re.phoenComposite.substring(3)}" th:class="${re.phoenComposite.substring(0,2)}"></td>
-            <td th:text="${re.dragonArea0.substring(3)}" th:class="${re.dragonArea0.substring(0,2)}"></td>
-            <td th:text="${re.dragonArea1.substring(3)}" th:class="${re.dragonArea1.substring(0,2)}"></td>
-            <td style="border-right: 1px solid  red;" th:text="${re.dragonArea2.substring(3)}" th:class="${re.dragonArea2.substring(0,2)}"></td>
-            <td th:text="${re.phoenArea0.substring(3)}" th:class="${re.phoenArea0.substring(0,2)}"></td>
-            <td th:text="${re.phoenArea1.substring(3)}" th:class="${re.phoenArea1.substring(0,2)}"></td>
-            <td style="border-right: 1px solid  red;"  th:text="${re.phoenArea2.substring(3)}" th:class="${re.phoenArea2.substring(0,2)}"></td>
-            <td th:text="${re.area0Num0.substring(3)}" th:class="${re.area0Num0.substring(0,2)}"></td>
-            <td th:text="${re.area0Num1.substring(3)}" th:class="${re.area0Num1.substring(0,2)}"></td>
-            <td th:text="${re.area0Num2.substring(3)}" th:class="${re.area0Num2.substring(0,2)}"></td>
-            <td style="border-right: 1px solid  red;" th:text="${re.area0Num3.substring(3)}" th:class="${re.area0Num3.substring(0,2)}"></td>
-            <td th:text="${re.area1Num0.substring(3)}" th:class="${re.area1Num0.substring(0,2)}"></td>
-            <td th:text="${re.area1Num1.substring(3)}" th:class="${re.area1Num1.substring(0,2)}"></td>
-            <td th:text="${re.area1Num2.substring(3)}" th:class="${re.area1Num2.substring(0,2)}"></td>
-            <td style="border-right: 1px solid  red;" th:text="${re.area1Num3.substring(3)}" th:class="${re.area1Num3.substring(0,2)}"></td>
-            <td th:text="${re.area2Num0.substring(3)}" th:class="${re.area2Num0.substring(0,2)}"></td>
-            <td th:text="${re.area2Num1.substring(3)}" th:class="${re.area2Num1.substring(0,2)}"></td>
-            <td th:text="${re.area2Num2.substring(3)}" th:class="${re.area2Num2.substring(0,2)}"></td>
-            <td th:text="${re.area2Num3.substring(3)}" th:class="${re.area2Num3.substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[0].substring(3)}" th:class="${re.rightValueArr[0].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[1].substring(3)}" th:class="${re.rightValueArr[1].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[2].substring(3)}" th:class="${re.rightValueArr[2].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[3].substring(3)}" th:class="${re.rightValueArr[3].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[4].substring(3)}" th:class="${re.rightValueArr[4].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[5].substring(3)}" th:class="${re.rightValueArr[5].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[6].substring(3)}" th:class="${re.rightValueArr[6].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[7].substring(3)}" th:class="${re.rightValueArr[7].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[8].substring(3)}" th:class="${re.rightValueArr[8].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[9].substring(3)}" th:class="${re.rightValueArr[9].substring(0,2)}"></td>
+            <td th:text="${re.leftPass.substring(3)}" th:class="${re.leftPass.substring(0,2)}"></td>
+            <td th:text="${re.break1.substring(3)}" th:class="${re.break1.substring(0,2)}"></td>
+            <td th:text="${re.rightPass.substring(3)}" th:class="${re.rightPass.substring(0,2)}"></td>
+            <td th:text="${re.break2.substring(3)}" th:class="${re.break2.substring(0,2)}"></td>
+            <td th:text="${re.fall.substring(3)}" th:class="${re.fall.substring(0,2)}"></td>
 
         </tr>
         <!--点击事件-->
         <tr>
-            <td><button class="btn btn-success" id="submit-choose-trend" type="button" >提交</button></td>
-            <td><button class="btn btn-success" id="clear-trend" type="button" >清</button></td>
+            <td>
+                <button class="btn btn-success" id="submit-choose-trend" type="button">提交</button>
+            </td>
+            <td>
+                <button class="btn btn-success" id="clear-trend" type="button">清</button>
+            </td>
             <td colspan="2">-->点选</td>
             <td class="btn-nums-select dragonPrime">质</td>
-            <td style="border-right: 1px solid  red;" class="btn-nums-select dragonComposite">合</td>
+            <td class="btn-nums-select dragonComposite">合</td>
             <td class="btn-nums-select phoenPrime">质</td>
-            <td style="border-right: 1px solid  red;"  class="btn-nums-select phoenComposite">合</td>
+            <td class="btn-nums-select phoenComposite">合</td>
             <td class="btn-nums-select dragonArea">0</td>
             <td class="btn-nums-select dragonArea">1</td>
-            <td style="border-right: 1px solid  red;"  class="btn-nums-select dragonArea">2</td>
+            <td class="btn-nums-select dragonArea">2</td>
             <td class="btn-nums-select phoenArea">0</td>
             <td class="btn-nums-select phoenArea">1</td>
-            <td style="border-right: 1px solid  red;"  class="btn-nums-select phoenArea">2</td>
+            <td class="btn-nums-select phoenArea">2</td>
             <td class="btn-nums-select area0">0</td>
             <td class="btn-nums-select area0">1</td>
             <td class="btn-nums-select area0">2</td>
-            <td style="border-right: 1px solid  red;"  class="btn-nums-select area0">3</td>
+            <td class="btn-nums-select area0">3</td>
             <td class="btn-nums-select area1">0</td>
             <td class="btn-nums-select area1">1</td>
             <td class="btn-nums-select area1">2</td>
-            <td style="border-right: 1px solid  red;"  class="btn-nums-select area1">3</td>
+            <td class="btn-nums-select area1">3</td>
             <td class="btn-nums-select area2">0</td>
             <td class="btn-nums-select area2">1</td>
             <td class="btn-nums-select area2">2</td>

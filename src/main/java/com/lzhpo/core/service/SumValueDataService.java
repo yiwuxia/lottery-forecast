@@ -191,10 +191,6 @@ public class SumValueDataService {
         Set<Integer> rightValue9NoList= Sets.newHashSet();
         Integer rightValue9Ok=0;
         Integer rightValue9No=0;
-        Set<Integer> rightValue10OkList= Sets.newHashSet();
-        Set<Integer> rightValue10NoList= Sets.newHashSet();
-        Integer rightValue10Ok=0;
-        Integer rightValue10No=0;
         Set<Integer> leftPassOkList= Sets.newHashSet();
         Set<Integer> leftPassNoList= Sets.newHashSet();
         Integer leftPassOk=0;
@@ -419,26 +415,6 @@ public class SumValueDataService {
                 rightValue9NoList.add(rightValue9No);
             }
 
-            if (vo.getRightValueArr()[10].startsWith("ok")){
-                if (occurs.getRightValue10()==null){
-                    occurs.setRightValue10(1);
-                }else{
-                    occurs.setRightValue10(1+occurs.getRightValue10());
-                }
-                //如果是ok,将 no的计数保存
-                rightValue10NoList.add(rightValue10No);
-                rightValue10No=0;
-                rightValue10Ok++;
-                rightValue10OkList.add(rightValue10Ok);
-            }else {
-                if (occurs.getRightValue10()==null){
-                    occurs.setRightValue10(0);
-                }
-                rightValue10OkList.add(rightValue10Ok);
-                rightValue10Ok=0;
-                rightValue10No++;
-                rightValue10NoList.add(rightValue10No);
-            }
 
             if (vo.getLeftPass().startsWith("ok")){
                 if (occurs.getLeftPass()==null){
@@ -562,8 +538,6 @@ public class SumValueDataService {
         maxMiss.setRightValue8(Collections.max(rightValue8NoList));
         maxContinu.setRightValue9(Collections.max(rightValue9OkList));
         maxMiss.setRightValue9(Collections.max(rightValue9NoList));
-        maxContinu.setRightValue10(Collections.max(rightValue10OkList));
-        maxMiss.setRightValue10(Collections.max(rightValue10NoList));
         maxContinu.setLeftPass(Collections.max(leftPassOkList));
         maxMiss.setLeftPass(Collections.max(leftPassNoList));
         maxContinu.setBreak1(Collections.max(break1OkList));
