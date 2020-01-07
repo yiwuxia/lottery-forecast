@@ -15,6 +15,7 @@ public class SumDataStaticsVo {
 
 
 
+    private  String description;
     /**
      * 合值走势
      */

@@ -353,6 +353,18 @@ layui.config({
 
     });
 
+    //basic_dragon
+    $("#basic_sum").on('click', function () {
+        layer.open({
+            type: 2,
+            title: '和合值',
+            skin: 'layui-layer-rim', //加上边框
+            area: ['1200px', '500px'], //宽高
+            content: '/sum/index'
+        });
+
+    });
+
 
     function initCombinationTable() {
         //请求初始数据，获取组合列表 返回[1-1-2,2-2-3]格式

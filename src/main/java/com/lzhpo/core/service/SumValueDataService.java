@@ -5,17 +5,12 @@ import com.google.common.collect.Sets;
 import com.lzhpo.core.domain.PrizeInfoEntity;
 import com.lzhpo.core.domain.concord.SumDataStaticsVo;
 import com.lzhpo.core.domain.concord.SumDataVo;
-import com.lzhpo.core.domain.dragon.DragonPhoenixStaticVo;
-import com.lzhpo.core.domain.dragon.DragonPhoenixVo;
-import com.lzhpo.core.utils.CalculateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @author <a href="lijing1@wxchina.com@wxchina.com">Lijin</a>
@@ -549,8 +544,11 @@ public class SumValueDataService {
         maxContinu.setFall(Collections.max(fallOkList));
         maxMiss.setFall(Collections.max(fallNoList));
         List<SumDataStaticsVo> lastResult=Lists.newArrayList();
+        occurs.setDescription("出现次数");
         lastResult.add(occurs);
+        maxContinu.setDescription("最大连出");
         lastResult.add(maxContinu);
+        maxMiss.setDescription("最大遗漏");
         lastResult.add(maxMiss);
         return lastResult;
     }
