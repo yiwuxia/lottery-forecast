@@ -115,8 +115,12 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         }
         $.post("/stat/getTrendCalcData",params, function(res) {
 
-            layer.close(layer.index);
-            parent.location.reload();
+            layer.msg('成功将您预测的号码提交到"已选条件"里面!',{time:1500},function() {
+                layer.close(layer.index);
+                parent.location.reload();
+            })
+
+
         });
 
 

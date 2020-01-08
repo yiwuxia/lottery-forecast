@@ -124,8 +124,13 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             //处理龙头凤尾的选择数据
             //生成条件，存到redis。页面加载再获取数据
             $.post("/dragon/dealWithDragon",params, function(res) {
-                layer.close(layer.index);
-                parent.location.reload();
+
+                layer.msg('成功将您预测的号码提交到"已选条件"里面!',{time:1500},function() {
+                    layer.close(layer.index);
+                    parent.location.reload();
+                })
+
+
 
             });
         }

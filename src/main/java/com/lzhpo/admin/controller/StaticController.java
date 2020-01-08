@@ -296,6 +296,7 @@ public class StaticController {
             String id
     ) {
         String conditionStr= redisUtil.hget(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),id);
+        System.out.println(conditionStr);
         return JsonResp.success(conditionStr);
 
     }

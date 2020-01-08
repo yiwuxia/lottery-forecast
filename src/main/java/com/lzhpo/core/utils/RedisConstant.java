@@ -14,8 +14,9 @@ public class RedisConstant {
      */
     public static  final  String  USER_UUID_SET="user_uuid_set";
 
+    //页面显示的condition
     public static  final  String  USER_CONDITION="user_condition";
-
+    //计算需要的condtion
     public static  final  String  USER_CONDITION_INFO="user_condition_info";
 
     /**

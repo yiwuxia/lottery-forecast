@@ -484,8 +484,12 @@ public class CalculateUtil {
                                            String occurs) {
 
         Set<String> result = new HashSet<>();
-        Splitter splitter=Splitter.on(";");
-        List<String>  sumValuesLists= splitter.splitToList(sumValues);
+        Splitter splitter=Splitter.on(",");
+        List<String>  sumValuesListsTemp= splitter.splitToList(sumValues);
+        List<Integer> sumValuesLists=Lists.newArrayList();
+        if (CollectionUtils.isNotEmpty(sumValuesListsTemp)){
+            sumValuesLists=sumValuesListsTemp.stream().map(s->Integer.valueOf(s)).collect(Collectors.toList());
+        }
         List<Integer> occursList= intCommonsStrToList(occurs);
         /**
          * 出现次数
@@ -500,17 +504,17 @@ public class CalculateUtil {
                         }
                         int fillCount=0;
                         int  sumTemp=first+second+third;
-                        int  sumValue=sumTemp%10;
+                        Integer  sumValue=sumTemp%10;
                         //合值条件
                         if (CollectionUtils.isNotEmpty(sumValuesLists)
                                 && sumValuesLists.contains(sumValue)){
                             fillCount++;
                         }
-                        if ("左".equals(valueFirst) && sumValue+1==preTermSumValue){
+                        if ("左传".equals(valueFirst) && sumValue+1==preTermSumValue){
                             //坐传
                             fillCount++;
                         }
-                        if ("右".equals(valueFirst) && sumValue==preTermSumValue+1){
+                        if ("右传".equals(valueFirst) && sumValue==preTermSumValue+1){
                             //右传
                             fillCount++;
                         }

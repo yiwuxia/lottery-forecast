@@ -470,7 +470,7 @@ layui.config({
         $("#" + modalId + " input:checkbox[name='" + cbName + "']:checked").each(function () {
             str += $(this).val() + ",";
         });
-        if (str.substr(str.length - 1) == ',') {
+        if ( str.length>0 && str.substr(str.length - 1) == ',') {
             str = str.substring(0, str.length - 1);
         }
         return str;
@@ -537,7 +537,6 @@ layui.config({
             location.reload();
 
         });
-        console.log();
 
     });
 
@@ -671,6 +670,89 @@ layui.config({
 
     }
 
+    //和合值修改确定
+    $("#sumValueOk").click(function () {
+        var values = getCheckValuesFromModal("sumValueConditionWin",
+            "sumValue");
+        var occurs = getCheckValuesFromModal("sumValueConditionWin",
+            "occurs");
+        var firstTemp= $("#sumValueConditionWin input[type=checkbox][name='first']:checked");
+        var secondTemp=$("#sumValueConditionWin input[type=checkbox][name='second']:checked")
+        first=firstTemp.val();
+        second=secondTemp.val();
+        if (occurs.length==0){
+            alert("wrong select");
+        }else{
+            if (first==0){
+                first='左传';
+            }else if (first==1){
+                first='断';
+            } else if (first==2){
+                first='右传';
+            }
+            if (second==0){
+                second='断';
+            }else  if (second==1){
+                second='落';
+            }
+            var params={
+                sumValues:values,//默认选择 1，2
+                valueFirst:first,
+                valueSecond:second,
+                occurs:occurs,
+                uuid: updateConditionId
+            };
+            $.post("/sum/sumValueConditionChange",params, function(res) {
+                $('#sumValueConditionWin').modal('hide');
+                location.reload();
+
+            });
+
+        }
+
+
+    });
+
+    function handlerSumValue(arraAll,uuid){
+        updateConditionId = uuid;
+        $('#sumValueConditionWin').modal('show');
+        var sumValues=arraAll[1];
+        if (sumValues.length>0){
+            var arr=sumValues.split(",");
+            for (var i = 0; i < arr.length; i++) {
+                console.log("#sumValue_" + arr[i]);
+                $("#sumValue_" + arr[i]).prop("checked", true);
+            }
+        }
+        var value1=arraAll[2];
+        if (value1.length>0){
+            if (value1=='断'){
+                $("#break1").prop("checked", true);
+            }else  if (value1=='左传'){
+                $("#leftPass").prop("checked", true);
+            } else if (value1=='右传') {
+                $("#rightPass").prop("checked", true);
+            }
+        }
+        var value2=arraAll[3];
+        if (value1.length>0){
+            if (value2=='断'){
+                $("#break2").prop("checked", true);
+            }else  if (value2=='落'){
+                $("#fall").prop("checked", true);
+            }
+        }
+        var occus=arraAll[4];
+        if (occus.length>0){
+            var arr=occus.split(",");
+            for (var i = 0; i < arr.length; i++) {
+                $("#sumValueOccur_"+arr[i]).prop("checked",true);
+            }
+        }
+
+
+    }
+
     /**
      * 修改条件
      */
@@ -680,6 +762,7 @@ layui.config({
         //去后台删除掉
         $.post("/stat/getConditionById", {id: uuid}, function (res) {
             var conditions = res.data;
+            console.log(conditions);
             var arr = conditions.split(";");
             if (arr[0] == 1) {
                 var regions = arr[1];
@@ -696,6 +779,10 @@ layui.config({
             } else if (arr[0] == 3) {
                 //龙头凤尾
                 handlerDragonPhoen(conditions, uuid);
+            }else  if(arr[0]==4){
+                //type和其他数据链接必须;
+                console.log(arr);
+                handlerSumValue(arr,uuid);
             }
 
         });
@@ -735,6 +822,22 @@ layui.config({
         var  val=obj.val();
         if(obj.prop("checked")){
             $("input[type=checkbox][name='tail']").not(this).attr("checked", false);
+        }
+    });
+
+    $("#sumValueConditionWin input[type=checkbox][name='first']").change(function() {
+        var obj=$(this);
+        var  val=obj.val();
+        if(obj.prop("checked")){
+            $("input[type=checkbox][name='first']").not(this).attr("checked", false);
+        }
+    });
+
+    $("#sumValueConditionWin input[type=checkbox][name='second']").change(function() {
+        var obj=$(this);
+        var  val=obj.val();
+        if(obj.prop("checked")){
+            $("input[type=checkbox][name='second']").not(this).attr("checked", false);
         }
     });
 

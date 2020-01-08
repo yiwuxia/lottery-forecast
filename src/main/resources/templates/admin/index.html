@@ -30,6 +30,9 @@
             margin-bottom: 0px;
             padding: -0.5em;
         }
+        .radio-inline{
+            padding-left: 17px;
+        }
     </style>
 </head>
 <body>
@@ -623,6 +626,107 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消
                 </button>
                 <button type="button" class="btn btn-primary" id="dragonOk">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--和合值条件修改-->
+
+<div class="modal fade" id="sumValueConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="sumValueLabel">
+                    合值传落
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <fieldset>
+                    <legend>合值</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_0" name="sumValue" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" id="sumValue_1" name="sumValue" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_2" name="sumValue" value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_3" name="sumValue" value="3"> 3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_4" name="sumValue" value="4"> 4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_5" name="sumValue" value="5"> 5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_6" name="sumValue" value="6"> 6
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_7" name="sumValue" value="7"> 7
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_8" name="sumValue" value="8"> 8
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_9" name="sumValue" value=""> 9
+                    </label>
+
+                </fieldset>
+                <fieldset>
+                    <legend>合值传断</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="leftPass" name="first" value="0"> 左传
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="break1" name="first" value="1"> 断
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="rightPass" name="first" value="2"> 右传
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>合值断落</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="break2" name="second" value="0"> 断
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="fall" name="second" value="1"> 落
+                    </label>
+
+                </fieldset>
+
+
+                <div style="text-align: center;">
+                    <span>出现:</span>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValueOccur_0"  name="occurs" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValueOccur_1"   name="occurs" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   id="sumValueOccur_2"  name="occurs"  value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   id="sumValueOccur_3"  name="occurs" value="3"> 3
+                    </label>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" id="sumValueOk" class="btn btn-primary">
                     确定
                 </button>
             </div>

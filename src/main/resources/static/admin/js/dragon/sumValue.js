@@ -62,13 +62,13 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                 sumValues=sumValues+o.text()+",";
             }
             if (o.hasClass('leftPass')){
-                valueFirst=o.text();
+                valueFirst=o.text()+"传";
             }
             if (o.hasClass('break1')){
                 valueFirst=o.text();
             }
             if (o.hasClass('rightPass')){
-                valueFirst=o.text();
+                valueFirst=o.text()+"传";
             }
             if (o.hasClass('break2')){
                 valueSecond=o.text();
@@ -93,12 +93,13 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                 sumValues:sumValues,//默认选择 1，2
                 valueFirst:valueFirst,
                 valueSecond:valueSecond,
-                occurs:arrOccurs.join(",")
+                occurs:occurs
             };
             $.post("/sum/dealWithSumValue",params, function(res) {
-                layer.close(layer.index);
-                parent.location.reload();
-
+                layer.msg('成功将您预测的号码提交到"已选条件"里面!',{time:1500},function() {
+                    layer.close(layer.index);
+                    parent.location.reload();
+                })
             });
         }
 

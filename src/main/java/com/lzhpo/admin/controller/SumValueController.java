@@ -1,15 +1,11 @@
 package com.lzhpo.admin.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.base.Splitter;
 import com.lzhpo.admin.entity.vo.SelectCondition;
 import com.lzhpo.common.config.MySysUser;
 import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.concord.SumDataStaticsVo;
 import com.lzhpo.core.domain.concord.SumDataVo;
-import com.lzhpo.core.domain.dragon.DragonPhoenixStaticVo;
-import com.lzhpo.core.domain.dragon.DragonPhoenixVo;
-import com.lzhpo.core.service.DragonDataService;
 import com.lzhpo.core.service.PrizeDataService;
 import com.lzhpo.core.service.SumValueDataService;
 import com.lzhpo.core.utils.*;
@@ -67,7 +63,7 @@ public class SumValueController {
     ) {
         String preTermSumValueStr=redisUtil.get(RedisConstant.NEWST_PRIZE_DATA_SUM_VALUE);
         int preTermSumValue=0;
-        if (StringUtils.isBlank(preTermSumValueStr)){
+        if (StringUtils.isNotBlank(preTermSumValueStr)){
             preTermSumValue=Integer.valueOf(preTermSumValueStr);
         }
         saveSumValueInfoToRedis(sumValues,valueFirst,valueSecond,
@@ -75,7 +71,9 @@ public class SumValueController {
         return JsonResp.success("");
     }
 
-    private void saveSumValueInfoToRedis(String sumValues,String valueFirst,String valueSecond,
+    private void saveSumValueInfoToRedis(String sumValues,
+                                         String valueFirst,
+                                         String valueSecond,
                                          String occurs,
                                           int preTermSumValue,
                                            String uuid
@@ -93,112 +91,66 @@ public class SumValueController {
         condition.setType(ConditionEnum.SUMVALUE.getLabel());//类型说明
         condition.setCount(result.size());
         condition.setId(conditionId);
-
-       /* StringBuffer showText=new StringBuffer();
-        StringBuffer headAndTailBuffer=new StringBuffer();
-        Splitter splitter=Splitter.on(";");
-        List<String> headAndTailList= splitter.splitToList("");
-        String head=headAndTailList.get(0);
-        String tail=headAndTailList.get(1);
-        String occus=headAndTailList.get(2);
-        if (StringUtils.isNotBlank(head)){
-            headAndTailBuffer.append(CalculateUtil.dragonHeadAndTail.get(head))
-                    .append(",");
+        StringBuffer showText=new StringBuffer();
+        if(StringUtils.isNotBlank(sumValues)){
+            showText.append("合值:"+sumValues).append(";");
         }
-        if (StringUtils.isNotBlank(tail)){
-            headAndTailBuffer.append(CalculateUtil.dragonHeadAndTail.get(tail));
+        if(StringUtils.isNotBlank(valueFirst)){
+            showText.append("合传断:"+valueFirst).append(";");
         }
-        String htTemp1=headAndTailBuffer.toString();
-        if (htTemp1.length()>0){
-            if (htTemp1.endsWith(",")){
-                htTemp1=htTemp1.substring(0,htTemp1.length()-1);
-            }
-            showText.append("头尾质合").append(":").append(htTemp1);
-            showText.append(";").append("出:").append(occus);
+        if(StringUtils.isNotBlank(valueSecond)){
+            showText.append("合断落:"+valueSecond).append(";");
         }
-        if (StringUtils.isNotBlank(headArea)){
-            showText.append(";头:").append(headArea).append("路");
-        }
-        if (StringUtils.isNotBlank(tailArea)){
-            showText.append(";尾:").append(tailArea).append("路");
-        }
-        if (StringUtils.isNotBlank(area0)){
-            showText.append(";0路个数:").append(area0);
-        }
-        if (StringUtils.isNotBlank(area1)){
-            showText.append(";1路个数:").append(area1);
-        }
-        if (StringUtils.isNotBlank(area2)){
-            showText.append(";2路个数:").append(area2);
-        }
-        System.out.println(showText);
-        condition.setContent(showText.toString());
+        showText.append("出:"+occurs);
+        String desc=showText.toString();
+        desc=desc.endsWith(";")?desc.substring(0,desc.length()-1):desc;
+        condition.setContent(desc);
+        //保存集合值
         redisUtil.hset(RedisConstant.USER_UUID_SET+MySysUser.id(),
                 condition.getId(),
                 JSON.toJSONString(result));
+        //保存列表展示的条件值
         redisUtil.hset(RedisConstant.USER_CONDITION+MySysUser.id(),
                 condition.getId(),
                 JSON.toJSONString(condition));
-        StringBuffer conditionDeal=new StringBuffer();
-        conditionDeal.append(MyStrUtil.joinMultiStrBySemi(
-                String.valueOf(ConditionEnum.DRAGONPHOEN.getIndex()),
-                // headAndTail,
-                MyStrUtil.joinMultiStrByLine(head,tail,occus),
-                headArea,tailArea,area0,area1,area2,occurs
-        ));
+        String conditionStr= MyStrUtil.joinMultiStrBySemi(sumValues,valueFirst,valueSecond,occurs);
+        conditionStr=ConditionEnum.SUMVALUE.getIndex()+";"+conditionStr;
         redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),
                 condition.getId(),
-                conditionDeal.toString());*/
+                conditionStr);
+
 
     }
 
 
-/*
-    @Autowired
-    private RedisUtil redisUtil;
-
-    @Autowired
-    private DragonDataService dataService;
 
 
     @Autowired
     private PrizeDataService prizeDataService;
 
 
-    @GetMapping(value = "/index")
-    public ModelAndView adminIndex() {
-        //龙头凤尾显示页面统计数据（不包括最后三列）
-        List<DragonPhoenixVo> listResult = dataService.getDragonAndPhoenIndexList();
-        List<DragonPhoenixStaticVo> bottomStatic = dataService.getDragonBottomStatics(listResult);
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("lists", listResult);
-        mv.addObject("statics", bottomStatic);
-        mv.setViewName("admin/stat/dragon");
-        return mv;
-    }
 
-
-
-
-
-    @PostMapping("/dragonConditionChange")
+    @PostMapping("/sumValueConditionChange")
     @ResponseBody
     public JsonResp dragonConditionChange(
-            String   headAndTail,
-            String   headArea,
-            String  tailArea,
-            String  area0,
-            String   area1,
-            String  area2,
-            String   occurs,
+            String   sumValues,
+            String  valueFirst,
+            String    valueSecond,
+            String  occurs,
             String   uuid
     ) {
         //总的条件必须选一个
         if (StringUtils.isNotBlank(occurs)){
             prizeDataService.deleteTrendConditionById(uuid);
-            saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs,uuid);
+            String preTermSumValueStr=redisUtil.get(RedisConstant.NEWST_PRIZE_DATA_SUM_VALUE);
+            int preTermSumValue=0;
+            if (StringUtils.isNotBlank(preTermSumValueStr)){
+                preTermSumValue=Integer.valueOf(preTermSumValueStr);
+            }
+            saveSumValueInfoToRedis(sumValues,valueFirst,valueSecond,
+                    occurs,preTermSumValue,uuid);
         }
         return JsonResp.success("");
-    }*/
+    }
 
 }
