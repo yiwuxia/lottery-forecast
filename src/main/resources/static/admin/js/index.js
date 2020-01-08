@@ -720,7 +720,6 @@ layui.config({
         if (sumValues.length>0){
             var arr=sumValues.split(",");
             for (var i = 0; i < arr.length; i++) {
-                console.log("#sumValue_" + arr[i]);
                 $("#sumValue_" + arr[i]).prop("checked", true);
             }
         }
@@ -762,7 +761,6 @@ layui.config({
         //去后台删除掉
         $.post("/stat/getConditionById", {id: uuid}, function (res) {
             var conditions = res.data;
-            console.log(conditions);
             var arr = conditions.split(";");
             if (arr[0] == 1) {
                 var regions = arr[1];
@@ -780,8 +778,7 @@ layui.config({
                 //龙头凤尾
                 handlerDragonPhoen(conditions, uuid);
             }else  if(arr[0]==4){
-                //type和其他数据链接必须;
-                console.log(arr);
+                //type和其他数据链接必须;符号
                 handlerSumValue(arr,uuid);
             }
 

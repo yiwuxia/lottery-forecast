@@ -30,10 +30,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
     });
 
     $("#clear-trend").click(function(){
-        //在iframe页面选择负页面元素
-       // var obj=$("#condition",window.parent.document);
-      //  obj.css("background","red");
-       // console.log($("#condition",window.parent.document).length);
         $(".btn-nums-select").each(function(){
            var numBtn=$(this);
             if (numBtn.hasClass("btn-click-trend")) {
@@ -120,7 +116,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                 area2:area2,
                 occurs:arrOccurs.join(",")
             };
-            console.log(params);
             //处理龙头凤尾的选择数据
             //生成条件，存到redis。页面加载再获取数据
             $.post("/dragon/dealWithDragon",params, function(res) {
