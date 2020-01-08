@@ -54,41 +54,32 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
     $("#submit-choose-trend").click(function () {
 
         var sumValues='';
-        var leftPass='';
-        var break1='';
-        var rightPass='';
-        var break2='';
-        var fall='';
+        var valueFirst='';
+        var valueSecond='';
         $(".btn-click-trend").each(function() {
             var o=$(this);
             if (o.hasClass('sumValues')){
                 sumValues=sumValues+o.text()+",";
             }
             if (o.hasClass('leftPass')){
-                leftPass=o.text();
+                valueFirst=o.text();
             }
             if (o.hasClass('break1')){
-                break1=o.text();
+                valueFirst=o.text();
             }
             if (o.hasClass('rightPass')){
-                rightPass=o.text();
+                valueFirst=o.text();
             }
             if (o.hasClass('break2')){
-                break2=o.text();
+                valueSecond=o.text();
             }
             if (o.hasClass('fall')){
-                fall=o.text();
+                valueSecond=o.text();
             }
 
         });
         sumValues=delStrEndwithComma(sumValues);
-        console.log("sumValues:"+sumValues);
-        console.log("leftPass:"+leftPass);
-        console.log("break1:"+break1);
-        console.log("rightPass:"+rightPass);
-        console.log("break2:"+break2);
-        console.log("fall:"+fall);
-        var paramArr=[sumValues,leftPass,break1,rightPass,break2,fall];
+        var paramArr=[sumValues,valueFirst,valueSecond];
         var occurs=getOccursCounts(paramArr);
         if (occurs==0){
             layer.msg('所选项不能为空');
@@ -100,11 +91,8 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             }
             var params={
                 sumValues:sumValues,//默认选择 1，2
-                leftPass:leftPass,
-                break1:break1,
-                rightPass:rightPass,
-                break2:break2,
-                fall:fall,
+                valueFirst:valueFirst,
+                valueSecond:valueSecond,
                 occurs:arrOccurs.join(",")
             };
             $.post("/sum/dealWithSumValue",params, function(res) {

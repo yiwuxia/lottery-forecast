@@ -12,7 +12,8 @@ public enum ConditionEnum {
 
     DANMA(1,"胆码"),
     DINGWEIMA(2,"定位码"),
-    DRAGONPHOEN(3,"龙头凤尾")
+    DRAGONPHOEN(3,"龙头凤尾"),
+    SUMVALUE(4,"和合值")
     ;
 
 

@@ -478,11 +478,8 @@ public class CalculateUtil {
     }
 
     public static Set<String> calcSumValue(String sumValues,
-                                           String leftPass,
-                                           String break1,
-                                           String rightPass,
-                                           String break2,
-                                           String fall,
+                                           String valueFirst,
+                                           String valueSecond,
                                            Integer preTermSumValue,
                                            String occurs) {
 
@@ -509,32 +506,31 @@ public class CalculateUtil {
                                 && sumValuesLists.contains(sumValue)){
                             fillCount++;
                         }
-                        if ("左".equals(leftPass) && sumValue+1==preTermSumValue){
+                        if ("左".equals(valueFirst) && sumValue+1==preTermSumValue){
                             //坐传
                             fillCount++;
                         }
-                        if ("右".equals(rightPass) && sumValue==preTermSumValue+1){
+                        if ("右".equals(valueFirst) && sumValue==preTermSumValue+1){
                             //右传
                             fillCount++;
                         }
-                        if ("断".equals(break1)
+                        if ("断".equals(valueFirst)
                                 &&  (sumValue+1!=preTermSumValue)
                                 &&  (sumValue !=preTermSumValue+1)
                         ){
                             //右传
                             fillCount++;
                         }
-                        if ("落".equals(fall) && sumValue==preTermSumValue){
+                        if ("落".equals(valueSecond) && sumValue==preTermSumValue){
                             fillCount++;
                         }
-                        if ("断".equals(fall) && sumValue !=preTermSumValue){
+                        if ("断".equals(valueSecond) && sumValue !=preTermSumValue){
                             fillCount++;
                         }
                         if (fillCount==occur){
                             result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
                                     + "-" + (third==10?third:"0"+third));
                         }
-
                     }
                 }
             }

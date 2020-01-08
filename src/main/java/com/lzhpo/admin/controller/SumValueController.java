@@ -61,11 +61,8 @@ public class SumValueController {
     @ResponseBody
     public JsonResp getTrandIndexCodeData(
            String   sumValues,
-           String  leftPass,
-           String    break1,
-           String   rightPass,
-           String   break2,
-           String  fall,
+           String  valueFirst,
+           String    valueSecond,
            String  occurs
     ) {
         String preTermSumValueStr=redisUtil.get(RedisConstant.NEWST_PRIZE_DATA_SUM_VALUE);
@@ -73,36 +70,32 @@ public class SumValueController {
         if (StringUtils.isBlank(preTermSumValueStr)){
             preTermSumValue=Integer.valueOf(preTermSumValueStr);
         }
-        saveSumValueInfoToRedis(sumValues,leftPass,break1,
-                rightPass,break2,fall,occurs,preTermSumValue,null);
+        saveSumValueInfoToRedis(sumValues,valueFirst,valueSecond,
+                occurs,preTermSumValue,null);
         return JsonResp.success("");
     }
 
-    private void saveSumValueInfoToRedis(String sumValues,String leftPass,String break1,
-                                         String rightPass,String break2,String fall,String occurs,
+    private void saveSumValueInfoToRedis(String sumValues,String valueFirst,String valueSecond,
+                                         String occurs,
                                           int preTermSumValue,
                                            String uuid
     ) {
 
         String conditionId="";
-        Set<String> result= CalculateUtil.calcSumValue(sumValues,leftPass,break1,
-                rightPass,break2,fall,preTermSumValue,occurs);
-        System.out.println(result.size());
-       /* String conditionId="";
-        Set<String> result= CalculateUtil.calcSumValue(sumValues,leftPass,break1,
-                rightPass,break2,fall,preTermSumValue,occurs);
+        Set<String> result= CalculateUtil.calcSumValue(sumValues,valueFirst,valueSecond,
+                preTermSumValue,occurs);
         SelectCondition condition=new SelectCondition();
         if (StringUtils.isBlank(uuid)){
             conditionId=System.currentTimeMillis()+"";
         }else {
             conditionId=uuid;
         }
-        condition.setType(ConditionEnum.DRAGONPHOEN.getLabel());
+        condition.setType(ConditionEnum.SUMVALUE.getLabel());//类型说明
         condition.setCount(result.size());
         condition.setId(conditionId);
-        StringBuffer showText=new StringBuffer();
+
+       /* StringBuffer showText=new StringBuffer();
         StringBuffer headAndTailBuffer=new StringBuffer();
-        //headAndTail
         Splitter splitter=Splitter.on(";");
         List<String> headAndTailList= splitter.splitToList("");
         String head=headAndTailList.get(0);
