@@ -1457,4 +1457,13 @@ public class PrizeDataService {
     }
 
 
+    public List<PrizeInfoEntity> queryPrizeDataLimitOne() {
+        String sql = "select id,term_no termNo,prize_no1 prizeNo01,prize_no2 prizeNo02,prize_no3 prizeNo03," +
+                "prize_no4 prizeNo04," +
+                "prize_no5 prizeNo05,prize_no6 prizeNo06,prize_no7 prizeNo07," +
+                "prize_no8 prizeNo08,prize_no9 prizeNo09,prize_no10 prizeNo10,open_time openTime from  t_prize_base_info order by id desc limit 1";
+        List<PrizeInfoEntity> result=jdbcTemplate.query(sql, new BeanPropertyRowMapper(PrizeInfoEntity.class));
+        //取最新500条。 然后从旧到新排序
+        return result;
+    }
 }

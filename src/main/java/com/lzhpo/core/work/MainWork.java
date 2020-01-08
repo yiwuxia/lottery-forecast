@@ -1,7 +1,9 @@
 package com.lzhpo.core.work;
 
+import com.google.common.collect.Lists;
 import com.lzhpo.core.domain.PrizeData;
 import com.lzhpo.core.service.PrizeDataService;
+import com.lzhpo.core.service.SumValueDataService;
 import com.lzhpo.core.utils.DataGeneratorUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
@@ -27,6 +29,11 @@ public class MainWork {
 
     @Autowired
     private PrizeDataService prizeDataService;
+
+
+    @Autowired
+    private SumValueDataService sumValueDataService;
+
 
 
     private static final FastDateFormat format = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
@@ -58,17 +65,27 @@ public class MainWork {
 
         @Override
         public void run() {
-
+            PrizeData prizeData=null;
             String data = "";
             //产生模拟数据
             if (simulation == 1) {
                 data = generateSimulationData();
                 if (StringUtils.isNotBlank(data)) {
-                    dataQueue.offer(DataGeneratorUtil.converStrToPrizeData(data));
+                    prizeData=DataGeneratorUtil.converStrToPrizeData(data);
                 }
             } else {
 
             }
+            /**
+             * 保存最新的合值
+             */
+            int sumValue= Lists.newArrayList(prizeData.getPrizeNums()[0],
+                    prizeData.getPrizeNums()[1],prizeData.getPrizeNums()[2])
+                    .stream().map(s->Integer.valueOf(s)).reduce(Integer::sum).orElse(0);
+            sumValue=sumValue%10;
+            sumValueDataService.saveNewestPrizeSumValue(sumValue);
+
+            dataQueue.offer(prizeData);
         }
 
 

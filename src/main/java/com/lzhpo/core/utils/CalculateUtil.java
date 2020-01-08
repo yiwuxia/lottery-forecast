@@ -476,4 +476,69 @@ public class CalculateUtil {
         return  count;
 
     }
+
+    public static Set<String> calcSumValue(String sumValues,
+                                           String leftPass,
+                                           String break1,
+                                           String rightPass,
+                                           String break2,
+                                           String fall,
+                                           Integer preTermSumValue,
+                                           String occurs) {
+
+        Set<String> result = new HashSet<>();
+        Splitter splitter=Splitter.on(";");
+        List<String>  sumValuesLists= splitter.splitToList(sumValues);
+        List<Integer> occursList= intCommonsStrToList(occurs);
+        /**
+         * 出现次数
+         */
+        for(Integer occur:occursList) {
+            for (Integer first : firsts) {
+                for (Integer second : seconds) {
+                    for (Integer third : thirds) {
+                        //组合的三个数不能相同
+                        if (first.equals(second) || first.equals(third) || second.equals(third)) {
+                            continue;
+                        }
+                        int fillCount=0;
+                        int  sumTemp=first+second+third;
+                        int  sumValue=sumTemp%10;
+                        //合值条件
+                        if (CollectionUtils.isNotEmpty(sumValuesLists)
+                                && sumValuesLists.contains(sumValue)){
+                            fillCount++;
+                        }
+                        if ("左".equals(leftPass) && sumValue+1==preTermSumValue){
+                            //坐传
+                            fillCount++;
+                        }
+                        if ("右".equals(rightPass) && sumValue==preTermSumValue+1){
+                            //右传
+                            fillCount++;
+                        }
+                        if ("断".equals(break1)
+                                &&  (sumValue+1!=preTermSumValue)
+                                &&  (sumValue !=preTermSumValue+1)
+                        ){
+                            //右传
+                            fillCount++;
+                        }
+                        if ("落".equals(fall) && sumValue==preTermSumValue){
+                            fillCount++;
+                        }
+                        if ("断".equals(fall) && sumValue !=preTermSumValue){
+                            fillCount++;
+                        }
+                        if (fillCount==occur){
+                            result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
+                                    + "-" + (third==10?third:"0"+third));
+                        }
+
+                    }
+                }
+            }
+        }
+        return  result;
+    }
 }

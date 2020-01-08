@@ -19,7 +19,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
 
 
 
-
     //按钮点击  numRegion01。。。
     $(".btn-nums-select").click(function () {
         var val = $(this);
@@ -143,7 +142,7 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         return str;
     }
     
-    $("#trend-clear").click(function () {
+    /*$("#trend-clear").click(function () {
         table.render({
             elem: '#test'
             ,url:'/stat/getTrendFullData'
@@ -159,6 +158,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
                 $("#count-desc").text(count);
             }
         });
-    });
+    });*/
 
 });

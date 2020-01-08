@@ -41,8 +41,6 @@ public class SumValueController {
     private SumValueDataService sumValueDataService;
 
 
-    @Autowired
-    private PrizeDataService prizeDataService;
 
 
 
@@ -59,60 +57,40 @@ public class SumValueController {
     }
 
 
-/*
-    @Autowired
-    private RedisUtil redisUtil;
-
-    @Autowired
-    private DragonDataService dataService;
-
-
-    @Autowired
-    private PrizeDataService prizeDataService;
-
-
-    @GetMapping(value = "/index")
-    public ModelAndView adminIndex() {
-        //龙头凤尾显示页面统计数据（不包括最后三列）
-        List<DragonPhoenixVo> listResult = dataService.getDragonAndPhoenIndexList();
-        List<DragonPhoenixStaticVo> bottomStatic = dataService.getDragonBottomStatics(listResult);
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("lists", listResult);
-        mv.addObject("statics", bottomStatic);
-        mv.setViewName("admin/stat/dragon");
-        return mv;
-    }
-
-
-    @PostMapping("/dealWithDragon")
+    @PostMapping("/dealWithSumValue")
     @ResponseBody
     public JsonResp getTrandIndexCodeData(
-         String   headAndTail,
-          String   headArea,
-         String  tailArea,
-         String  area0,
-         String   area1,
-         String  area2,
-         String   occurs
+           String   sumValues,
+           String  leftPass,
+           String    break1,
+           String   rightPass,
+           String   break2,
+           String  fall,
+           String  occurs
     ) {
-        saveDragonAndPhoenToRedis(headAndTail,headArea,tailArea,area0,area1,area2,occurs,null);
-
-
+        String preTermSumValueStr=redisUtil.get(RedisConstant.NEWST_PRIZE_DATA_SUM_VALUE);
+        int preTermSumValue=0;
+        if (StringUtils.isBlank(preTermSumValueStr)){
+            preTermSumValue=Integer.valueOf(preTermSumValueStr);
+        }
+        saveSumValueInfoToRedis(sumValues,leftPass,break1,
+                rightPass,break2,fall,occurs,preTermSumValue,null);
         return JsonResp.success("");
     }
 
-    private void saveDragonAndPhoenToRedis(String headAndTail,
-                                           String headArea,
-                                           String tailArea,
-                                           String area0,
-                                           String area1,
-                                           String area2,
-                                           String occurs,
+    private void saveSumValueInfoToRedis(String sumValues,String leftPass,String break1,
+                                         String rightPass,String break2,String fall,String occurs,
+                                          int preTermSumValue,
                                            String uuid
-                                           ) {
+    ) {
 
         String conditionId="";
-        Set<String> result= CalculateUtil.calcDragon(headAndTail,headArea,tailArea,area0,area1,area2,occurs);
+        Set<String> result= CalculateUtil.calcSumValue(sumValues,leftPass,break1,
+                rightPass,break2,fall,preTermSumValue,occurs);
+        System.out.println(result.size());
+       /* String conditionId="";
+        Set<String> result= CalculateUtil.calcSumValue(sumValues,leftPass,break1,
+                rightPass,break2,fall,preTermSumValue,occurs);
         SelectCondition condition=new SelectCondition();
         if (StringUtils.isBlank(uuid)){
             conditionId=System.currentTimeMillis()+"";
@@ -126,13 +104,13 @@ public class SumValueController {
         StringBuffer headAndTailBuffer=new StringBuffer();
         //headAndTail
         Splitter splitter=Splitter.on(";");
-        List<String> headAndTailList= splitter.splitToList(headAndTail);
+        List<String> headAndTailList= splitter.splitToList("");
         String head=headAndTailList.get(0);
         String tail=headAndTailList.get(1);
         String occus=headAndTailList.get(2);
         if (StringUtils.isNotBlank(head)){
             headAndTailBuffer.append(CalculateUtil.dragonHeadAndTail.get(head))
-            .append(",");
+                    .append(",");
         }
         if (StringUtils.isNotBlank(tail)){
             headAndTailBuffer.append(CalculateUtil.dragonHeadAndTail.get(tail));
@@ -171,15 +149,43 @@ public class SumValueController {
         StringBuffer conditionDeal=new StringBuffer();
         conditionDeal.append(MyStrUtil.joinMultiStrBySemi(
                 String.valueOf(ConditionEnum.DRAGONPHOEN.getIndex()),
-               // headAndTail,
+                // headAndTail,
                 MyStrUtil.joinMultiStrByLine(head,tail,occus),
                 headArea,tailArea,area0,area1,area2,occurs
         ));
         redisUtil.hset(RedisConstant.USER_CONDITION_INFO+MySysUser.id(),
                 condition.getId(),
-                conditionDeal.toString());
+                conditionDeal.toString());*/
 
     }
+
+
+/*
+    @Autowired
+    private RedisUtil redisUtil;
+
+    @Autowired
+    private DragonDataService dataService;
+
+
+    @Autowired
+    private PrizeDataService prizeDataService;
+
+
+    @GetMapping(value = "/index")
+    public ModelAndView adminIndex() {
+        //龙头凤尾显示页面统计数据（不包括最后三列）
+        List<DragonPhoenixVo> listResult = dataService.getDragonAndPhoenIndexList();
+        List<DragonPhoenixStaticVo> bottomStatic = dataService.getDragonBottomStatics(listResult);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("lists", listResult);
+        mv.addObject("statics", bottomStatic);
+        mv.setViewName("admin/stat/dragon");
+        return mv;
+    }
+
+
+
 
 
     @PostMapping("/dragonConditionChange")

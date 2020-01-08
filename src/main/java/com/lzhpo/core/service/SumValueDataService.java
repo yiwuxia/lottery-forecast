@@ -1,13 +1,18 @@
 package com.lzhpo.core.service;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.PrizeInfoEntity;
 import com.lzhpo.core.domain.concord.SumDataStaticsVo;
 import com.lzhpo.core.domain.concord.SumDataVo;
+import com.lzhpo.core.utils.RedisConstant;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +29,9 @@ public class SumValueDataService {
 
     @Autowired
     private PrizeDataService prizeDataService;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
 
     public List<SumDataVo> getSumValueIndexList() {
@@ -552,4 +560,28 @@ public class SumValueDataService {
         lastResult.add(maxMiss);
         return lastResult;
     }
+
+
+    /**
+     * 将最新一期数据的合值保存到redis
+     * 生成数据时也保存到redis
+     */
+
+    @PostConstruct
+    private void saveNewestPrizeDataToRedis(){
+        List<PrizeInfoEntity> originData = prizeDataService.queryPrizeDataLimitOne();
+        if (CollectionUtils.isNotEmpty(originData)){
+            PrizeInfoEntity entity=originData.get(0);
+            int sumValue= Lists.newArrayList(entity.getPrizeNo01(),entity.getPrizeNo02(),entity.getPrizeNo03())
+                    .stream().map(s->Integer.valueOf(s)).reduce(Integer::sum).orElse(0);
+            sumValue=sumValue%10;
+            PrizeInfoEntity newestEntity=originData.get(originData.size()-1);
+            saveNewestPrizeSumValue(sumValue);
+        }
+    }
+
+    public void  saveNewestPrizeSumValue(int sumValue){
+        redisUtil.set(RedisConstant.NEWST_PRIZE_DATA_SUM_VALUE,String.valueOf(sumValue));
+    }
+
 }

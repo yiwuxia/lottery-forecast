@@ -16,19 +16,9 @@ public class DemoTest {
     @Test
     public  void a(){
 
-
-        Class clazz= SumDataStaticsVo.class;
-        Field[] fields =clazz.getDeclaredFields();
-        int i=10;
-        for (Field field : fields) {
-            String name=field.getName();
-            String name2=name.substring(0,1).toUpperCase()
-                    +name.substring(1);
-            String str="maxContinu.set"+name2+"(Collections.max("+name+"OkList));\n" +
-                    "        maxMiss.set"+name2+"(Collections.max("+name+"NoList));";
-            System.out.println(str);
-
-        }
+        int a =3;
+        int b=4;
+        System.out.println(b==a+1);
 
     }
 

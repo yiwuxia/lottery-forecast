@@ -20,7 +20,7 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
 
 
 
-    //按钮点击  numRegion01。。。
+    //按钮点击  设置选中项的颜色
     $(".btn-nums-select").click(function () {
         var val = $(this);
         if (val.hasClass("btn-click-trend")) {
@@ -30,6 +30,7 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         }
     });
 
+    //清空选中项的颜色
     $("#clear-trend").click(function(){
         $(".btn-nums-select").each(function(){
            var numBtn=$(this);
@@ -38,15 +39,11 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
             }
         });
     });
-    //龙头凤尾选择后的出现次数
-    function calcDragonOccurs(dragon,phoen,dragonArea,phoenArea,area0,area1,area2){
+
+    function getOccursCounts(paramArr){
         var count=0;
-        if (dragon.length>0 || phoen.length>0){
-            count++
-        }
-        var arrTemp=[dragonArea,phoenArea,area0,area1,area2];
-        for (var i = 0; i < arrTemp.length; i++) {
-            if (arrTemp[i].length>0){
+        for (var i = 0; i < paramArr.length; i++) {
+            if (paramArr[i]!='' && paramArr[i].length>0) {
                 count++;
             }
         }
@@ -56,7 +53,67 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
     //点击基本走势提交按钮
     $("#submit-choose-trend").click(function () {
 
-        console.log("---");
+        var sumValues='';
+        var leftPass='';
+        var break1='';
+        var rightPass='';
+        var break2='';
+        var fall='';
+        $(".btn-click-trend").each(function() {
+            var o=$(this);
+            if (o.hasClass('sumValues')){
+                sumValues=sumValues+o.text()+",";
+            }
+            if (o.hasClass('leftPass')){
+                leftPass=o.text();
+            }
+            if (o.hasClass('break1')){
+                break1=o.text();
+            }
+            if (o.hasClass('rightPass')){
+                rightPass=o.text();
+            }
+            if (o.hasClass('break2')){
+                break2=o.text();
+            }
+            if (o.hasClass('fall')){
+                fall=o.text();
+            }
+
+        });
+        sumValues=delStrEndwithComma(sumValues);
+        console.log("sumValues:"+sumValues);
+        console.log("leftPass:"+leftPass);
+        console.log("break1:"+break1);
+        console.log("rightPass:"+rightPass);
+        console.log("break2:"+break2);
+        console.log("fall:"+fall);
+        var paramArr=[sumValues,leftPass,break1,rightPass,break2,fall];
+        var occurs=getOccursCounts(paramArr);
+        if (occurs==0){
+            layer.msg('所选项不能为空');
+            return;
+        } else {
+            var arrOccurs=[];
+            for (var i = 0; i <occurs;i++ ){
+                arrOccurs.push(i+1);
+            }
+            var params={
+                sumValues:sumValues,//默认选择 1，2
+                leftPass:leftPass,
+                break1:break1,
+                rightPass:rightPass,
+                break2:break2,
+                fall:fall,
+                occurs:arrOccurs.join(",")
+            };
+            $.post("/sum/dealWithSumValue",params, function(res) {
+                layer.close(layer.index);
+                parent.location.reload();
+
+            });
+        }
+
 
     });
 
@@ -71,22 +128,6 @@ layui.use(['form', 'element', 'table','layer', 'jquery'], function () {
         return str;
     }
     
-    $("#trend-clear").click(function () {
-        table.render({
-            elem: '#test'
-            ,url:'/stat/getTrendFullData'
-            ,method: 'post'
-            ,height: 450
-            ,cellMinWidth: 50 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            ,cols: [[
-                {field:'valueComma', width:200, title: '前三位',align:'center'}
-                // ,{field:'second', width:80, title: '第二位',align:'center'}
-                // ,{field:'third', width:80, title: '第三位',align:'center'}
-            ]]
-            ,done:function (res, curr, count) {
-                $("#count-desc").text(count);
-            }
-        });
-    });
+
 
 });

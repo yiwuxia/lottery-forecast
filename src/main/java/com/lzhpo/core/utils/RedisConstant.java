@@ -24,6 +24,8 @@ public class RedisConstant {
     public static  final  String  CUR_TERM_PRIZE_DATA="cur_term_prize_data";
 
 
+    public static  final  String  NEWST_PRIZE_DATA_SUM_VALUE="newst_prize_data_sum_value";
+
     public static void main(String[] args) {
         System.out.println("index_combination_result".toUpperCase());
     }
