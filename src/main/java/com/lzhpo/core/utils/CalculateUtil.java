@@ -23,7 +23,12 @@ public class CalculateUtil {
      * 质数合集，不是质数就是合数。 1 代表龙头 0 凤尾  1 表示质数 0 表示合数
      */
     private static  final  Set<Integer> zhishuList= Sets.newHashSet(1, 2, 3, 5, 7);
-    // private static  final  Set<Integer> heshuList=Sets.newHashSet(4,6,8,9,10);
+
+    /**
+     * 合值阻断对应关系
+     */
+
+    private static final Map<Integer,List<Integer>> preventMap=new HashMap<>();
 
 
     public static Map<String, String> dragonHeadAndTail=new HashMap<>();
@@ -32,6 +37,16 @@ public class CalculateUtil {
         dragonHeadAndTail.put("1:0","头合");
         dragonHeadAndTail.put("0:1","尾质");
         dragonHeadAndTail.put("0:0","尾合");
+        preventMap.put(0,Lists.newArrayList(0,1));
+        preventMap.put(1,Lists.newArrayList(1,2));
+        preventMap.put(2,Lists.newArrayList(2,3));
+        preventMap.put(3,Lists.newArrayList(3,4));
+        preventMap.put(4,Lists.newArrayList(4,5));
+        preventMap.put(5,Lists.newArrayList(5,6));
+        preventMap.put(6,Lists.newArrayList(6,7));
+        preventMap.put(7,Lists.newArrayList(7,8));
+        preventMap.put(8,Lists.newArrayList(8,9));
+        preventMap.put(9,Lists.newArrayList(0,9));
     }
 
 
@@ -113,7 +128,7 @@ public class CalculateUtil {
                                     + "-" + (third==10?third:"0"+third));
                             continue;
                         }
-                            /*//一个条件都不满足  wuxia
+                            /*  //一个条件都不满足  wuxia
                             if (occur==0){
                                 if (!firstPredict.contains(first) &&  !secondPredict.contains(second) &&  !thirdPredict.contains(third)){
                                     result.add((first==10?first:"0"+first) + "-" + (second==10?second:"0"+second)
@@ -484,12 +499,13 @@ public class CalculateUtil {
                                            String occurs) {
 
         Set<String> result = new HashSet<>();
-        Splitter splitter=Splitter.on(",");
+       /* Splitter splitter=Splitter.on(",");
         List<String>  sumValuesListsTemp= splitter.splitToList(sumValues);
         List<Integer> sumValuesLists=Lists.newArrayList();
         if (CollectionUtils.isNotEmpty(sumValuesListsTemp)){
             sumValuesLists=sumValuesListsTemp.stream().map(s->Integer.valueOf(s)).collect(Collectors.toList());
-        }
+        }*/
+        List<Integer> sumValuesLists=intCommonsStrToList(sumValues);
         List<Integer> occursList= intCommonsStrToList(occurs);
         /**
          * 出现次数
@@ -541,4 +557,34 @@ public class CalculateUtil {
         }
         return  result;
     }
+
+    /**
+     * 计算合234阻断下的合值
+     * eg. 4 5 6  出2  4  5
+     */
+    public static Set<String> calcsingleSumValue(String values,String occurs
+    ){
+        List<Integer> sumValuesLists=intCommonsStrToList(values);
+        List<Integer> occursList= intCommonsStrToList(occurs);
+
+        for(Integer occur:occursList) {
+            for (Integer first : firsts) {
+                for (Integer second : seconds) {
+                    for (Integer third : thirds) {
+                        //组合的三个数不能相同
+                        if (first.equals(second) || first.equals(third) || second.equals(third)) {
+                            continue;
+                        }
+                        int fillCount=0;
+                        int  sumTemp=first+second+third;
+                        Integer  sumValue=sumTemp%10;
+
+                    }
+                }
+            }
+        }
+
+        return  null;
+    }
+
 }

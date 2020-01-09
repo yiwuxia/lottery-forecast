@@ -231,6 +231,7 @@
     </dependencies>
 
     <build>
+        <finalName>wuxiaApp</finalName>
         <plugins>
 
             <plugin>

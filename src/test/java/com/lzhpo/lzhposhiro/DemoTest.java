@@ -1,11 +1,10 @@
 package com.lzhpo.lzhposhiro;
 
-import com.google.common.collect.Lists;
-import com.lzhpo.core.domain.concord.SumDataStaticsVo;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.lang.reflect.Field;
+import java.util.Optional;
+
 
 @SpringBootTest
 public class DemoTest {
@@ -16,11 +15,11 @@ public class DemoTest {
     @Test
     public  void a(){
 
-        int a =3;
-        int b=4;
-        System.out.println(b==a+1);
+
+    Optional<String> empty=Optional.empty();
+        System.out.println(empty.isPresent());
+
 
     }
-
 
 }
