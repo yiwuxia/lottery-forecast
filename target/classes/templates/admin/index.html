@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>lzhpo-shiro</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/static/layui/css/bootstrap.min.css}" media="all" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+    <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all" />
+    <style>
+        fieldset {
+            padding: .35em .625em .75em;
+            margin: 0 2px;
+            border: 1px solid silver;
+        }
+
+        legend {
+            border: 0;
+            width: auto;
+            margin-bottom: 0px;
+            padding: -0.5em;
+        }
+        .radio-inline{
+            padding-left: 17px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!-- 顶部 -->
+    <div class="layui-header header">
+        <div class="layui-main">
+
+            <!-- 显示/隐藏菜单 -->
+        <div class="weather" pc>
+            <div id="tp-weather-widget"></div>
+            <script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+            <script>tpwidget("init", {
+                "flavor": "slim",
+                "location": "WX4FBXXFKE4F",
+                "geolocation": "enabled",
+                "language": "zh-chs",
+                "unit": "c",
+                "theme": "chameleon",
+                "container": "tp-weather-widget",
+                "bubble": "disabled",
+                "alarmType": "badge",
+                "color": "#FFFFFF",
+                "uid": "U9EC08A15F",
+                "hash": "039da28f5581f4bcb5c799fb4cdfb673"
+            });
+            tpwidget("show");</script>
+        </div>
+        <!-- 顶部右侧菜单 -->
+        <ul class="layui-nav top_menu">
+            <shiro:user>
+            <li class="layui-nav-item" mobile>
+                <a href="javascript:" class="mobileAddTab" data-url="/admin/system/user/changePwd"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>设置</cite></a>
+            </li>
+            </shiro:user>
+            <li class="layui-nav-item" mobile>
+                <a th:href="@{/systemLogout}" class="signOut"><i class="iconfont icon-loginout"></i> 退出</a>
+            </li>
+
+            <li class="layui-nav-item" pc>
+                <a href="javascript:">
+
+                    <img th:src="${session.icon}" class="layui-circle" width="35" height="35">
+                    <cite><shiro:principal property = "nickName"/></cite>
+                    <span class="layui-nav-more"></span>
+                </a>
+
+                <dl class="layui-nav-child">
+                    <shiro:user>
+                        <!--管理员增加新增用户功能。增加修改密码功能。 弹窗形式-->
+                    <dd><a href="javascript:" data-url="/admin/system/user/changePassword"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>新增用户</cite></a></dd>
+                    </shiro:user>
+                    <dd><a href="javascript:" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
+                    <dd><a th:href="@{/systemLogout}" class="signOut"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
+
+                </dl>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- 左侧导航 -->
+<!-- 右侧内容 -->
+
+
+</div>
+
+<div class="content">
+    <div class="myheader">
+        <div class="div1">
+        </div>
+        <div class="container-fluid">
+            <div class="row head-desc">
+                <div class="col-md-2 term"><span>第<span>[[${termInfo.termNo}]]</span>期</span></div>
+                <div class="col-md-8 term-no">
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo01}]]
+										</span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo02}]]
+										</span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo03}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo04}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo05}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo06}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo07}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo08}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo09}]]
+                                    </span>
+								</span>
+                    </div>
+                    <div class="term-circle">
+								<span class="out-circle">
+									<span class="num-circle">
+										[[${termInfo.prizeNo10}]]
+                                    </span>
+								</span>
+                    </div>
+                </div>
+                <div class="col-md-2 term"><span>18:02:59</span></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 主数据区域 -->
+    <div class="container-fluid term-main">
+        <div class="row">
+            <div class="col-md-2 desc main_left">
+                <div class="text1">
+                    <span>玩法</span>
+                </div>
+
+                <div class="div_qian_san">
+                    <div class="div_qian_san_txt">
+                        <span>前三</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div style="margin: 0 auto;width: 50px;padding: 5px;">
+                    <select class="form-control" id="dataType" style="width: 200px;">
+                        <option value="1">北京赛车</option>
+                        <option value="2">北京飞艇</option>
+                    </select>
+                </div>
+                <!--<hr />-->
+                <div class="operate-btn" style="height:50px;border-bottom: 1px solid red;">
+                    <button type="button" class="btn btn-primary" id="basic_trend">基本走势</button>
+                    <button type="button" class="btn btn-primary" id="basic_dragon">龙凤012</button>
+                    <button type="button" class="btn btn-primary" id="basic_sum">和合值</button>
+                    <button type="button" class="btn btn-primary">合2码阻断</button>
+                    <button type="button" class="btn btn-primary">跨度传落</button>
+                    <button type="button" class="btn btn-primary">代码3</button>
+                    <button type="button" class="btn btn-primary">代码4</button>
+                </div>
+
+                <div id="condition" style="height: 500px;overflow-y: auto;border: 1px solid red;">
+                    <div>
+                        <span style="font-size: 15px;font-weight: bold;color: darkred;">已选条件</span>
+                    </div>
+                        <table class="table table-bordered table-striped" id="condition-table">
+
+                        </table>
+                </div>
+
+            </div>
+            <div class="col-md-2 desc main_right">
+
+                <div class="combination-top">
+                    <span>筛选结果</span><span id="combination-count"></span><span>注</span>
+                </div>
+                <div class="table-responsive"
+                     style="height: 600px;overflow-y: scroll;border: 2px solid grey;">
+                    <table id="cb-table" class="table table-borderless">
+
+                    </table>
+                </div>
+                <div style="border: 2px solid white;">
+                </div>
+
+                <div id="copy_btn" style="width: 100%;text-align: center;">
+                    <button type="button" class="btn btn-primary">复制</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+ <!--胆码条件修改-->
+<div class="modal fade" id="danmaConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog num-select">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="danmaLabel">
+                    胆码
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: left;">
+                <div>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"  value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="5"> 5
+                    </label>
+                </div>
+                <div>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"  value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="region"   value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"  value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="region"   value="10"> 10
+                    </label>
+                    <hr />
+                </div>
+                <div style="text-align: left;">
+                    <span>出次:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="0"> 0
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="3"> 3
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="danmaOk">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--定位码条件修改-->
+<div class="modal fade" id="dingweimaConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog num-select">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="dingweimaLabel">
+                    定位码
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: left;">
+                <div>
+                    <span>第一位:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first"  value="5"> 5
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="first" value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first" value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="first"  value="10"> 10
+                    </label>
+                </div>
+                <div>
+                    <span>第二位:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second"  value="5"> 5
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="second" value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second" value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="second"  value="10"> 10
+                    </label>
+                </div>
+                <div>
+                    <span>第三位:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="3"> 3
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="4"> 4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third"  value="5"> 5
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="third" value="6"> 6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="7"> 7
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="8"> 8
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third" value="9"> 9
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="third"  value="10"> 10
+                    </label>
+                </div>
+
+                <div style="text-align: left;">
+                    <span>出次:&nbsp;&nbsp;</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="0"> 0
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="occurs" value="2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="occurs"  value="3"> 3
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="dingweimaOk">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+ <!--龙头凤尾条件修改-->
+
+<div class="modal fade" id="dragonConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    龙头凤尾012路
+                </h4>
+            </div>
+            <div class="modal-body">
+                <fieldset>
+                    <legend>龙头质合</legend>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left: 0px;">
+                                <fieldset>
+                                    <legend>龙头</legend>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="head_1" name="head" value="1"> 质
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="head_0" name="head" value="0"> 合
+                                    </label>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0px;">
+                                <fieldset>
+                                    <legend>凤尾</legend>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="tail_1"  name="tail" value="1"> 质
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" id="tail_0" name="tail" value="0"> 合
+                                    </label>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0px;">
+                                <fieldset>
+                                    <legend>出现</legend>
+                                    <label class="radio-inline" style="padding-left: 10px;">
+                                        <input type="checkbox" name="htoccur" id="htoccur_0" value="0"> 0
+                                    </label>
+                                    <label class="radio-inline" style="padding-left: 10px;">
+                                        <input type="checkbox" name="htoccur" id="htoccur_1" value="1"> 1
+                                    </label>
+                                    <label class="radio-inline" style="padding-left: 10px;">
+                                        <input type="checkbox" name="htoccur" id="htoccur_2" value="2"> 2
+                                    </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>龙头012路</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="dragonArea" id="dragonArea_0" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="dragonArea" id="dragonArea_1" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="dragonArea" id="dragonArea_2" value="2"> 2
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>凤尾012路</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="phoenArea" id="phoenArea_0" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="phoenArea" id="phoenArea_1" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="phoenArea"  id="phoenArea_2" value="2"> 2
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>0路个数</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="area0" id="area0_0" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="area0" id="area0_1" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="area0" id="area0_2"  value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="area0" id="area0_3"  value="3"> 3
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>1路个数</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="area1" id="area1_0"  value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area1" id="area1_1"   value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area1"  id="area1_2"  value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area1"  id="area1_3"  value="3"> 3
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>2路个数</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area2" id="area2_0"  value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area2"  id="area2_1" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="area2"  id="area2_2" value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   name="area2"  id="area2_3" value="3"> 3
+                    </label>
+                </fieldset>
+                <div style="text-align: center;">
+                    <span>出现:</span>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="occurs"  id="occurs_0" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="occurs"  id="occurs_1"  value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  id="occurs_2" value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  name="occurs" id="occurs_3" value="3"> 3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  id="occurs_4" value="4"> 4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  id="occurs_5" value="5"> 5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="occurs"  id="occurs_6" value="6"> 6
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" class="btn btn-primary" id="dragonOk">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--和合值条件修改-->
+
+<div class="modal fade" id="sumValueConditionWin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="sumValueLabel">
+                    合值传落
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <fieldset>
+                    <legend>合值</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_0" name="sumValue" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" id="sumValue_1" name="sumValue" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_2" name="sumValue" value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_3" name="sumValue" value="3"> 3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_4" name="sumValue" value="4"> 4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_5" name="sumValue" value="5"> 5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_6" name="sumValue" value="6"> 6
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_7" name="sumValue" value="7"> 7
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_8" name="sumValue" value="8"> 8
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValue_9" name="sumValue" value=""> 9
+                    </label>
+
+                </fieldset>
+                <fieldset>
+                    <legend>合值传断</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="leftPass" name="first" value="0"> 左传
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="break1" name="first" value="1"> 断
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="rightPass" name="first" value="2"> 右传
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>合值断落</legend>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="break2" name="second" value="0"> 断
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="fall" name="second" value="1"> 落
+                    </label>
+
+                </fieldset>
+
+
+                <div style="text-align: center;">
+                    <span>出现:</span>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValueOccur_0"  name="occurs" value="0"> 0
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"  id="sumValueOccur_1"   name="occurs" value="1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   id="sumValueOccur_2"  name="occurs"  value="2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox"   id="sumValueOccur_3"  name="occurs" value="3"> 3
+                    </label>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" id="sumValueOk" class="btn btn-primary">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/leftNav.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/index.js}"></script>
+</body>
+</html>

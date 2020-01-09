@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>基本走势</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" th:href="@{/static/login/vendor/bootstrap/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
+    <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all"/>
+    <style>
+        .content1 {
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        .head {
+            background: #448833;
+        }
+
+        .no {
+            background: grey;
+        }
+
+        .ok {
+            background: deepskyblue;
+        }
+
+        .btn-click-trend{
+            background-color: 	#F4A460;
+        }
+
+        td button{
+            width: auto;
+        }
+        .btn-nums-select{
+           cursor: pointer;;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="content1">
+
+
+
+    <table class="table table-bordered" table border="1" cellspacing="0">
+        <tr class="head">
+            <td rowspan="2">期号</td>
+            <td rowspan="2" colspan="3">开奖号码</td>
+            <td colspan="10">期码分布</td>
+            <td colspan="10">第1位</td>
+            <td colspan="10">第2位</td>
+            <td colspan="10">第3位</td>
+        </tr>
+        <tr class="head">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr th:each="re:${result}">
+
+            <!--<td th:if="${obj.state} == 1" th:text="启用"></td>-->
+
+            <td th:text="${re.termNo}"></td>
+            <td th:text="${re.prizeNo01}"></td>
+            <td th:text="${re.prizeNo02}"></td>
+            <td th:text="${re.prizeNo03}"></td>
+            <td th:text="${re.numRegion01.substring(3)}" th:class="${re.numRegion01.substring(0,2)}"></td>
+            <td th:text="${re.numRegion02.substring(3)}" th:class="${re.numRegion02.substring(0,2)}"></td>
+            <td th:text="${re.numRegion03.substring(3)}" th:class="${re.numRegion03.substring(0,2)}"></td>
+            <td th:text="${re.numRegion04.substring(3)}" th:class="${re.numRegion04.substring(0,2)}"></td>
+            <td th:text="${re.numRegion05.substring(3)}" th:class="${re.numRegion05.substring(0,2)}"></td>
+            <td th:text="${re.numRegion06.substring(3)}" th:class="${re.numRegion06.substring(0,2)}"></td>
+            <td th:text="${re.numRegion07.substring(3)}" th:class="${re.numRegion07.substring(0,2)}"></td>
+            <td th:text="${re.numRegion08.substring(3)}" th:class="${re.numRegion08.substring(0,2)}"></td>
+            <td th:text="${re.numRegion09.substring(3)}" th:class="${re.numRegion09.substring(0,2)}"></td>
+            <td th:text="${re.numRegion10.substring(3)}" th:class="${re.numRegion10.substring(0,2)}"></td>
+            <td th:text="${re.first01.substring(3)}" th:class="${re.first01.substring(0,2)}"></td>
+            <td th:text="${re.first02.substring(3)}" th:class="${re.first02.substring(0,2)}"></td>
+            <td th:text="${re.first03.substring(3)}" th:class="${re.first03.substring(0,2)}"></td>
+            <td th:text="${re.first04.substring(3)}" th:class="${re.first04.substring(0,2)}"></td>
+            <td th:text="${re.first05.substring(3)}" th:class="${re.first05.substring(0,2)}"></td>
+            <td th:text="${re.first06.substring(3)}" th:class="${re.first06.substring(0,2)}"></td>
+            <td th:text="${re.first07.substring(3)}" th:class="${re.first07.substring(0,2)}"></td>
+            <td th:text="${re.first08.substring(3)}" th:class="${re.first08.substring(0,2)}"></td>
+            <td th:text="${re.first09.substring(3)}" th:class="${re.first09.substring(0,2)}"></td>
+            <td th:text="${re.first10.substring(3)}" th:class="${re.first10.substring(0,2)}"></td>
+            <td th:text="${re.second01.substring(3)}" th:class="${re.second01.substring(0,2)}"></td>
+            <td th:text="${re.second02.substring(3)}" th:class="${re.second02.substring(0,2)}"></td>
+            <td th:text="${re.second03.substring(3)}" th:class="${re.second03.substring(0,2)}"></td>
+            <td th:text="${re.second04.substring(3)}" th:class="${re.second04.substring(0,2)}"></td>
+            <td th:text="${re.second05.substring(3)}" th:class="${re.second05.substring(0,2)}"></td>
+            <td th:text="${re.second06.substring(3)}" th:class="${re.second06.substring(0,2)}"></td>
+            <td th:text="${re.second07.substring(3)}" th:class="${re.second07.substring(0,2)}"></td>
+            <td th:text="${re.second08.substring(3)}" th:class="${re.second08.substring(0,2)}"></td>
+            <td th:text="${re.second09.substring(3)}" th:class="${re.second09.substring(0,2)}"></td>
+            <td th:text="${re.second10.substring(3)}" th:class="${re.second10.substring(0,2)}"></td>
+            <td th:text="${re.third01.substring(3)}" th:class="${re.third01.substring(0,2)}"></td>
+            <td th:text="${re.third02.substring(3)}" th:class="${re.third02.substring(0,2)}"></td>
+            <td th:text="${re.third03.substring(3)}" th:class="${re.third03.substring(0,2)}"></td>
+            <td th:text="${re.third04.substring(3)}" th:class="${re.third04.substring(0,2)}"></td>
+            <td th:text="${re.third05.substring(3)}" th:class="${re.third05.substring(0,2)}"></td>
+            <td th:text="${re.third06.substring(3)}" th:class="${re.third06.substring(0,2)}"></td>
+            <td th:text="${re.third07.substring(3)}" th:class="${re.third07.substring(0,2)}"></td>
+            <td th:text="${re.third08.substring(3)}" th:class="${re.third08.substring(0,2)}"></td>
+            <td th:text="${re.third09.substring(3)}" th:class="${re.third09.substring(0,2)}"></td>
+            <td th:text="${re.third10.substring(3)}" th:class="${re.third10.substring(0,2)}"></td>
+
+        </tr>
+        <!--点击事件-->
+        <tr>
+            <td><button id="submit-choose-trend" type="button" >提交</button></td>
+            <td><button id="clear-trend" type="button" >清</button></td>
+            <td colspan="2">->点选</td>
+            <td   class="btn-nums-select region">1</td>
+            <td   class="btn-nums-select region">2</td>
+            <td   class="btn-nums-select region">3</td>
+            <td   class="btn-nums-select region">4</td>
+            <td   class="btn-nums-select region">5</td>
+            <td   class="btn-nums-select region">6</td>
+            <td   class="btn-nums-select region">7</td>
+            <td   class="btn-nums-select region">8</td>
+            <td   class="btn-nums-select region">9</td>
+            <td   class="btn-nums-select region">10</td>
+            <td   class="btn-nums-select first">1</td>
+            <td   class="btn-nums-select first">2</td>
+            <td   class="btn-nums-select first">3</td>
+            <td   class="btn-nums-select first">4</td>
+            <td   class="btn-nums-select first">5</td>
+            <td   class="btn-nums-select first">6</td>
+            <td   class="btn-nums-select first">7</td>
+            <td   class="btn-nums-select first">8</td>
+            <td   class="btn-nums-select first">9</td>
+            <td   class="btn-nums-select first">10</td>
+            <td   class="btn-nums-select second">1</td>
+            <td   class="btn-nums-select second">2</td>
+            <td   class="btn-nums-select second">3</td>
+            <td   class="btn-nums-select second">4</td>
+            <td   class="btn-nums-select second">5</td>
+            <td   class="btn-nums-select second">6</td>
+            <td   class="btn-nums-select second">7</td>
+            <td   class="btn-nums-select second">8</td>
+            <td   class="btn-nums-select second">9</td>
+            <td   class="btn-nums-select second">10</td>
+            <td   class="btn-nums-select third">1</td>
+            <td   class="btn-nums-select third">2</td>
+            <td   class="btn-nums-select third">3</td>
+            <td   class="btn-nums-select third">4</td>
+            <td   class="btn-nums-select third">5</td>
+            <td   class="btn-nums-select third">6</td>
+            <td   class="btn-nums-select third">7</td>
+            <td   class="btn-nums-select third">8</td>
+            <td   class="btn-nums-select third">9</td>
+            <td   class="btn-nums-select third">10</td>
+        </tr>
+
+        <!--底部统计 start-->
+        <tr th:each="stat:${statics}">
+            <td th:text="${stat.description}" colspan="4"></td>
+
+            <td th:text="${stat.numRegion01}"></td>
+
+            <td th:text="${stat.numRegion02}"></td>
+
+            <td th:text="${stat.numRegion03}"></td>
+
+            <td th:text="${stat.numRegion04}"></td>
+
+            <td th:text="${stat.numRegion05}"></td>
+
+            <td th:text="${stat.numRegion06}"></td>
+
+            <td th:text="${stat.numRegion07}"></td>
+
+            <td th:text="${stat.numRegion08}"></td>
+
+            <td th:text="${stat.numRegion09}"></td>
+
+            <td th:text="${stat.numRegion10}"></td>
+
+            <td th:text="${stat.first01}"></td>
+
+            <td th:text="${stat.first02}"></td>
+
+            <td th:text="${stat.first03}"></td>
+
+            <td th:text="${stat.first04}"></td>
+
+            <td th:text="${stat.first05}"></td>
+
+            <td th:text="${stat.first06}"></td>
+
+            <td th:text="${stat.first07}"></td>
+
+            <td th:text="${stat.first08}"></td>
+
+            <td th:text="${stat.first09}"></td>
+
+            <td th:text="${stat.first10}"></td>
+
+            <td th:text="${stat.second01}"></td>
+
+            <td th:text="${stat.second02}"></td>
+
+            <td th:text="${stat.second03}"></td>
+
+            <td th:text="${stat.second04}"></td>
+
+            <td th:text="${stat.second05}"></td>
+
+            <td th:text="${stat.second06}"></td>
+
+            <td th:text="${stat.second07}"></td>
+
+            <td th:text="${stat.second08}"></td>
+
+            <td th:text="${stat.second09}"></td>
+
+            <td th:text="${stat.second10}"></td>
+
+            <td th:text="${stat.third01}"></td>
+
+            <td th:text="${stat.third02}"></td>
+
+            <td th:text="${stat.third03}"></td>
+
+            <td th:text="${stat.third04}"></td>
+
+            <td th:text="${stat.third05}"></td>
+
+            <td th:text="${stat.third06}"></td>
+
+            <td th:text="${stat.third07}"></td>
+
+            <td th:text="${stat.third08}"></td>
+
+            <td th:text="${stat.third09}"></td>
+
+            <td th:text="${stat.third10}"></td>
+
+        </tr>
+        <!--底部统计 end-->
+
+        <tr class="head">
+            <td rowspan="2">期号</td>
+            <td rowspan="2" colspan="3">开奖号码</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr class="head">
+
+            <td colspan="10">期码分布</td>
+            <td colspan="10">第1位</td>
+            <td colspan="10">第2位</td>
+            <td colspan="10">第3位</td>
+        </tr>
+
+
+    </table>
+</div>
+
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/main.js}"></script>
+</body>
+</html>
