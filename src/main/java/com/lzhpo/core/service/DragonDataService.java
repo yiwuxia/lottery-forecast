@@ -973,6 +973,10 @@ public class DragonDataService {
         return  statics;
     }
 
+    /**
+     * 显示边临走势首页数据列表
+     * @return
+     */
     public List<BorderDataVo> getBorderDisIndexList() {
 
         List<PrizeInfoEntity> remoteList = prizeDataService.queryPrizeDataLimit();
@@ -999,19 +1003,63 @@ public class DragonDataService {
             vo.setMaxIntervalArr(maxIntervalArr);
             vo.setBorderSumArr(borderSumArr);
             if (result.size()==0){
-                vo.setBreak1("ok,断");
-                vo.setLeftPass("no,1");
-                vo.setRightPass("no,1");
-                vo.setBreak2("ok,断");
-                vo.setFall("no,1");
+                String [] arrTemp2={"no,1","ok,断","no,1","ok,断","no,1"};
+                vo.setMixValuesArr(arrTemp2);
             }else {
-
+                BorderDataVo preVo=result.get(result.size()-1);
+                int[] arrTemp2=getDistanceValue(preVo.getPrizeNo01(),preVo.getPrizeNo02(),preVo.getPrizeNo03());
+                int sum=maxDis+distanceValue;
+                int preSum=arrTemp2[0]+arrTemp2[1];
+                String [] arrTemp3=new String[5];
+                if (sum==preSum){
+                    arrTemp3[4]="ok,落";
+                    arrTemp3[3]="no,1";
+                }else {
+                    arrTemp3[4]="no,1";
+                    arrTemp3[3]="ok,断";
+                }
+                if (sum==(preSum-1)){
+                    arrTemp3[0]="ok,左";
+                    arrTemp3[1]="no,1";
+                    arrTemp3[2]="no,1";
+                }else  if ((sum+1)==preSum){
+                    arrTemp3[0]="no,1";
+                    arrTemp3[1]="no,1";
+                    arrTemp3[2]="ok,右";
+                }else{
+                    arrTemp3[0]="no,1";
+                    arrTemp3[1]="ok,断";
+                    arrTemp3[2]="no,1";
+                }
+                vo.setMixValuesArr(arrTemp3);
+                comparaVoWithPreVo(vo,preVo);
             }
-
             result.add(vo);
         }
-
         return result;
+
+    }
+
+    private void comparaVoWithPreVo(BorderDataVo vo, BorderDataVo preVo) {
+        compareTwoArr(vo.getDistanceArr(),preVo.getDistanceArr());
+        compareTwoArr(vo.getMaxIntervalArr(),preVo.getMaxIntervalArr());
+        compareTwoArr(vo.getBorderSumArr(),preVo.getBorderSumArr());
+        compareTwoArr(vo.getMixValuesArr(),preVo.getMixValuesArr());
+    }
+
+    private void compareTwoArr(String[] vo, String[] prevo) {
+
+        for (int i = 0; i <vo.length ; i++) {
+            String valueCur=vo[i];
+            String valuePre=prevo[i];
+            /**
+             * 如果 cur 以 no开头 且pre也以no 开头 ，则 cur计数+1
+             */
+            if(valueCur.startsWith("no") && valuePre.startsWith("no")){
+                int count=Integer.valueOf(valuePre.split(",")[1])+1;
+                vo[i]="no,"+count;
+            }
+        }
 
     }
 
@@ -1029,7 +1077,5 @@ public class DragonDataService {
 
     }
 
-    public static void main(String[] args) {
-    }
 
 }
