@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>和合值</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" th:href="@{/static/login/vendor/bootstrap/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
+    <link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all"/>
+    <style>
+        .content1 {
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+
+        .head {
+            background: #448833;
+        }
+
+        .no {
+            background: grey;
+        }
+
+        .ok {
+            background: deepskyblue;
+        }
+
+        .btn-click-trend {
+            background-color: #F4A460;
+        }
+
+        td button {
+            width: auto;
+        }
+
+        .btn-nums-select {
+            cursor: pointer;;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="content1 table-responsive">
+    <table class="table table-bordered" table border="1" cellspacing="0">
+        <tr class="head">
+            <td rowspan="2">期号</td>
+            <td rowspan="2" colspan="3">开奖号码</td>
+            <td colspan="8">反边球距离</td>
+            <td colspan="8">最大临码跨</td>
+            <td colspan="4">边临和</td>
+            <td colspan="3">传码</td>
+            <td colspan="2">落码</td>
+        </tr>
+        <tr class="head">
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>7</td>
+            <td>左传</td>
+            <td>断</td>
+            <td>右传</td>
+            <td>断</td>
+            <td>落</td>
+        </tr>
+        <tr th:each="re:${lists}">
+            <td th:text="${re.termNo}"></td>
+            <td th:text="${re.prizeNo01}"></td>
+            <td th:text="${re.prizeNo02}"></td>
+            <td th:text="${re.prizeNo03}"></td>
+            <td th:text="${re.rightValueArr[0].substring(3)}" th:class="${re.rightValueArr[0].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[1].substring(3)}" th:class="${re.rightValueArr[1].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[2].substring(3)}" th:class="${re.rightValueArr[2].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[3].substring(3)}" th:class="${re.rightValueArr[3].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[4].substring(3)}" th:class="${re.rightValueArr[4].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[5].substring(3)}" th:class="${re.rightValueArr[5].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[6].substring(3)}" th:class="${re.rightValueArr[6].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[7].substring(3)}" th:class="${re.rightValueArr[7].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[8].substring(3)}" th:class="${re.rightValueArr[8].substring(0,2)}"></td>
+            <td th:text="${re.rightValueArr[9].substring(3)}" th:class="${re.rightValueArr[9].substring(0,2)}"></td>
+            <td th:text="${re.leftPass.substring(3)}" th:class="${re.leftPass.substring(0,2)}"></td>
+            <td th:text="${re.break1.substring(3)}" th:class="${re.break1.substring(0,2)}"></td>
+            <td th:text="${re.rightPass.substring(3)}" th:class="${re.rightPass.substring(0,2)}"></td>
+            <td th:text="${re.break2.substring(3)}" th:class="${re.break2.substring(0,2)}"></td>
+            <td th:text="${re.fall.substring(3)}" th:class="${re.fall.substring(0,2)}"></td>
+        </tr>
+        <!--点击事件-->
+        <tr>
+            <td>
+                <button class="btn btn-success" style="padding: 0px 0px;width: 100%;" id="submit-choose-trend" type="button">提交</button>
+            </td>
+            <td>
+                <button class="btn btn-success" style="padding: 0px 0px;width: 100%;" id="c" type="button">清</button>
+            </td>
+            <td colspan="2">-->点选</td>
+            <td class="btn-nums-select sumValues">0</td>
+            <td class="btn-nums-select sumValues">1</td>
+            <td class="btn-nums-select sumValues">2</td>
+            <td class="btn-nums-select sumValues">3</td>
+            <td class="btn-nums-select sumValues">4</td>
+            <td class="btn-nums-select sumValues">5</td>
+            <td class="btn-nums-select sumValues">6</td>
+            <td class="btn-nums-select sumValues">7</td>
+            <td class="btn-nums-select sumValues">8</td>
+            <td class="btn-nums-select sumValues">9</td>
+            <td class="btn-nums-select leftPass">左</td>
+            <td class="btn-nums-select break1">断</td>
+            <td class="btn-nums-select rightPass">右</td>
+            <td class="btn-nums-select break2">断</td>
+            <td class="btn-nums-select fall">落</td>
+        </tr>
+
+        <!--底部统计 start-->
+        <tr th:each="stat:${statics}">
+            <td th:text="${stat.description}" colspan="4"></td>
+            <td th:text="${stat.rightValue0}"></td>
+            <td th:text="${stat.rightValue1}"></td>
+            <td th:text="${stat.rightValue2}"></td>
+            <td th:text="${stat.rightValue3}"></td>
+            <td th:text="${stat.rightValue4}"></td>
+            <td th:text="${stat.rightValue5}"></td>
+            <td th:text="${stat.rightValue6}"></td>
+            <td th:text="${stat.rightValue7}"></td>
+            <td th:text="${stat.rightValue8}"></td>
+            <td th:text="${stat.rightValue9}"></td>
+            <td th:text="${stat.leftPass}"></td>
+            <td th:text="${stat.break1}"></td>
+            <td th:text="${stat.rightPass}"></td>
+            <td th:text="${stat.break2}"></td>
+            <td th:text="${stat.fall}"></td>
+        </tr>
+        <!--底部统计 end-->
+
+        <tr class="head">
+            <td rowspan="2">期号</td>
+            <td colspan="3" rowspan="2">开奖号码</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>7</td>
+            <td>左传</td>
+            <td>断</td>
+            <td>右传</td>
+            <td>断</td>
+            <td>落</td>
+        </tr>
+        <tr class="head">
+            <td colspan="8">反边球距离</td>
+            <td colspan="8">最大临码跨</td>
+            <td colspan="4">边临和</td>
+            <td colspan="3">传码</td>
+            <td colspan="2">落码</td>
+        </tr>
+
+    </table>
+</div>
+
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/dragon/sumValue.js}"></script>
+</body>
+</html>
