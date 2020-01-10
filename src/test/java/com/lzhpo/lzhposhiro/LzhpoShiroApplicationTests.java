@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -29,7 +30,12 @@ public class LzhpoShiroApplicationTests {
 
     @Test
     public void generateData() {
-        List<BorderDataVo> list=  dataService.getBorderDisIndexList();
-        list.forEach(System.out::println);
+        List<BorderDataVo> listResult = dataService.getBorderDisIndexList();
+        List<Integer[]> bottomStatic = dataService.getBorderDisBottomStatics(listResult);
+        listResult.forEach(System.out::println);
+        bottomStatic.forEach(s->{
+            System.out.println(Arrays.toString(s));
+        });
+
     }
 }

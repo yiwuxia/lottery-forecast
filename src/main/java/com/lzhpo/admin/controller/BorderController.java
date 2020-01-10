@@ -47,11 +47,11 @@ public class BorderController {
     public ModelAndView adminIndex() {
         //龙头凤尾显示页面统计数据（不包括最后三列）
         List<BorderDataVo> listResult = dataService.getBorderDisIndexList();
-      //  List<DragonPhoenixStaticVo> bottomStatic = dataService.getDragonBottomStatics(listResult);
+        List<Integer[]> bottomStatic = dataService.getBorderDisBottomStatics(listResult);
         ModelAndView mv = new ModelAndView();
-    /*    mv.addObject("lists", listResult);
+        mv.addObject("lists", listResult);
         mv.addObject("statics", bottomStatic);
-        mv.setViewName("admin/stat/dragon");*/
+        mv.setViewName("admin/stat/border");
         return mv;
     }
 
