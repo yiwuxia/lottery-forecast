@@ -1,13 +1,16 @@
 package com.lzhpo.core.service;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.lzhpo.common.config.MySysUser;
 import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.*;
+import com.lzhpo.core.domain.concord.BorderDataVo;
 import com.lzhpo.core.domain.dragon.DragonPhoenixStaticVo;
 import com.lzhpo.core.domain.dragon.DragonPhoenixVo;
 import com.lzhpo.core.utils.CalculateUtil;
+import com.lzhpo.core.utils.MyStrUtil;
 import com.lzhpo.core.utils.RedisConstant;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.Collections.max;
+import static java.util.Collections.min;
 import static java.util.Comparator.comparingInt;
 
 /**
@@ -968,4 +972,64 @@ public class DragonDataService {
         statics.add(maxMiss);
         return  statics;
     }
+
+    public List<BorderDataVo> getBorderDisIndexList() {
+
+        List<PrizeInfoEntity> remoteList = prizeDataService.queryPrizeDataLimit();
+        List<BorderDataVo> result=Lists.newArrayList();
+        for (int i = 0; i <remoteList.size() ; i++) {
+            PrizeInfoEntity entity=remoteList.get(i);
+            BorderDataVo vo=new BorderDataVo();
+            vo.setId(entity.getId());
+            vo.setPrizeNo01(entity.getPrizeNo01());
+            vo.setPrizeNo02(entity.getPrizeNo02());
+            vo.setPrizeNo03(entity.getPrizeNo03());
+            int[] arrTemp=getDistanceValue(entity.getPrizeNo01(),entity.getPrizeNo02(),entity.getPrizeNo03());
+            int distanceValue=arrTemp[0];
+            int maxDis=arrTemp[1];
+            String [] distanceArr= MyStrUtil.getInitSumValueArr(8);
+            String [] maxIntervalArr= MyStrUtil.getInitSumValueArr(8);
+            String [] borderSumArr= MyStrUtil.getInitSumValueArr(4);
+
+            distanceArr[distanceValue]="ok,"+distanceValue;
+            maxIntervalArr[distanceValue-1]="ok,"+maxDis;
+            borderSumArr[maxDis+distanceValue-5]="ok,"+(maxDis+distanceValue);
+
+            vo.setDistanceArr(distanceArr);
+            vo.setMaxIntervalArr(maxIntervalArr);
+            vo.setBorderSumArr(borderSumArr);
+            if (result.size()==0){
+                vo.setBreak1("ok,断");
+                vo.setLeftPass("no,1");
+                vo.setRightPass("no,1");
+                vo.setBreak2("ok,断");
+                vo.setFall("no,1");
+            }else {
+
+            }
+
+            result.add(vo);
+        }
+
+        return result;
+
+    }
+
+    public static int[] getDistanceValue(String prizeNo01, String prizeNo02, String prizeNo03) {
+        Joiner joiner = Joiner.on(",").skipNulls();
+        String str= joiner.join(prizeNo01,prizeNo02,prizeNo03);
+        List<Integer> list =CalculateUtil.intCommonsStrToList(str);
+        Collections.sort(list);
+        int minValue=Collections.min(list);
+        int maxValue=Collections.max(list);
+        int [] arr=new int [2];
+        arr[0]=(minValue-1)+(10-maxValue);
+        arr[1]=Math.max(list.get(1)-list.get(0),list.get(2)-list.get(1));
+        return arr;
+
+    }
+
+    public static void main(String[] args) {
+    }
+
 }

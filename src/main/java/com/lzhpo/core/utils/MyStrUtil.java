@@ -37,6 +37,16 @@ public class MyStrUtil {
         return  joiner.join(arr);
     }
 
+
+    public static  String[] getInitSumValueArr(int length) {
+        String [] sumValueArr =new String[length];
+        for (int i = 0; i <sumValueArr.length ; i++) {
+            sumValueArr[i]="no,1";
+        }
+        return sumValueArr;
+
+    }
+
     public static void main(String[] args) {
 
     }

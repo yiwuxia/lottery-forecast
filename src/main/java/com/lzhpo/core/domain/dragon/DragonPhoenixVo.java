@@ -1,5 +1,6 @@
 package com.lzhpo.core.domain.dragon;
 
+import com.lzhpo.core.domain.CommonVo;
 import lombok.Data;
 import lombok.ToString;
 
@@ -12,16 +13,8 @@ import lombok.ToString;
  **/
 @Data
 @ToString
-public class DragonPhoenixVo {
+public class DragonPhoenixVo extends CommonVo {
 
-    private Integer id;
-    private String termNo;
-    /**
-     * 前3 开奖号码
-     */
-    private String prizeNo01;
-    private String prizeNo02;
-    private String prizeNo03;
 
     /**
      * 龙头质合

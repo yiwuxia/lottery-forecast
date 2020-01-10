@@ -6,6 +6,7 @@ import com.lzhpo.core.config.RedisUtil;
 import com.lzhpo.core.domain.PrizeInfoEntity;
 import com.lzhpo.core.domain.concord.SumDataStaticsVo;
 import com.lzhpo.core.domain.concord.SumDataVo;
+import com.lzhpo.core.utils.MyStrUtil;
 import com.lzhpo.core.utils.RedisConstant;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class SumValueDataService {
             //
             int ge  = sum%10;
             //第一条
-            String [] rightValueArr=getInitSumValueArr(10);
+            String [] rightValueArr= MyStrUtil.getInitSumValueArr(10);
             rightValueArr[ge]="ok,"+ge;
             dataVo.setRightValueArr(rightValueArr);
             if (result.size()==0){
@@ -139,14 +140,6 @@ public class SumValueDataService {
         return result;
     }
 
-    private String[] getInitSumValueArr(int length) {
-        String [] sumValueArr =new String[length];
-        for (int i = 0; i <sumValueArr.length ; i++) {
-            sumValueArr[i]="no,1";
-        }
-        return sumValueArr;
-
-    }
 
     public List<SumDataStaticsVo> getSumValueBottomStatics(List<SumDataVo> listResult) {
         //出现次数，最大连出，最大遗漏
